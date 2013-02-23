@@ -30,7 +30,7 @@ class Stage():
     return self.Cin
 
   def show(self):
-    print "%s\t%i\t%i\t%i\t%0.02f\t%0.02f" % (self.name, self.w_n*self.M, self.w_p*self.M, self.Cin, self.le, self.gamma)
+    print "%s\t%i\t%i\t%i\t%i\t%0.02f\t%0.02f" % (self.name, self.w_n*self.M, self.w_p*self.M, self.Cin, self.be, self.le, self.gamma)
 
 class nand(Stage):
   def __init__(self, n, be=1):

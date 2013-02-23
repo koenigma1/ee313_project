@@ -16,10 +16,8 @@ def main():
               inv(),
               nand(2, be=16),
               inv()]
-  print p.stages
   print "path effort:", p.pathEffort()
   print "stage effort:", p.optimalStageEffort()
-  print p.stages
   p.size()
   p.show()
 

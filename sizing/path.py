@@ -27,7 +27,7 @@ class Path():
       lastW = stage.size(self.se, lastW)
 
   def show(self):
-    print "Stage\tGate\tWp\tWn\tCin\tLE\tgamma"
+    print "Stage\tGate\tWp\tWn\tCin\tBE\tLE\tgamma"
     for i,stage in enumerate(self.stages):
       print "%i\t" % i,
       stage.show()
