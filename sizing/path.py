@@ -27,10 +27,40 @@ class Path():
       lastW = stage.size(self.se, lastW)
 
   def show(self):
-    print "Stage\tGate\tWp\tWn\tCin\tBE\tLE\tgamma"
+    out = ["Stage",
+           "Gate",
+           "Wp",
+           "Wn",
+           "Cin",
+           "BE",
+           "LE",
+           "gamma",
+           "Effort",
+           "Para",
+           "Stage",
+           "F04"]
+    print "\t".join(out)
     for i,stage in enumerate(self.stages):
-      print "%i\t" % i,
+      print "%i\t" % (i+1),
       stage.show()
+  
+    effort = 0
+    para = 0
+    be = 1
+    le = 1
+    for stage in self.stages:
+      (e, p) = stage.delay()
+      effort += e
+      para += p
+      be *= stage.be
+      le *= stage.le
+    print "total\t\t\t\t\t",
+    print "%i\t" % be,
+    print "%0.03f\t\t" % le,
+    print "%0.02f\t" % effort,
+    print "%0.02f\t" % para,
+    print "%0.02f\t" % (effort + para),
+    print "%0.02f\t" % ((effort + para) / 5)
       
 
 
