@@ -1,36 +1,57 @@
 '''
   optimize sizing over a path
 '''
-
+import stage
 
 class Path():
   def __init__(self, inputCap, loadCap):
     self.stages = []
+    self.sideloads = {}
     self.inputCap = inputCap
     self.loadCap = loadCap
 
+  def sideload(self, index, c):
+    self.sideloads[index] = c
+
   def pathEffort(self):
-    pe = float(self.loadCap) / self.inputCap
-    for stage in self.stages:
+    return self._pe(self.stages, self.inputCap, self.loadCap)
+
+  def _pe(self, stages, inputCap, load):
+    pe = float(load) / inputCap
+    for stage in stages:
       pe *= (stage.le*stage.be)
-    self.pe = pe
-    return self.pe
+    return pe
 
   def optimalStageEffort(self):
-    self.se = self.pe ** (1.0/len(self.stages))
-    return self.se
+    return self._se(self.stages, self.inputCap, self.loadCap)
+
+  def _se(self, stages, inputCap, load):
+    return self._pe(stages, inputCap, load) ** (1.0/len(stages))
    
-  def size(self):
-    self.optimalStageEffort()
-    lastW = self.loadCap
-    for stage in reversed(self.stages):
-      lastW = stage.size(self.se, lastW)
+  def size(self, start=None, end=None, inputCap=None, loadCap=None):
+    if start == None:
+      start = 0
+      end = len(self.stages)-1
+      inputCap = self.inputCap
+      loadCap = self.loadCap
+
+    se = self._se(self.stages[start:end+1], inputCap, loadCap)
+    lastW = loadCap
+    for i in range(end, start-1, -1):
+      if i in self.sideloads and i != end and i != start:
+        # use recursion to size towards the left
+        self.size(0, i, inputCap, lastW + (self.sideloads[i] / self.stages[i].be))
+        # then resize towards the right
+        self.size(i, end, self.stages[i].Cin, loadCap)
+        break
+      elif i not in self.sideloads or i != start:
+        lastW = self.stages[i].size(se, lastW)
 
   def show(self):
     out = ["Stage",
            "Gate",
-           "Wp",
            "Wn",
+           "Wp",
            "Cin",
            "BE",
            "LE",

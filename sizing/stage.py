@@ -77,4 +77,3 @@ class inv(Stage):
     self.c_para = (self.w_p + self.w_n) * C_JUNCTION
     self.c_gate = (self.w_p + self.w_n) * C_GATE
     Stage.__init__(self, be)
-
