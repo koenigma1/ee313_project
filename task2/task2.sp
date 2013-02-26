@@ -20,7 +20,10 @@ Xsapc_b_driver sae_in sapc_b inv_pcell W_P=4.5 W_N=1.5
 ***************************************************************
 *PARAMETERS
 ***************************************************************
-.param DELTAV=0.1
+.param OFFSET_bl=0.1
+.param OFFSET_bl_b=0
+.param diff='0'
+.param diff_b='0'
 .param half_vdd='supply*0.5'
 
 ***************************************************************
@@ -28,9 +31,11 @@ Xsapc_b_driver sae_in sapc_b inv_pcell W_P=4.5 W_N=1.5
 ***************************************************************
 * Input list
 * bl0, bl_b0, sel_b0, sapc_b, sae  
-vdc1 bl0 gnd dc 'DELTAV' 
-vdc2 bl_b0 gnd dc 0 
-vdc3 sel_b0 gnd dc 0 
+vdc1 bl0 bl0_in dc 'OFFSET_bl-diff' 
+vdc2 bl_b0 bl_b0_in  dc 0 'OFFSET_bl_b-diff_b'
+vdc3 bl0_in gnd dc 'supply' 
+vdc4 bl_b0_in gnd dc 'supply' 
+vdc5 sel_b0 gnd dc 0 
 Vsapc_b sae_in gnd     pwl(  0ns 'supply'   20ps 'supply'
 +                       25ps 0  70ps 0 )
 
@@ -40,18 +45,20 @@ Vsapc_b sae_in gnd     pwl(  0ns 'supply'   20ps 'supply'
 ***************************************************************
 *ANALYSIS
 ***************************************************************
-.tran 1p 0.2n SWEEP data=cases
+.tran 1p 0.3n SWEEP data=cases
 
 ***************************************************************
 *DATA FOR SWEEP - ALLOWS simultaneous sweep over many variables
 ***************************************************************
 .data cases
-+	DELTAV
-	0.05 
-	0.1 
-	0.15
++ diff diff_b OFFSET_bl OFFSET_bl_b
+ 0.05	0	0.1	0
+ 0	0.05	0	0.1
+ 0.05	0	0	0
+ 0	0.05	0	0
 .enddata 
-.print param(DELTAV)
+.print param(diff+OFFSET_bl)
+.print param(diff_b+OFFSET_bl_b)
 .print v(sbl)
 .print v(sbl_b)
 .print v(out)
