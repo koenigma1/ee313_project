@@ -1,0 +1,48 @@
+### Custom WaveView session file (version F-2011.09-SP2 build 0205) ###
+### saved at 10:59:39 on Sun Feb 24 2013 ###
+wdf 0 "/afs/ir.stanford.edu/users/r/o/ronaldv/EE313/project/ee313_project/task2/task2.tr0" load=used 
+wdf 1 "/afs/ir.stanford.edu/users/r/o/ronaldv/EE313/project/ee313_project/task2/task2.ic0" load=open 
+wdf 2 "/afs/ir.stanford.edu/users/r/o/ronaldv/EE313/project/ee313_project/task2/task2.mt0" load=open 
+wavealias 2 "sense_delay" "sense_delay=57.51p"
+wavealias 2 "temper" "temper=27"
+scalar list
+waveview_begin 1  stack  offset=0 name_b=128 mntr_b=128 dm=delay:372:365:2:0:0:5.0000e+01:5.0000e+01:0.0000e+00:0.0000e+00:1:1:1.36854e-10:4.97701e-01:4.15884e-11:4.94074e-01 geo=680:90:700:400 "name=waveview 1" 
+  panel_begin linear pidx=0 spath=true 
+    line src=wdf lidx=0 fidx=0 "delim=." sigtype=1 "name=v(bl0)" swidx=0 attr=2:0:1:0 autoset=true disp=show swphead=true swpline=true 
+    line src=wdf lidx=1 fidx=0 "delim=." sigtype=1 "name=v(bl0)" swidx=1 attr=3:1:1:1 autoset=true disp=show swpline=true 
+    line src=wdf lidx=2 fidx=0 "delim=." sigtype=1 "name=v(bl0)" swidx=2 attr=4:1:1:2 autoset=true disp=show swpline=true 
+    line src=wdf lidx=3 fidx=0 "delim=." sigtype=1 "name=v(bl_b0)" swidx=0 attr=5:1:1:3 autoset=true disp=show swphead=true swpline=true 
+    line src=wdf lidx=4 fidx=0 "delim=." sigtype=1 "name=v(bl_b0)" swidx=1 attr=6:1:1:4 autoset=true disp=show swpline=true 
+    line src=wdf lidx=5 fidx=0 "delim=." sigtype=1 "name=v(bl_b0)" swidx=2 attr=7:1:1:5 autoset=true disp=show swpline=true 
+  panel_end
+  panel_begin linear pidx=1 spath=true 
+    line src=wdf lidx=0 fidx=0 "delim=." sigtype=1 "name=v(out)" swidx=0 attr=0:0:1:0 autoset=true disp=show swphead=true swpline=true 
+    line src=wdf lidx=4 fidx=0 "delim=." sigtype=1 "name=v(out)" swidx=1 attr=1:1:1:4 autoset=true disp=show swpline=true 
+    line src=wdf lidx=5 fidx=0 "delim=." sigtype=1 "name=v(out)" swidx=2 attr=2:1:1:5 autoset=true disp=show swpline=true 
+    line src=wdf lidx=1 fidx=0 "delim=." sigtype=1 "name=v(out_b)" swidx=0 attr=3:1:1:1 autoset=true disp=show swphead=true swpline=true 
+    line src=wdf lidx=6 fidx=0 "delim=." sigtype=1 "name=v(out_b)" swidx=1 attr=4:1:1:6 autoset=true disp=show swpline=true 
+    line src=wdf lidx=7 fidx=0 "delim=." sigtype=1 "name=v(out_b)" swidx=2 attr=5:1:1:7 autoset=true disp=show swpline=true 
+    line src=wdf lidx=2 fidx=0 "delim=." sigtype=1 "name=v(sapc_b)" swidx=0 attr=6:1:1:2 autoset=true disp=show swphead=true swpline=true 
+    line src=wdf lidx=8 fidx=0 "delim=." sigtype=1 "name=v(sapc_b)" swidx=1 attr=7:1:1:8 autoset=true disp=show swpline=true 
+    line src=wdf lidx=9 fidx=0 "delim=." sigtype=1 "name=v(sapc_b)" swidx=2 attr=0:1:1:0 autoset=true disp=show swpline=true 
+    line src=wdf lidx=3 fidx=0 "delim=." sigtype=1 "name=v(sae)" swidx=0 attr=1:1:2:3 autoset=true disp=show swphead=true swpline=true 
+    line src=wdf lidx=10 fidx=0 "delim=." sigtype=1 "name=v(sae)" swidx=1 attr=2:1:1:1 autoset=true disp=show swpline=true 
+    line src=wdf lidx=11 fidx=0 "delim=." sigtype=1 "name=v(sae)" swidx=2 attr=3:1:1:2 autoset=true disp=show swpline=true 
+  panel_end
+  panel_begin linear pidx=2 spath=true 
+    line src=wdf lidx=0 fidx=0 "delim=." sigtype=1 "name=v(sbl)" swidx=0 attr=4:4:1:0 autoset=true disp=show swphead=true swpline=true 
+    line src=wdf lidx=2 fidx=0 "delim=." sigtype=1 "name=v(sbl)" swidx=1 attr=5:1:1:2 autoset=true disp=show swpline=true 
+    line src=wdf lidx=3 fidx=0 "delim=." sigtype=1 "name=v(sbl)" swidx=2 attr=6:1:1:3 autoset=true disp=show swpline=true 
+    line src=wdf lidx=1 fidx=0 "delim=." sigtype=1 "name=v(sbl_b)" swidx=0 attr=7:1:1:1 autoset=true disp=show swphead=true swpline=true 
+    line src=wdf lidx=4 fidx=0 "delim=." sigtype=1 "name=v(sbl_b)" swidx=1 attr=0:1:1:4 autoset=true disp=show swpline=true 
+    line src=wdf lidx=5 fidx=0 "delim=." sigtype=1 "name=v(sbl_b)" swidx=2 attr=1:1:1:5 autoset=true disp=show swpline=true 
+  panel_end
+waveview_end
+waveview_begin 2  stack  offset=0 name_b=81 mntr_b=81 xvar=2|deltav geo=660:110:700:400 "name=waveview 2" 
+  panel_begin linear pidx=0 spath=true 
+    line src=wdf lidx=0 fidx=2 "delim=." sigtype=0 "name=sense_delay" attr=0:0:1:0 autoset=true disp=show 
+  panel_end
+  panel_begin linear pidx=1 spath=true 
+    line src=wdf lidx=0 fidx=2 "delim=." sigtype=0 "name=sense_delay" attr=1:1:1:0 autoset=true disp=show 
+  panel_end
+waveview_end
