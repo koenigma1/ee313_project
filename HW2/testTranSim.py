@@ -1,7 +1,5 @@
 from circuitbook import *
 
-OUTPUT = ['clk', 'address0', 'address255', 'inv1', 'pdec', 'wl0']
-
 class testTranSim(SimulationRun):
     ''' variable
         - ck_frequency: clock frequency
@@ -9,16 +7,16 @@ class testTranSim(SimulationRun):
     '''
     def setup(self):
         # Set the interface we expect
-        self.attach_to_interface('decoder')
+        self.attach_to_interface('test')
         
         # Load the HSpice simulator
         self.simulator = HspiceSimulator()
 
         # Run a Tran analysis
-        self.analyze_tran(start=0, stop=2e-9, step=2e-12)
+        self.analyze_tran(start=0, stop=1000e-12, step=2e-12)
 		
         # Specify which nodes and devices to save
-        self.save_output(nodes=OUTPUT)
+        self.save_output(nodes=['in', 'out'])
 
     def start_run(self):
         # use the corner vdd voltage
@@ -27,42 +25,42 @@ class testTranSim(SimulationRun):
 
         # Power Supply Stimulus
         self.add_stimulus(DCVoltageSourceStimulus(pnode='vdd!',nnode='gnd',value=self.vdd, name='vdd'))
-        self.add_stimulus(DCVoltageSourceStimulus(pnode='address0',nnode='gnd',value=self.vdd, name='address0'))
-        self.add_stimulus(DCVoltageSourceStimulus(pnode='address255',nnode='gnd',value=0, name='address255'))
-       
         
         # Input Pulse
-        self.add_stimulus(PulseVoltageSourceStimulus(pnode='clk', nnode='gnd',
+        self.add_stimulus(PulseVoltageSourceStimulus(pnode='pulse', nnode='gnd',
                                                         val0=0, val1=self.vdd,
                                                         period='1000p', rise='50p', fall='50p',
-                                                        width='500p', delay='200p', name='clk'))
+                                                        width='500p', delay='100p', name='input'))
         
+        # Initial Condition
+        self.add_stimulus_block("""
+        .ic v(out)=0
+        """.format(self.vdd))
+
     def postprocess(self):
         # Get the object that holds the simulation results
         tranRes = self.sim_results.tran()
         
-        res = {}
-        for node in OUTPUT:
-          res[node] = tranRes.signal_for(node)
- 
-        inRise = res['clk'].find_cross(threshold=self.vdd/2, 
+        inRes = tranRes.signal_for('in')
+        outRes = tranRes.signal_for('out')
+        
+
+        
+        inRise = inRes.find_cross(threshold=self.vdd/2, 
                                         direction='rise', edge=1
                                         )
-        inFall = res['clk'].find_cross(threshold=self.vdd/2, 
+        inFall = inRes.find_cross(threshold=self.vdd/2, 
                                         direction='fall', edge=1
                                         )
         
-        outRise = res['wl0'].find_cross(threshold=self.vdd/2, 
+        outRise = outRes.find_cross(threshold=self.vdd/2, 
                                         direction='rise', edge=1,
-                                        after = inRise
-                                        )
-        outFall = res['wl0'].find_cross(threshold=self.vdd/2, 
-                                        direction='fall', edge=1,
                                         after = inFall
                                         )
-        riseTime = outRise - inRise
-        fallTime = outFall - inFall
-        print "riseTime:", riseTime, outRise, inRise
-        print "fallTime:", fallTime, outFall, inFall
-
-        return res
+        outFall = outRes.find_cross(threshold=self.vdd/2, 
+                                        direction='fall', edge=1,
+                                        after = inRise
+                                        )
+        riseTime = outRise - inFall
+        fallTime = outFall - inRise
+        return {'riseTime': riseTime*1e12, 'fallTime': fallTime*1e12}

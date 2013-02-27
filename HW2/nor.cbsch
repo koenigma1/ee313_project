@@ -1,0 +1,44 @@
+---
+name: test
+params:
+- {default: '4', name: fanout}
+ports:
+- {name: in}
+- {name: out}
+- {name: pulse}
+implements:
+    -
+        name: test
+        via: port_map
+        implementation:
+            ports:
+                in  : in
+                out : out
+                pulse : pulse
+            params:
+                fanout : fanout
+---
+
+.include "/afs/ir.stanford.edu/class/ee313/ee313_circuitbook_header.h"
+
+** Library name: ee313
+** Cell name: nand
+** View name: schematic
+.subckt nor_pcell_0 a b y wn=8 p_to_n=3 fanout=1
+m2 mid_a b vdd! vdd! pmos L=2 W='wn*p_to_n' M='fanout'
+m0 y a mid_a vdd! pmos L=2 W='wn*p_to_n' M='fanout'
+m3 y b 0 0 nmos L=2 W='wn' M='fanout'
+m1 y a 0 0 nmos L=2 W='wn' M='fanout'
+.ends nor_pcell_0
+** End of subcircuit definition.
+
+** Library name: HW0
+** Cell name: test3
+** View name: schematic
+.subckt test in out pulse
+xu0 pulse 0 in nor_pcell_0 wn=4 p_to_n=6 fanout=1 
+xu4 in 0 out   nor_pcell_0 wn=4 p_to_n=6 fanout='fanout' 
+xu3 out 0 net5 nor_pcell_0 wn=4 p_to_n=6 fanout='fanout*fanout' 
+xu5 net5 0 net014 nor_pcell_0 wn=4 p_to_n=6 fanout='fanout*fanout*fanout' 
+.ends test
+
