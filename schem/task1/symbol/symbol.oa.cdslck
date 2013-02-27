@@ -5,12 +5,12 @@
 #
 LockStakeVersion               1.1
 LoginName                      makoenig
-HostName                       corn27.stanford.edu
-ProcessIdentifier              7045
+HostName                       corn25.stanford.edu
+ProcessIdentifier              19147
 ProcessCreationTime_UTC        0
 ProcessCreationTime_Readable   Wed Dec 31 16:00:00 1969 PST
 AppIdentifier                  OA File System Design Manager
 OSType                         unix
 ReasonForPlacingEditLock       OpenAccess edit lock
 FilePathUsedToEditLock         /afs/ir.stanford.edu/users/m/a/makoenig/ee313/ee313_project/schem/task1/symbol/symbol.oa.cdslck
-TimeEditLocked                 Mon Feb 25 16:20:16 2013 PST
+TimeEditLocked                 Tue Feb 26 20:58:42 2013 PST
