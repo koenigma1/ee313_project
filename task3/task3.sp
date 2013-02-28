@@ -13,10 +13,7 @@ EE-313 Sense Amplifier Analysis
 ***************************************************************
 *PARAMETERS
 ***************************************************************
-.param diff='0'
-.param diff_b='0'
 .param half_vdd='supply*0.5'
-
 ***************************************************************
 *SOURCES AND STIMULI
 ***************************************************************
@@ -44,7 +41,7 @@ Vblpc_b blpc_b gnd pulse( 0 'supply'  500ps 50ps 50ps 500ps 1000ps)
 ***************************************************************
 *ANALYSIS
 ***************************************************************
-.tran 1p 2.5n 
+.tran 1p 2.7n 
 ***************************************************************
 *DATA FOR SWEEP - ALLOWS simultaneous sweep over many variables
 ***************************************************************
@@ -58,13 +55,23 @@ Vblpc_b blpc_b gnd pulse( 0 'supply'  500ps 50ps 50ps 500ps 1000ps)
 *.probe  tran  v(stim) v(stag2) v(stag5)
 
 *MEASUREMENTS
-.meas   tran  read_1_diff_delay trig v(ck) val='half_vdd' rise=1
+* Measure Top row delays 
+.meas   tran  read_1_r0_diff_delay trig v(ck) val='half_vdd' rise=1
 +                     targ v(bl0,bl_b0) val='0.15' rise=1
-.meas   tran  wl0_delay trig v(ck) val='half_vdd' rise=1
+.meas   tran  read_0_r0_diff_delay trig v(ck) val='half_vdd' rise=1
++                     targ v(bl63,bl_b63) val='-0.15' fall=1
+.meas   tran  wl0_delay_r trig v(ck) val='half_vdd' rise=1
 +                     targ v(wl0) val='half_vdd' rise=1
-.meas   tran  read_0_diff_delay trig v(ck) val='half_vdd' rise=2
+.meas   tran  wl0_delay_f trig v(ck) val='half_vdd' fall=1
++                     targ v(wl0) val='half_vdd' fall=1
+* Measure Bottom row delays 
+.meas   tran  read_0_r255_diff_delay trig v(ck) val='half_vdd' rise=2
 +                     targ v(bl0,bl_b0) val='-0.15' fall=1
-.meas   tran  wl255_delay trig v(ck) val='half_vdd' rise=2
+.meas   tran  read_1_r255_diff_delay trig v(ck) val='half_vdd' rise=2
++                     targ v(bl63,bl_b63) val='0.15' rise=1
+.meas   tran  wl255_delay_r trig v(ck) val='half_vdd' rise=2
 +                     targ v(wl255) val='half_vdd' rise=1
+.meas   tran  wl255_delay_f trig v(ck) val='half_vdd' fall=2
++                     targ v(wl255) val='half_vdd' fall=1
 
 .end
