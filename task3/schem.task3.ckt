@@ -16,8 +16,8 @@ m0 y a vdd! vdd! pmos L=pl W=pw M=pm
 ** Cell name: inv
 ** View name: schematic
 .subckt inv_pcell_0 a y
-m1 y a vdd! vdd! pmos L=2 W=9 M=1
-m2 y a 0 0 nmos L=2 W=19 M=1
+m1 y a vdd! vdd! pmos L=2 W=41 M=1
+m2 y a 0 0 nmos L=2 W=7 M=1
 .ends inv_pcell_0
 ** End of subcircuit definition.
 
@@ -25,10 +25,10 @@ m2 y a 0 0 nmos L=2 W=19 M=1
 ** Cell name: predecode_24
 ** View name: schematic
 .subckt predecode_24 address0 address255 ck inv1 inv1_255
-xi36 ck vdd! address0 nand1 nand3 nl=2 nw=2 nm=1 pl=2 pw=10 pm=1
-xi37 ck 0 address0 net22 nand3 nl=2 nw=2 nm=1 pl=2 pw=10 pm=1
-xi38 ck vdd! address255 nand1_1 nand3 nl=2 nw=2 nm=1 pl=2 pw=10 pm=1
-xi39 ck 0 address255 net14 nand3 nl=2 nw=2 nm=1 pl=2 pw=10 pm=1
+xi36 ck vdd! address0 nand1 nand3 nl=2 nw=9 nm=1 pl=2 pw=3 pm=1
+xi37 ck 0 address0 net22 nand3 nl=2 nw=9 nm=1 pl=2 pw=3 pm=1
+xi38 ck vdd! address255 nand1_1 nand3 nl=2 nw=9 nm=1 pl=2 pw=3 pm=1
+xi39 ck 0 address255 net14 nand3 nl=2 nw=9 nm=1 pl=2 pw=3 pm=1
 xu3 net14 net6 inv_pcell_0
 xu2 nand1_1 inv1_255 inv_pcell_0
 xu1 net22 net10 inv_pcell_0
@@ -262,8 +262,8 @@ xiTOP_LEFT bl0 bl_b0 wl0 vdd! gnd inh_bulk_n inh_bulk_p mc m=1
 ** Cell name: task3
 ** View name: schematic
 xi5 address0 address255 ck net2 net1 predecode_24
-xi1 wl0 wl255 net14 net17 decode_stage
-c_sideload2 net17 0 22.53e-12
-c_sideload net14 0 22.53e-12
 xi4 net2 net1 net14 net17 predecode_416
+xi1 wl0 wl255 net14 net17 decode_stage
+c_sideload2 net17 0 22.53e-15
+c_sideload net14 0 22.53e-15
 xiSRAM bl0 bl63 bl_b0 bl_b63 blpc_b wl0 wl255 0 vdd! SRAM
