@@ -1,7 +1,7 @@
 * "simulator" "HSPICE" 
 * "version" "F-2011.09-SP2 32-BIT"
 * "format" "HSP"
-* "rundate" "20:45:38 02/27/2013 "
+* "rundate" "20:49:39 02/27/2013 "
 * "netlist" "task3.sp "
 * "runtitle" "ee-313 sense amplifier analysis"
 * time =    0.            
