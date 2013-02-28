@@ -1,0 +1,6 @@
+$DATA1 SOURCE='HSPICE' VERSION='F-2011.09-SP2 32-BIT'
+.TITLE 'ee-313 sense amplifier analysis'
+ read_1_diff_delay wl0_delay        read_0_diff_delay wl255_delay       
+ temper           alter#            
+  4.778e-10        3.162e-10        4.673e-10        3.163e-10        
+   27.0000        1                 

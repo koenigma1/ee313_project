@@ -9,14 +9,7 @@ EE-313 Sense Amplifier Analysis
 *NETLISTS
 **************************************************************
 .include "./schem.task3.ckt"
-*sae, sapc_b drivers
-*.subckt inv_pcell a y W_P=3 W_N=1
-*m1 y a vdd! vdd! pmos L=2 W=W_P
-*m2 y a 0 0 nmos L=2 W=W_N
-*.ends inv_pcell
-*Xsae_driver sae_in sae inv_pcell W_P=6 W_N=2
-*Xpc_b_driver sae_in sapc_b inv_pcell W_P=4.5 W_N=1.5
-
+.include "./sizes.inc"
 ***************************************************************
 *PARAMETERS
 ***************************************************************
@@ -30,21 +23,12 @@ EE-313 Sense Amplifier Analysis
 * Input list
 * address0 address255 ck blcp_b 
 * Outputs
-* bl0 bl63 bl_b0  
-vdc3 address0 gnd dc 'supply' 
-vdc4 address255 gnd dc 0  
-Vck ck gnd     pwl(  0ns 0   2ns 0
-+                       2.1ns 'supply'  7ns 'supply' )
-Vblpc_b blpc_b gnd     pwl(  0ns 0   2ns 0
-+                       2.1ns 'supply'  7ns 'supply' )
+* bl0 bl63 bl_b0 bl_b63  
+vdc3 address0 gnd pwl (0 'supply' 1300ps 'supply' 1350ps 0) 
+vdc4 address255 gnd pwl ( 0 0 1300ps 0 1350ps 'supply')  
+Vck ck gnd     pulse( 0 'supply'  500ps 50ps 50ps 500ps 1000ps)
+Vblpc_b blpc_b gnd pulse( 0 'supply'  500ps 50ps 50ps 500ps 1000ps)     
 
-***************************************************************
-*INITIAL CONDITIONS
-***************************************************************
-***************************************************************
-*ANALYSIS
-***************************************************************
-.tran 1p 20n 
 ***************************************************************
 *INITIAL CONDITIONS
 ***************************************************************
@@ -58,8 +42,14 @@ Vblpc_b blpc_b gnd     pwl(  0ns 0   2ns 0
 .ic xiSRAM.xiBOTTOM_RIGHT.bit = 'supply' 
 .ic xiSRAM.xiBOTTOM_RIGHT.bit_b = 0 
 ***************************************************************
+*ANALYSIS
+***************************************************************
+.tran 1p 2.5n 
+***************************************************************
 *DATA FOR SWEEP - ALLOWS simultaneous sweep over many variables
 ***************************************************************
+.print tran I1(xiSRAM.xiTOP_LEFT.m5)
+.print tran I1(xiSRAM.xiTOP_LEFT.m4)
 *************************************************************
 *PROCESS RESULTS
 *************************************************************
@@ -68,15 +58,13 @@ Vblpc_b blpc_b gnd     pwl(  0ns 0   2ns 0
 *.probe  tran  v(stim) v(stag2) v(stag5)
 
 *MEASUREMENTS
-.meas   tran  bl_delay trig v(ck) val='half_vdd' rise=1
-+                     targ v(bl_b0) val='supply-0.15' fall=1
-*.meas   tran  sense_delay_b trig v(sae) val='half_vdd' rise=1
-*+                     targ v(out_b) val='half_vdd' rise=1
-*.meas   dc    vsw1  when v(out1,involts)=0  cross=1
-*.meas   dc    vfrac1  param='vsw1/supply'
-*.meas   tran  rf_ratio  param='t8020/9'
-*.MEAS TRAN avgcurr AVG I(v_vddr) FROM=10ns TO=150ns
-*.MEAS TRAN avgVout AVG V(out) FROM=10ns TO=150ns
-*.MEAS TRAN power PARAM='avgCurr*avgVout'
+.meas   tran  read_1_diff_delay trig v(ck) val='half_vdd' rise=1
++                     targ v(bl0,bl_b0) val='0.15' rise=1
+.meas   tran  wl0_delay trig v(ck) val='half_vdd' rise=1
++                     targ v(wl0) val='half_vdd' rise=1
+.meas   tran  read_0_diff_delay trig v(ck) val='half_vdd' rise=2
++                     targ v(bl0,bl_b0) val='-0.15' fall=1
+.meas   tran  wl255_delay trig v(ck) val='half_vdd' rise=2
++                     targ v(wl255) val='half_vdd' rise=1
 
 .end
