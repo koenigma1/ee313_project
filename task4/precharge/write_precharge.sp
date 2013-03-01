@@ -57,22 +57,7 @@ Vsae	sae    gnd pulse( 0 'supply'  500ps 50ps 50ps 500ps 1000ps)
 
 *MEASUREMENTS
 * Measure Top row delays 
-.meas   tran  read_1_r0_diff_delay trig v(ck) val='half_vdd' rise=1
-+                     targ v(bl0,bl_b0) val='0.15' rise=1
-.meas   tran  read_0_r0_diff_delay trig v(ck) val='half_vdd' rise=1
-+                     targ v(bl63,bl_b63) val='-0.15' fall=1
-.meas   tran  wl0_delay_r trig v(ck) val='half_vdd' rise=1
-+                     targ v(wl0) val='half_vdd' rise=1
-.meas   tran  wl0_delay_f trig v(ck) val='half_vdd' fall=1
-+                     targ v(wl0) val='half_vdd' fall=1
-* Measure Bottom row delays 
-.meas   tran  read_0_r255_diff_delay trig v(ck) val='half_vdd' rise=2
-+                     targ v(bl0,bl_b0) val='-0.15' fall=1
-.meas   tran  read_1_r255_diff_delay trig v(ck) val='half_vdd' rise=2
-+                     targ v(bl63,bl_b63) val='0.15' rise=1
-.meas   tran  wl255_delay_r trig v(ck) val='half_vdd' rise=2
-+                     targ v(wl255) val='half_vdd' rise=1
-.meas   tran  wl255_delay_f trig v(ck) val='half_vdd' fall=2
-+                     targ v(wl255) val='half_vdd' fall=1
-
+.measure avg_I_blpc_b INTEG i(Vblpc_b) FROM=500ps TO=1600ps
+.measure max_I_blpc_b MAX i(Vblpc_b) FROM=500ps TO=1600ps
+.measure min_I_blpc_b MIN i(Vblpc_b) FROM=500ps TO=1600ps
 .end
