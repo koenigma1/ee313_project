@@ -52,7 +52,7 @@ Vsae	sae    gnd dc 'supply'
 
 *MEASUREMENTS
 * Measure Top row delays 
-.measure int_I_blpc_b INTEG i(Vblpc_b) FROM=500ps TO=1600ps
-.measure int_I_bl0 INTEG i(xi14.vbl) FROM=500ps TO=1600ps
-.measure int_I_pdn INTEG I1(xiTOP_LEFT.m5) FROM=500ps TO=1600ps
+.measure avg_I_blpc_b AVG i(Vblpc_b) FROM=500ps TO=1600ps
+.measure avg_I_bl0 AVG i(xi14.vbl) FROM=500ps TO=1600ps
+.measure avg_I_pdn AVG I1(xiTOP_LEFT.m5) FROM=500ps TO=1600ps
 .end
