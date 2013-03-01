@@ -37,11 +37,12 @@ m2 y a 0 0 nmos L=2 W=24
 ** Cell name: write
 ** View name: schematic
 .subckt write bl0 bl_b0 blpc_b wrdata wren0 inh_bulk_n inh_bulk_p
-m5 bl0 blpc_b vdd! inh_bulk_p pmos L=2 W=80
-m1 bl0 blpc_b bl_b0 inh_bulk_p pmos L=2 W=80
+Vbl bl0 bl0_prime dc 0
+m2 bl0_prime blpc_b vdd! inh_bulk_p pmos L=2 W=80
+m1 bl0_prime blpc_b bl_b0 inh_bulk_p pmos L=2 W=80
 m0 bl_b0 blpc_b vdd! inh_bulk_p pmos L=2 W=80
 m4 net23 wren0 bl_b0 inh_bulk_n nmos L=2 W=90
-m3 net26 wren0 bl0 inh_bulk_n nmos L=2 W=90
+m3 net26 wren0 bl0_prime inh_bulk_n nmos L=2 W=90
 xu0 wrdata net18 inv_pcell_0
 xu2 wrdata net23 inv_pcell_1
 xu1 net18 net26 inv_pcell_1
@@ -111,7 +112,7 @@ xi10 net9 net8 0 vdd! gnd 0 vdd! mc m=64.516e3
 xi12 bl63 bl_b63 0 vdd! gnd 0 vdd! mc m=254
 xi2 bl63 bl_b63 wl0 vdd! gnd 0 vdd! mc m=1
 xi9 net9 net8 wl0 vdd! gnd 0 vdd! mc m=254
-xi0 bl0 bl_b0 wl0 vdd! gnd 0 vdd! mc m=1
+xiTOP_LEFT bl0 bl_b0 wl0 vdd! gnd 0 vdd! mc m=1
 xi16 bl63 bl_b63 blpc_b vdd! 0 0 vdd! write m=1
 xi17 net9 net8 blpc_b vdd! 0 0 vdd! write m=254
 xi14 bl0 bl_b0 blpc_b vdd! 0 0 vdd! write m=1
