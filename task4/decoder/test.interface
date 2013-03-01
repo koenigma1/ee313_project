@@ -1,0 +1,11 @@
+format: v1
+version: 1
+name: decoder
+ports:
+    - name: clk
+    - name: address0
+    - name: address255
+    - name: inv1
+    - name: pdec
+    - name: wl0
+    - name: wl255

@@ -1,0 +1,242 @@
+.include "/afs/ir.stanford.edu/users/m/a/makoenig/ee313/ee313_project/task4/header.inc"
+.include "/afs/ir.stanford.edu/class/ee313/ee313_circuitbook_header.h"
+
+
+** Library name: ee313
+** Cell name: inv
+** View name: schematic
+.subckt inv_pcell_012 a y
+m1 y a vdd! vdd! pmos L=2 W=41 M=1
+m2 y a 0 0 nmos L=2 W=7 M=1
+.ends inv_pcell_012
+** End of subcircuit definition.
+
+** Library name: schem
+** Cell name: nand3
+** View name: schematic
+.subckt nand3 a b c y
+m10 net9 c 0 0 nmos L=nl W=nw M=nm
+m9 net5 b net9 0 nmos L=nl W=nw M=nm
+m1 y a net5 0 nmos L=nl W=nw M=nm
+m7 y c vdd! vdd! pmos L=pl W=pw M=pm
+m6 y b vdd! vdd! pmos L=pl W=pw M=pm
+m0 y a vdd! vdd! pmos L=pl W=pw M=pm
+.ends nand3
+** End of subcircuit definition.
+
+** Library name: schem
+** Cell name: predecode_24
+** View name: schematic
+.subckt predecode_24 address0 address255 ck inv1 inv1_255
+xu0 nand1 inv1 inv_pcell_012
+xu1 net22 net10 inv_pcell_012
+xu2 nand1_1 inv1_255 inv_pcell_012
+xu3 net14 net6 inv_pcell_012
+xi36 ck vdd! address0 nand1 nand3 nl=2 nw=9 nm=1 pl=2 pw=3 pm=1
+xi37 ck 0 address0 net22 nand3 nl=2 nw=9 nm=1 pl=2 pw=3 pm=1
+xi38 ck vdd! address255 nand1_1 nand3 nl=2 nw=9 nm=1 pl=2 pw=3 pm=1
+xi39 ck 0 address255 net14 nand3 nl=2 nw=9 nm=1 pl=2 pw=3 pm=1
+.ends predecode_24
+** End of subcircuit definition.
+
+** Library name: ee313
+** Cell name: inv
+** View name: schematic
+.subckt inv_pcell_34 a y
+m1 y a vdd! vdd! pmos L=2 W=1 M=1
+m2 y a 0 0 nmos L=2 W=1 M=1
+.ends inv_pcell_34
+** End of subcircuit definition.
+
+** Library name: ee313
+** Cell name: nand
+** View name: schematic
+.subckt nand_pcell_56 a b y
+m2 y b vdd! vdd! pmos L=2 W=104 M=1
+m0 y a vdd! vdd! pmos L=2 W=104 M=1
+m3 mid_a b 0 0 nmos L=2 W=296 M=1
+m1 y a mid_a 0 nmos L=2 W=296 M=1
+.ends nand_pcell_56
+** End of subcircuit definition.
+
+** Library name: ee313
+** Cell name: inv
+** View name: schematic
+.subckt inv_pcell_78 a y
+m1 y a vdd! vdd! pmos L=2 W=1.556e3 M=15
+m2 y a 0 0 nmos L=2 W=259 M=15
+.ends inv_pcell_78
+** End of subcircuit definition.
+
+** Library name: ee313
+** Cell name: nand
+** View name: schematic
+.subckt nand_pcell_9 a b y
+m2 y b vdd! vdd! pmos L=2 W=104 M=15
+m0 y a vdd! vdd! pmos L=2 W=104 M=15
+m3 mid_a b 0 0 nmos L=2 W=296 M=15
+m1 y a mid_a 0 nmos L=2 W=296 M=15
+.ends nand_pcell_9
+** End of subcircuit definition.
+
+** Library name: schem
+** Cell name: decode_stage
+** View name: schematic
+.subckt decode_stage wl0 wl255 predec predec_255
+xu5 net17 wl0 inv_pcell_34
+xu7 net11 wl255 inv_pcell_34
+xu2 vdd! predec_255 net11 nand_pcell_56
+xu0 vdd! predec net17 nand_pcell_56
+xu6 net14 net26 inv_pcell_78
+xu8 net8 net22 inv_pcell_78
+xu1 0 predec net14 nand_pcell_9
+xu3 0 predec_255 net8 nand_pcell_9
+.ends decode_stage
+** End of subcircuit definition.
+
+** Library name: ee313
+** Cell name: nand
+** View name: schematic
+.subckt nand_pcell_10 a b y
+m2 y b vdd! vdd! pmos L=2 W=8 M=3
+m0 y a vdd! vdd! pmos L=2 W=8 M=3
+m3 mid_a b 0 0 nmos L=2 W=24 M=3
+m1 y a mid_a 0 nmos L=2 W=24 M=3
+.ends nand_pcell_10
+** End of subcircuit definition.
+
+** Library name: ee313
+** Cell name: inv
+** View name: schematic
+.subckt inv_pcell_1112 a y
+m1 y a vdd! vdd! pmos L=2 W=133 M=1
+m2 y a 0 0 nmos L=2 W=22 M=1
+.ends inv_pcell_1112
+** End of subcircuit definition.
+
+** Library name: ee313
+** Cell name: nand
+** View name: schematic
+.subckt nand_pcell_13 a b y
+m2 y b vdd! vdd! pmos L=2 W=8 M=1
+m0 y a vdd! vdd! pmos L=2 W=8 M=1
+m3 mid_a b 0 0 nmos L=2 W=24 M=1
+m1 y a mid_a 0 nmos L=2 W=24 M=1
+.ends nand_pcell_13
+** End of subcircuit definition.
+
+** Library name: ee313
+** Cell name: inv
+** View name: schematic
+.subckt inv_pcell_14 a y
+m1 y a vdd! vdd! pmos L=2 W=133 M=3
+m2 y a 0 0 nmos L=2 W=22 M=3
+.ends inv_pcell_14
+** End of subcircuit definition.
+
+** Library name: ee313
+** Cell name: inv
+** View name: schematic
+.subckt inv_pcell_15 a y
+m1 y a vdd! vdd! pmos L=2 W=2.213e3 M=3
+m2 y a 0 0 nmos L=2 W=369 M=3
+.ends inv_pcell_15
+** End of subcircuit definition.
+
+** Library name: ee313
+** Cell name: inv
+** View name: schematic
+.subckt inv_pcell_16 a y
+m1 y a vdd! vdd! pmos L=2 W=2.213e3 M=1
+m2 y a 0 0 nmos L=2 W=369 M=1
+.ends inv_pcell_16
+** End of subcircuit definition.
+
+** Library name: ee313
+** Cell name: inv
+** View name: schematic
+.subckt inv_pcell_17 a y
+m1 y a vdd! vdd! pmos L=2 W=138 M=1
+m2 y a 0 0 nmos L=2 W=277 M=1
+.ends inv_pcell_17
+** End of subcircuit definition.
+
+** Library name: ee313
+** Cell name: inv
+** View name: schematic
+.subckt inv_pcell_18 a y
+m1 y a vdd! vdd! pmos L=2 W=138 M=3
+m2 y a 0 0 nmos L=2 W=277 M=3
+.ends inv_pcell_18
+** End of subcircuit definition.
+
+** Library name: schem
+** Cell name: predecode_416
+** View name: schematic
+.subckt predecode_416 inv1 inv1_255 predec predec_255
+xi16 0 inv1 net55 nand_pcell_10
+xi18 0 inv1_255 net63 nand_pcell_10
+xu0 net77 net032 inv_pcell_1112
+xu2 net057 net036 inv_pcell_1112
+xi15 vdd! inv1 net77 nand_pcell_13
+xi17 vdd! inv1_255 net057 nand_pcell_13
+xu1 net55 net69 inv_pcell_14
+xu3 net63 net73 inv_pcell_14
+xu11 net043 net024 inv_pcell_15
+xu9 net049 net028 inv_pcell_15
+xu10 net052 predec_255 inv_pcell_16
+xu8 net046 predec inv_pcell_16
+xu13 net036 net052 inv_pcell_17
+xu15 net032 net046 inv_pcell_17
+xu14 net69 net049 inv_pcell_18
+xu12 net73 net043 inv_pcell_18
+.ends predecode_416
+** End of subcircuit definition.
+
+** Library name: ee313
+** Cell name: inv
+** View name: schematic
+.subckt inv_pcell_01 a y
+m1 y a vdd! vdd! pmos L=2 W=8
+m2 y a 0 0 nmos L=2 W=4
+.ends inv_pcell_01
+** End of subcircuit definition.
+
+** Library name: ee313
+** Cell name: inv
+** View name: schematic
+.subckt inv_pcell_2 a y
+m1 y a vdd! vdd! pmos L=2 W=12
+m2 y a 0 0 nmos L=2 W=24
+.ends inv_pcell_2
+** End of subcircuit definition.
+
+** Library name: schem
+** Cell name: mc
+** View name: schematic
+.subckt mc bl bl_b wl vdd vss inh_bulk_n inh_bulk_p
+m5 bit bit_b vss inh_bulk_n nmos L=2 W=6
+m4 bit_b bit vss inh_bulk_n nmos L=2 W=6
+m1 bl_b wl bit_b inh_bulk_n nmos L=2 W=4
+m0 bl wl bit inh_bulk_n nmos L=2 W=4
+m2 bit_b bit vdd inh_bulk_p pmos L=2 W=4
+m3 bit bit_b vdd inh_bulk_p pmos L=2 W=4
+c2 bl 0 88e-18
+c1 bl_b 0 88e-18
+c0 wl 0 140e-18
+.ends mc
+** End of subcircuit definition.
+
+** Library name: schem
+** Cell name: task1
+** View name: schematic
+.subckt decoder clk address0 address255 inv1 pdec wl0 wl255
+xi5 address0 address255 clk inv1 net1 predecode_24
+xi1 wl0 wl255 pdec net17 decode_stage
+c_sideload2 net17 0 22.528e-15
+c_sideload pdec 0 22.528e-15
+xi4 inv1 net1 pdec net17 predecode_416
+c_wl0 wl0 0 0
+c_wl255 wl255 0 99.1232e-15
+.ends decoder
+
