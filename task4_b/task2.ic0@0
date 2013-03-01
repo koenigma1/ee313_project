@@ -1,0 +1,32 @@
+* "simulator" "HSPICE" 
+* "version" "F-2011.09-SP2 32-BIT"
+* "format" "HSP"
+* "rundate" "04:11:44 03/01/2013 "
+* "netlist" "task2.sp "
+* "runtitle" "ee-313 sense amplifier analysis"
+* time =    0.            
+* temperature =   27.0000        
+*** BEGIN: Saved Operating Point ***                     
+.option 
++ gmindc=   1.0000p       
+.nodeset
++ bl0 = 950.0000m       
++ bl0_in =   1.0000        
++ bl_b0 =   1.0000        
++ bl_b0_in =   1.0000        
++ cmbl = 960.4667m       
++ cmbl_b = 997.9893m       
++ net70 = 999.9821m       
++ net71 = 999.9821m       
++ out =  14.2759u       
++ out_b =  19.9220u       
++ sae =  20.5825u       
++ sae_in =   1.0000        
++ sapc_b =  21.3759u       
++ sbl = 981.3747m       
++ sbl_b = 993.8848m       
++ sel_b0 =   0.            
++ tail = 776.9414m       
++ vdd =   1.0000        
++ vdd! =   1.0000        
+***   END: Saved Operating Point ***                     

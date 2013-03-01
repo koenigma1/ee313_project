@@ -1,0 +1,6 @@
+$DATA1 SOURCE='HSPICE' VERSION='F-2011.09-SP2 32-BIT'
+.TITLE 'ee-313 sense amplifier analysis'
+ sel_b0_power     vsapc_b_power    vsae_power       vdd_power         
+ temper           alter#            
+  2.403e-18        4.687e-17        4.808e-17       -8.811e-15        
+   27.0000        1                 

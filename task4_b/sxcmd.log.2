@@ -1,0 +1,23 @@
+### CustomExplorer log file, revision F-2011.09-SP2 (build 0205) ###
+### created at 17:32:41 on Mon Feb 25 2013 (Linux AMD64) ###
+wv_start_log
+# (0) running in waveview only mode
+# (0) SW_SX_PERL_LIB defined
+# (0) SW_SX_TCL_LIB defined
+# (0) HOME defined
+wv_move_window CustomWaveView 0 0
+wv_resize_window CustomWaveView 800 400
+wv_move_window CustomWaveView 1 28
+wv_move_window CustomWaveView 132 2
+wv_resize_window CustomWaveView 1242 777
+wv_select_menu_item {File} {Load Session ...}
+wv_move_dialog FileDialog 589 202
+wv_select_dialog FileDialog
+wv_set_text FileDialog.FileName {}
+wv_select_list_item FileDialog.FileList task2.sx
+wv_dclick_list_item FileDialog.FileList task2.sx
+## user break ctrl-C
+wv_move_dialog Confirmation 1 28
+wv_select_dialog Confirmation
+wv_select_waveview 2
+# wv_press_button Confirmation.Ok

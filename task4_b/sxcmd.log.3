@@ -1,0 +1,63 @@
+### CustomExplorer log file, revision F-2011.09-SP2 (build 0205) ###
+### created at 17:28:22 on Mon Feb 25 2013 (Linux AMD64) ###
+wv_start_log
+# (0) running in waveview only mode
+# (0) SW_SX_PERL_LIB defined
+# (0) SW_SX_TCL_LIB defined
+# (0) HOME defined
+wv_move_window CustomWaveView 0 0
+wv_resize_window CustomWaveView 800 400
+wv_move_window CustomWaveView 1 28
+wv_move_window CustomWaveView 138 22
+wv_resize_window CustomWaveView 1242 777
+wv_select_menu_item {File} {Load Session ...}
+wv_move_dialog FileDialog 595 202
+wv_select_dialog FileDialog
+wv_set_text FileDialog.FileName {}
+wv_select_list_item FileDialog.FileList task2.sx
+wv_dclick_list_item FileDialog.FileList task2.sx
+wv_select_menu_item {File} {Import Waveform File ...}
+wv_move_dialog FileDialog 579 108
+wv_select_dialog FileDialog
+wv_move_dialog FileDialog 595 202
+wv_set_text FileDialog.FileName {}
+wv_select_list_item FileDialog.FileList task2.tr0
+wv_dclick_list_item FileDialog.FileList task2.tr0
+wv_select_menu_item {File} {Load Session ...}
+wv_select_dialog FileDialog
+wv_move_dialog FileDialog 595 202
+wv_set_text FileDialog.FileName {}
+wv_select_list_item FileDialog.FileList task2.sx
+wv_dclick_list_item FileDialog.FileList task2.sx
+wv_move_dialog LoadingSessionFile 489 216
+wv_select_dialog LoadingSessionFile
+wv_select_list_item LoadingSessionFile.WDFFileList D0:task2.tr0
+wv_horz_scroll LoadingSessionFile.SessionFileList 230
+wv_press_button LoadingSessionFile.Ok
+wv_expand_hierview_item {FILE0:D0:task2.tr0}
+wv_select_hierview_item {FILE0:D0:task2.tr0} {toplevel}
+wv_select_menu_item {File} {Load Session ...}
+wv_move_dialog FileDialog 596 230
+wv_select_dialog FileDialog
+wv_set_text FileDialog.FileName {}
+wv_select_list_item FileDialog.FileList task2.sx
+wv_dclick_list_item FileDialog.FileList task2.sx
+wv_move_dialog LoadingSessionFile 1 28
+wv_select_dialog LoadingSessionFile
+wv_press_button LoadingSessionFile.Cancel
+wv_select_hierview_item {FILE0:D0:task2.tr0}
+wv_hierview_context_menu {FILE0:D0:task2.tr0}
+wv_select_context_menu_item {Close This File}
+wv_select_dialog Confirmation
+wv_press_button Confirmation.Ok
+wv_select_menu_item {File} {Load Session ...}
+wv_move_dialog FileDialog 595 202
+wv_select_dialog FileDialog
+wv_move_dialog FileDialog 596 230
+wv_set_text FileDialog.FileName {}
+wv_select_list_item FileDialog.FileList task2.sx
+wv_dclick_list_item FileDialog.FileList task2.sx
+wv_close_window CustomWaveView
+wv_move_dialog Confirmation 1 28
+wv_select_dialog Confirmation
+# wv_press_button Confirmation.Ok

@@ -1,0 +1,16 @@
+** Library name: schem
+** Cell name: mc
+** View name: schematic
+.subckt mc bl bl_b wl vdd vss inh_bulk_n inh_bulk_p
+m5 bit bit_b vss inh_bulk_n nmos L=2 W=6
+m4 bit_b bit vss inh_bulk_n nmos L=2 W=6
+m1 bl_b wl bit_b inh_bulk_n nmos L=2 W=4
+m0 bl wl bit inh_bulk_n nmos L=2 W=4
+m2 bit_b bit vdd inh_bulk_p pmos L=2 W=4
+m3 bit bit_b vdd inh_bulk_p pmos L=2 W=4
+c2 bl 0 88e-18
+c1 bl_b 0 88e-18
+c0 wl 0 140e-18
+.ends mc
+** End of subcircuit definition.
+
