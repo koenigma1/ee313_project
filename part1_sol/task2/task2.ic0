@@ -1,0 +1,89 @@
+* "simulator" "HSPICE" 
+* "version" "F-2011.09-SP2 32-BIT"
+* "format" "HSP"
+* "rundate" "08:18:24 03/07/2013 "
+* "netlist" "task2.sp "
+* "runtitle" "* file: task2.sp"
+* time =    0.            
+* temperature =   27.0000        
+*** BEGIN: Saved Operating Point ***                     
+.option 
++ gmindc=   1.0000p       
+.nodeset
++ a0 =  18.9202u       
++ a255 =  18.9202u       
++ bl0 = 950.0000m       
++ bl_b0 =   1.0000        
++ ck =  18.9202u       
++ cmbl = 960.4667m       
++ cmbl_b = 997.9893m       
++ net70 = 999.9821m       
++ net71 = 999.9821m       
++ out =  14.2759u       
++ out_b =  19.9220u       
++ sae =  18.9202u       
++ sapc_b =  18.9202u       
++ sbl = 981.3747m       
++ sbl_b = 993.8848m       
++ sel_b0 =   0.            
++ tail = 776.9425m       
++ vdd =   1.0000        
++ vdd! =   1.0000        
++ xu3.vdd_load =   1.0000        
++ xu2.vdd_load =   1.0000        
++ xclk_gen.src =   0.            
++ xa0_gen.src =   0.            
++ xa255_gen.src =   0.            
++ xsae_gen.src =   0.            
++ xsapc_b_gen.src =   0.            
++ xclk_gen.xgen.net_2 =  18.9202u       
++ xclk_gen.xgen.net_3 =  18.9202u       
++ xclk_gen.xgen.net_4 =   1.0000        
++ xa0_gen.xgen.net_2 =  18.9202u       
++ xa0_gen.xgen.net_3 =  18.9202u       
++ xa0_gen.xgen.net_4 =   1.0000        
++ xa255_gen.xgen.net_2 =  18.9202u       
++ xa255_gen.xgen.net_3 =  18.9202u       
++ xa255_gen.xgen.net_4 =   1.0000        
++ xsae_gen.xgen.net_2 =  18.9202u       
++ xsae_gen.xgen.net_3 =  18.9202u       
++ xsae_gen.xgen.net_4 =   1.0000        
++ xsapc_b_gen.xgen.net_2 =  18.9202u       
++ xsapc_b_gen.xgen.net_3 =  18.9202u       
++ xsapc_b_gen.xgen.net_4 =   1.0000        
++ xclk_gen.xgen.x_0.net_1 = 999.9744m       
++ xclk_gen.xgen.x_0.net_3 = 999.9744m       
++ xclk_gen.xgen.x_0.net_4 =  21.2646u       
++ xa0_gen.xgen.x_0.net_1 = 999.9744m       
++ xa0_gen.xgen.x_0.net_3 = 999.9744m       
++ xa0_gen.xgen.x_0.net_4 =  21.2646u       
++ xa255_gen.xgen.x_0.net_1 = 999.9744m       
++ xa255_gen.xgen.x_0.net_3 = 999.9744m       
++ xa255_gen.xgen.x_0.net_4 =  21.2646u       
++ xsae_gen.xgen.x_0.net_1 = 999.9744m       
++ xsae_gen.xgen.x_0.net_3 = 999.9744m       
++ xsae_gen.xgen.x_0.net_4 =  21.2646u       
++ xsapc_b_gen.xgen.x_0.net_1 = 999.9744m       
++ xsapc_b_gen.xgen.x_0.net_3 = 999.9744m       
++ xsapc_b_gen.xgen.x_0.net_4 =  21.2646u       
++ xclk_gen.xgen.x_0.x_0.vdd_stimulus =   1.0000        
++ xclk_gen.xgen.x_0.x_1.vdd_stimulus =   1.0000        
++ xclk_gen.xgen.x_0.x_2.vdd_stimulus =   1.0000        
++ xclk_gen.xgen.x_0.x_3.vdd_stimulus =   1.0000        
++ xa0_gen.xgen.x_0.x_0.vdd_stimulus =   1.0000        
++ xa0_gen.xgen.x_0.x_1.vdd_stimulus =   1.0000        
++ xa0_gen.xgen.x_0.x_2.vdd_stimulus =   1.0000        
++ xa0_gen.xgen.x_0.x_3.vdd_stimulus =   1.0000        
++ xa255_gen.xgen.x_0.x_0.vdd_stimulus =   1.0000        
++ xa255_gen.xgen.x_0.x_1.vdd_stimulus =   1.0000        
++ xa255_gen.xgen.x_0.x_2.vdd_stimulus =   1.0000        
++ xa255_gen.xgen.x_0.x_3.vdd_stimulus =   1.0000        
++ xsae_gen.xgen.x_0.x_0.vdd_stimulus =   1.0000        
++ xsae_gen.xgen.x_0.x_1.vdd_stimulus =   1.0000        
++ xsae_gen.xgen.x_0.x_2.vdd_stimulus =   1.0000        
++ xsae_gen.xgen.x_0.x_3.vdd_stimulus =   1.0000        
++ xsapc_b_gen.xgen.x_0.x_0.vdd_stimulus =   1.0000        
++ xsapc_b_gen.xgen.x_0.x_1.vdd_stimulus =   1.0000        
++ xsapc_b_gen.xgen.x_0.x_2.vdd_stimulus =   1.0000        
++ xsapc_b_gen.xgen.x_0.x_3.vdd_stimulus =   1.0000        
+***   END: Saved Operating Point ***                     

@@ -1,0 +1,8 @@
+$DATA1 SOURCE='HSPICE' VERSION='F-2011.09-SP2 32-BIT'
+.TITLE '* file: task3.sp'
+ td_ck2wlr        td_ck2wlf        td_wl2bl0        td_ck2bl0         
+ td_wl2bl63       td_ck2bl63       wl_pw            idsat             
+ mem_core_power   blpc_b_power     temper           alter#            
+  1.823e-10        1.767e-10        1.534e-10        3.357e-10        
+  1.546e-10        3.369e-10        4.946e-10        6.426e-05        
+ -6.003e-04       -2.092e-03         27.0000        1                 

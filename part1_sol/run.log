@@ -1,0 +1,108 @@
+hspice -i task1.sp -o task1.lis
+Using: /usr/class/ee/synopsys/hspice/F-2011.09-SP2/hspice/linux/hspice  -i task1.sp -o task1.lis
+egrep -i 'warn|err' task1.lis
+ **warning**  runlvl smaller than 5, reset to 5  when accurate turned on
+ **warning**  runlvl smaller than 5, reset to 5  when accurate turned on
+  **warning** (/usr/class/ee313/ee313_spice_header.h:18) Both nodes of element vgnd are connected together; Line ignored.
+ ** warning** associated with encrypted blocks were suppressed
+ **warning** the following singular supplies were terminated to 1 meg resistor 
+  errchk             0.04
+cat task1.mt0
+$DATA1 SOURCE='HSPICE' VERSION='F-2011.09-SP2 32-BIT'
+.TITLE '* file: task1.sp'
+ tdr              tdf              supply_power     ck_power          
+ temper           alter#            
+  1.857e-10        1.791e-10       -5.507e-04       -1.358e-06        
+   27.0000        1                 
+rm -rf task1/
+mkdir task1
+mv task1.* task1/
+cp task1/task1.sp .
+hspice -i task2.sp -o task2.lis
+Using: /usr/class/ee/synopsys/hspice/F-2011.09-SP2/hspice/linux/hspice  -i task2.sp -o task2.lis
+egrep -i 'warn|err' task2.lis
+ **warning**  runlvl smaller than 5, reset to 5  when accurate turned on
+ **warning**  runlvl smaller than 5, reset to 5  when accurate turned on
+  **warning** (/usr/class/ee313/ee313_spice_header.h:18) Both nodes of element vgnd are connected together; Line ignored.
+ ** warning** associated with encrypted blocks were suppressed
+ **warning** the following singular supplies were terminated to 1 meg resistor 
+  errchk             0.02
+cat task2.mt0
+$DATA1 SOURCE='HSPICE' VERSION='F-2011.09-SP2 32-BIT'
+.TITLE '* file: task2.sp'
+ tdly             switch_power     sae_power        sapc_b_power      
+ temper           alter#            
+  5.362e-11       -9.646e-06       -1.747e-06       -1.469e-06        
+   27.0000        1                 
+rm -rf task2/
+mkdir task2
+mv task2.* task2/
+cp task2/task2.sp .
+hspice -i task3.sp -o task3.lis
+Using: /usr/class/ee/synopsys/hspice/F-2011.09-SP2/hspice/linux/hspice  -i task3.sp -o task3.lis
+egrep -i 'warn|err' task3.lis
+ **warning**  runlvl smaller than 5, reset to 5  when accurate turned on
+  **warning** (./project.task3.ckt:5) Global net name, "vdd", in subckt pin list. The pin will be connected to the local net. Recommend to not use global net names in subckt pin lists.
+ **warning**  runlvl smaller than 5, reset to 5  when accurate turned on
+  **warning** (/usr/class/ee313/ee313_spice_header.h:18) Both nodes of element vgnd are connected together; Line ignored.
+ ** warning** associated with encrypted blocks were suppressed
+  errchk             0.04
+cat task3.mt0
+$DATA1 SOURCE='HSPICE' VERSION='F-2011.09-SP2 32-BIT'
+.TITLE '* file: task3.sp'
+ td_ck2wlr        td_ck2wlf        td_wl2bl0        td_ck2bl0         
+ td_wl2bl63       td_ck2bl63       wl_pw            idsat             
+ mem_core_power   blpc_b_power     temper           alter#            
+  1.823e-10        1.767e-10        1.534e-10        3.357e-10        
+  1.546e-10        3.369e-10        4.946e-10        6.426e-05        
+ -6.003e-04       -2.092e-03         27.0000        1                 
+rm -rf task3/
+mkdir task3
+mv task3.* task3/
+cp task3/task3.sp .
+hspice -i task5rd.sp -o task5rd.lis
+Using: /usr/class/ee/synopsys/hspice/F-2011.09-SP2/hspice/linux/hspice  -i task5rd.sp -o task5rd.lis
+egrep -i 'warn|err' task5rd.lis
+ **warning**  runlvl smaller than 5, reset to 5  when accurate turned on
+  **warning** (./project.task5.ckt:208) Global net name, "vdd", in subckt pin list. The pin will be connected to the local net. Recommend to not use global net names in subckt pin lists.
+ **warning**  runlvl smaller than 5, reset to 5  when accurate turned on
+  **warning** (/usr/class/ee313/ee313_spice_header.h:18) Both nodes of element vgnd are connected together; Line ignored.
+ ** warning** associated with encrypted blocks were suppressed
+ **warning**  No DC path to ground from node        0:wrdata           defined in subckt 0               ; Connected by HSPICE with gdcpath
+ **warning** the following singular supplies were terminated to 1 meg resistor 
+  **warning** (task5rd.sp:62) .MEASURE  td_wl2bl never reached the target value, Measurement failed!
+  errchk             0.06
+cat task5rd.mt0
+$DATA1 SOURCE='HSPICE' VERSION='F-2011.09-SP2 32-BIT'
+.TITLE '* file: task5rd.sp'
+ td_ck2wlr        td_ck2wlf        td_wl2bl         max_bit_b         
+ min_bit          supply_voltage   temper           alter#            
+  3.490e-10        3.249e-10          failed           0.6591         
+ -7.357e-04          0.6500          27.0000        1                 
+rm -rf task5rd/
+mkdir task5rd
+mv task5rd.* task5rd/
+cp task5rd/task5rd.sp .
+hspice -i task5wt.sp -o task5wt.lis
+Using: /usr/class/ee/synopsys/hspice/F-2011.09-SP2/hspice/linux/hspice  -i task5wt.sp -o task5wt.lis
+egrep -i 'warn|err' task5wt.lis
+ **warning**  runlvl smaller than 5, reset to 5  when accurate turned on
+  **warning** (./project.task5.ckt:208) Global net name, "vdd", in subckt pin list. The pin will be connected to the local net. Recommend to not use global net names in subckt pin lists.
+ **warning**  runlvl smaller than 5, reset to 5  when accurate turned on
+  **warning** (/usr/class/ee313/ee313_spice_header.h:18) Both nodes of element vgnd are connected together; Line ignored.
+ ** warning** associated with encrypted blocks were suppressed
+ **warning** the following singular supplies were terminated to 1 meg resistor 
+  errchk             0.06
+cat task5wt.mt0
+$DATA1 SOURCE='HSPICE' VERSION='F-2011.09-SP2 32-BIT'
+.TITLE '* file: task5wt.sp'
+ td_ck2wlr        td_ck2wlf        wl_pw            max_bit_b         
+ min_bit          supply_voltage   temper           alter#            
+  1.828e-10        1.774e-10        4.948e-10          1.0065         
+ -3.092e-03          1.0000          27.0000        1                 
+rm -rf task5wt/
+mkdir task5wt
+mv task5wt.* task5wt/
+cp task5wt/task5wt.sp .
+echo "DONE"
+DONE
