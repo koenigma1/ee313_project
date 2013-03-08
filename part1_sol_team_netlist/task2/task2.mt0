@@ -1,0 +1,6 @@
+$DATA1 SOURCE='HSPICE' VERSION='F-2011.09-SP2 32-BIT'
+.TITLE '* file: task2.sp'
+ tdly             switch_power     sae_power        sapc_b_power      
+ temper           alter#            
+  5.362e-11       -9.646e-06       -1.747e-06       -1.469e-06        
+   27.0000        1                 

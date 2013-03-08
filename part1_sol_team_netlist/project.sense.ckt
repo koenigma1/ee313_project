@@ -1,0 +1,48 @@
+
+** Library name: ee313
+** Cell name: inv
+** View name: schematic
+.subckt inv_pcell_0 a y
+m1 y a vdd! vdd! pmos L=2 W=24
+m2 y a 0 0 nmos L=2 W=12
+.ends inv_pcell_0
+** End of subcircuit definition.
+
+** Library name: ee313
+** Cell name: inv
+** View name: schematic
+.subckt inv_pcell_1 a y
+Vload vdd_load gnd 'supply'
+m1 y a vdd_load vdd_load pmos L=2 W=100
+m2 y a 0 0 nmos L=2 W=50
+.ends inv_pcell_1
+** End of subcircuit definition.
+
+
+** Library name: schem
+** Cell name: sense
+** View name: schematic
+m4 sbl_b sbl vdd! vdd! pmos L=2 W=4
+m3 vdd! sbl_b sbl vdd! pmos L=2 W=4
+meq sbl sapc_b sbl_b vdd! pmos L=2 W=8
+mpc2 vdd! sapc_b sbl_b vdd! pmos L=2 W=8
+mpc sbl sapc_b vdd! vdd! pmos L=2 W=8
+miso_b sbl_b sae cmbl_b vdd! pmos L=2 W=12
+miso sbl sae cmbl vdd! pmos L=2 W=12
+mmx4_b cmbl_b vdd! vdd! vdd! pmos L=2 W=24
+mmx4 cmbl vdd! vdd! vdd! pmos L=2 W=24
+mmx3_b cmbl_b vdd! vdd! vdd! pmos L=2 W=24
+mmx3 cmbl vdd! vdd! vdd! pmos L=2 W=24
+mmx2_b cmbl_b vdd! vdd! vdd! pmos L=2 W=24
+mmx2 cmbl vdd! vdd! vdd! pmos L=2 W=24
+mmx_b cmbl_b sel_b0 bl_b0 vdd! pmos L=2 W=24
+mmx cmbl sel_b0 bl0 vdd! pmos L=2 W=24
+mtail tail sae 0 0 nmos L=2 W=8
+m1 tail sbl_b sbl 0 nmos L=2 W=6
+m2 sbl_b sbl tail 0 nmos L=2 W=6
+c1 sapc_b 0 560e-18
+c0 sae 0 560e-18
+xu1 sbl_b out inv_pcell_0
+xu0 sbl out_b inv_pcell_0
+xu3 out net70 inv_pcell_1
+xu2 out_b net71 inv_pcell_1

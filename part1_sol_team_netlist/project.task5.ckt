@@ -1,0 +1,55 @@
+
+** Library name: schem
+** Cell name: mc_wcw
+** View name: schematic
+.subckt mc_wcw_schematic bl bl_b wl vdd vss inh_bulk_n inh_bulk_p
+m0 bl net039 bit inh_bulk_n nmos L=2 W=4
+m4 bit_b net30 vss inh_bulk_n nmos L=2 W=6
+m5 bit net029 vss inh_bulk_n nmos L=2 W=6
+m1 bl_b wl bit_b inh_bulk_n nmos L=2 W=4
+m2 bit_b net30 vdd inh_bulk_p pmos L=2 W=4
+m3 bit net029 vdd inh_bulk_p pmos L=2 W=4
+c2 bl 0 88e-18
+c1 bl_b 0 88e-18
+c0 wl 0 140e-18
+v10 net039 wl DC=-106e-3
+v8 net029 bit_b DC=-87e-3
+v7 bit net30 DC=-87e-3
+.ends mc_wcw_schematic
+** End of subcircuit definition.
+
+** Library name: schem
+** Cell name: mc_wcr
+** View name: schematic
+.subckt schem_mc_wcr_schematic bl bl_b wl vdd vss inh_bulk_n inh_bulk_p
+m0 bl wl bit inh_bulk_n nmos L=2 W=4
+m4 bit_b net30 vss inh_bulk_n nmos L=2 W=6
+m5 bit net029 vss inh_bulk_n nmos L=2 W=6
+m1 bl_b net056 bit_b inh_bulk_n nmos L=2 W=4
+m2 bit_b net30 vdd inh_bulk_p pmos L=2 W=4
+m3 bit net029 vdd inh_bulk_p pmos L=2 W=4
+c2 bl 0 88e-18
+c1 bl_b 0 88e-18
+c0 wl 0 140e-18
+v8 net029 bit_b DC=87e-3
+v1 net056 wl DC=106e-3
+v7 bit net30 DC=87e-3
+.ends schem_mc_wcr_schematic
+** End of subcircuit definition.
+
+** Library name: project_2012_part1_sol
+** Cell name: task5
+** View name: schematic
+xi17 wl0 wl255 a0 a255 ck decoder_schematic
+xcbl bl0 bl_b0 wl255 vdd! gnd 0 vdd! mc m=1
+xi5 net57 net56 wl255 vdd! gnd 0 vdd! mc m=254
+xi4 bl63 bl_b63 0 vdd! gnd 0 vdd! mc m=254
+xi3 net57 net56 0 vdd! gnd 0 vdd! mc m=64.516e3
+xi2 bl0 bl_b0 0 vdd! gnd 0 vdd! mc m=254
+xctr bl63 bl_b63 wl0 vdd! gnd 0 vdd! mc m=1
+xi1 net57 net56 wl0 vdd! gnd 0 vdd! mc m=254
+xcbr bl63 bl_b63 wl255 vdd! gnd 0 vdd! mc_wcw_schematic m=1
+xwritel bl0 bl_b0 blpc_b vdd! wren 0 vdd! write m=1
+xwritem net57 net56 blpc_b vdd! wren 0 vdd! write m=254
+xwriter bl63 bl_b63 blpc_b wrdata wren 0 vdd! write m=1
+xctl bl0 bl_b0 wl0 vdd! gnd 0 vdd! schem_mc_wcr_schematic m=1

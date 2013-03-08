@@ -1,0 +1,6 @@
+$DATA1 SOURCE='HSPICE' VERSION='F-2011.09-SP2 32-BIT'
+.TITLE '* file: task5wt.sp'
+ td_ck2wlr        td_ck2wlf        wl_pw            max_bit_b         
+ min_bit          supply_voltage   temper           alter#            
+  1.243e-10        4.420e-10        8.179e-10          1.0087         
+ -1.689e-03          1.0000          27.0000        1                 

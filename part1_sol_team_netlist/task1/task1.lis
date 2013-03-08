@@ -1,0 +1,2622 @@
+ ****** HSPICE -- F-2011.09-SP2 32-BIT (Feb 27 2012) linux ******               
+  Copyright (C) 2011 Synopsys, Inc. All Rights Reserved.                        
+  Unpublished-rights reserved under US copyright laws.
+  This program is protected by law and is subject to the
+  terms and conditions of the license agreement from Synopsys.
+  Use of this program is your acceptance to be bound by the
+  license agreement. HSPICE is the trademark of Synopsys, Inc.
+  Input File: task1.sp                                                          
+  Command line options: -i task1.sp -o task1.lis
+ lic:  
+ lic: FLEXlm: v10.8 
+ lic: USER:   makoenig             HOSTNAME: corn06.stanford.edu 
+ lic: HOSTID: 001b213a661d         PID:      22718 
+ lic: Using FLEXlm license file: 
+ lic: 27000@cadlic0.stanford.edu 
+ lic: Checkout 1 hspice 
+ lic: License/Maintenance for hspice will expire on 16-nov-2013/2012.06 
+ lic: 4(in_use)/100(total) FLOATING license(s) on SERVER cadlic0.stanford.edu 
+ lic:   
+ Init: read install configuration file: /usr/class/ee/synopsys/hspice/F-2011.09-SP2/hspice/meta.cfg
+
+ **warning**  runlvl smaller than 5, reset to 5  when accurate turned on
+ scientific notation:
+ a=10**-18  f=10**-15  p=10**-12  n=10**-9  u=10**-6
+ m=10**-3   k=10**3    x=10**6    g=10**9 
+
+ **warning**  runlvl smaller than 5, reset to 5  when accurate turned on
+1****** HSPICE -- F-2011.09-SP2 32-BIT (Feb 27 2012) linux ******               
+ ******  
+ * file: task1.sp
+
+  ******  circuit name directory
+ circuit number to circuit name directory
+   number circuitname                     definition         multiplier
+        0 main circuit
+        1 xi17.                           decoder_schematic
+                                                                 1.00 
+        2 xclk_gen.                       clk_gen            1.00 
+        3 xa0_gen.                        a0_gen             1.00 
+        4 xa255_gen.                      a255_gen           1.00 
+        5 xi17.xi5.                       predecode_24       1.00 
+        6 xi17.xi1.                       decode_stage       1.00 
+        7 xi17.xi4.                       predecode_416      1.00 
+        8 xclk_gen.xgen.                  signal_gen         1.00 
+        9 xa0_gen.xgen.                   signal_gen         1.00 
+       10 xa255_gen.xgen.                 signal_gen         1.00 
+       11 xi17.xi5.xi36.                  nand3              1.00 
+       12 xi17.xi5.xi37.                  nand3              1.00 
+       13 xi17.xi5.xi38.                  nand3              1.00 
+       14 xi17.xi5.xi39.                  nand3              1.00 
+       15 xi17.xi5.xu3.                   inv_pcell_01       1.00 
+       16 xi17.xi5.xu2.                   inv_pcell_01       1.00 
+       17 xi17.xi5.xu1.                   inv_pcell_01       1.00 
+       18 xi17.xi5.xu0.                   inv_pcell_01       1.00 
+       19 xi17.xi1.xu7.                   inv_pcell_2        1.00 
+       20 xi17.xi1.xu5.                   inv_pcell_2        1.00 
+       21 xi17.xi1.xu1.                   nand_pcell_3       1.00 
+       22 xi17.xi1.xu3.                   nand_pcell_3       1.00 
+       23 xi17.xi1.xu2.                   nand_pcell_4       1.00 
+       24 xi17.xi1.xu0.                   nand_pcell_4       1.00 
+       25 xi17.xi1.xu6.                   inv_pcell_5        1.00 
+       26 xi17.xi1.xu8.                   inv_pcell_5        1.00 
+       27 xi17.xi4.xi17.                  nand_pcell_6       1.00 
+       28 xi17.xi4.xi15.                  nand_pcell_6       1.00 
+       29 xi17.xi4.xu2.                   inv_pcell_78       1.00 
+       30 xi17.xi4.xu0.                   inv_pcell_78       1.00 
+       31 xi17.xi4.xu13.                  inv_pcell_910      1.00 
+       32 xi17.xi4.xu15.                  inv_pcell_910      1.00 
+       33 xi17.xi4.xi16.                  nand_pcell_11      1.00 
+       34 xi17.xi4.xi18.                  nand_pcell_11      1.00 
+       35 xi17.xi4.xu14.                  inv_pcell_1213     1.00 
+       36 xi17.xi4.xu12.                  inv_pcell_1213     1.00 
+       37 xi17.xi4.xu1.                   inv_pcell_1415     1.00 
+       38 xi17.xi4.xu3.                   inv_pcell_1415     1.00 
+       39 xi17.xi4.xu10.                  inv_pcell_16       1.00 
+       40 xi17.xi4.xu8.                   inv_pcell_16       1.00 
+       41 xi17.xi4.xu9.                   inv_pcell_17       1.00 
+       42 xi17.xi4.xu11.                  inv_pcell_17       1.00 
+       43 xclk_gen.xgen.x_0.              inv_chain_stimulus
+                                                                 1.00 
+       44 xa0_gen.xgen.x_0.               inv_chain_stimulus
+                                                                 1.00 
+       45 xa255_gen.xgen.x_0.             inv_chain_stimulus
+                                                                 1.00 
+       46 xclk_gen.xgen.x_0.x_0.          inv_stimulus       1.00 
+       47 xclk_gen.xgen.x_0.x_1.          inv_stimulus       4.00 
+       48 xclk_gen.xgen.x_0.x_2.          inv_stimulus      16.00 
+       49 xclk_gen.xgen.x_0.x_3.          inv_stimulus      64.00 
+       50 xa0_gen.xgen.x_0.x_0.           inv_stimulus       1.00 
+       51 xa0_gen.xgen.x_0.x_1.           inv_stimulus       4.00 
+       52 xa0_gen.xgen.x_0.x_2.           inv_stimulus      16.00 
+       53 xa0_gen.xgen.x_0.x_3.           inv_stimulus      64.00 
+       54 xa255_gen.xgen.x_0.x_0.         inv_stimulus       1.00 
+       55 xa255_gen.xgen.x_0.x_1.         inv_stimulus       4.00 
+       56 xa255_gen.xgen.x_0.x_2.         inv_stimulus      16.00 
+       57 xa255_gen.xgen.x_0.x_3.         inv_stimulus      64.00 
+
+
+ circuit parameter definitions
+  parameter          =  value 
+
+     0:supply                                                  =   1.0000       
+     0:tcyc                                                    =   1.0000n      
+     0:trf                                                     =  50.0000p      
+     0:s1_wn                                                   =   9.0000       
+     0:s1_wp                                                   =   3.0000       
+     0:s2_wn                                                   =   7.0000       
+     0:s2_wp                                                   =  41.0000       
+     0:s3_wn                                                   =  24.0000       
+     0:s3_wp                                                   =   8.0000       
+     0:s4_wn                                                   =  22.0000       
+     0:s4_wp                                                   = 133.0000       
+     0:s5_wn                                                   = 277.0000       
+     0:s5_wp                                                   = 138.0000       
+     0:s6_wn                                                   = 369.0000       
+     0:s6_wp                                                   =   2.2130k      
+     0:s7_wn                                                   = 296.0000       
+     0:s7_wp                                                   = 104.0000       
+     0:s8_wn                                                   = 259.0000       
+     0:s8_wp                                                   =   1.5560k      
+     0:tdr                                                     =   0.           
+     0:tdf                                                     =   0.           
+     0:supply_power                                            =   0.           
+     0:ck_power                                                =   0.           
+    11:nl                                                      =   2.0000       
+    11:nw                                                      =   9.0000       
+    11:nm                                                      =   1.0000       
+    11:pl                                                      =   2.0000       
+    11:pw                                                      =   3.0000       
+    11:pm                                                      =   1.0000       
+    46:wp                                                      =  24.0000       
+    46:lp                                                      =   2.0000       
+    46:wn                                                      =   8.0000       
+    46:ln                                                      =   2.0000       
+    47:wp                                                      =  24.0000       
+    47:lp                                                      =   2.0000       
+    47:wn                                                      =   8.0000       
+    47:ln                                                      =   2.0000       
+    48:wp                                                      =  24.0000       
+    48:lp                                                      =   2.0000       
+    48:wn                                                      =   8.0000       
+    48:ln                                                      =   2.0000       
+    49:wp                                                      =  24.0000       
+    49:lp                                                      =   2.0000       
+    49:wn                                                      =   8.0000       
+    49:ln                                                      =   2.0000       
+    50:wp                                                      =  24.0000       
+    50:lp                                                      =   2.0000       
+    50:wn                                                      =   8.0000       
+    50:ln                                                      =   2.0000       
+    51:wp                                                      =  24.0000       
+    51:lp                                                      =   2.0000       
+    51:wn                                                      =   8.0000       
+    51:ln                                                      =   2.0000       
+    52:wp                                                      =  24.0000       
+    52:lp                                                      =   2.0000       
+    52:wn                                                      =   8.0000       
+    52:ln                                                      =   2.0000       
+    53:wp                                                      =  24.0000       
+    53:lp                                                      =   2.0000       
+    53:wn                                                      =   8.0000       
+    53:ln                                                      =   2.0000       
+    54:wp                                                      =  24.0000       
+    54:lp                                                      =   2.0000       
+    54:wn                                                      =   8.0000       
+    54:ln                                                      =   2.0000       
+    55:wp                                                      =  24.0000       
+    55:lp                                                      =   2.0000       
+    55:wn                                                      =   8.0000       
+    55:ln                                                      =   2.0000       
+    56:wp                                                      =  24.0000       
+    56:lp                                                      =   2.0000       
+    56:wn                                                      =   8.0000       
+    56:ln                                                      =   2.0000       
+    57:wp                                                      =  24.0000       
+    57:lp                                                      =   2.0000       
+    57:wn                                                      =   8.0000       
+    57:ln                                                      =   2.0000       
+
+
+
+
+ constants  - tnom         kt           vt           gapsi        ni
+            298.15000    4.1163e-21    25.69184m     1.11562    1.2565e+16 
+  **warning** (/usr/class/ee313/ee313_spice_header.h:18) Both nodes of element vgnd are connected together; Line ignored.
+  **info** (/usr/class/ee313/project/stimulus.sp:38) DC voltage reset to initial transient source value              in source        2:vsrc                new dc=  0.0000D+00
+ ** warning** associated with encrypted blocks were suppressed
+
+1****** HSPICE -- F-2011.09-SP2 32-BIT (Feb 27 2012) linux ******               
+ ******  
+ * file: task1.sp
+
+  ******  circuit element summary tnom=  25.000 temp=  25.000 *****
+
+
+ **** capacitors
+  
+  
+                                                                       
+ element name        0:cwl0     0:cwl255    1:c_sideloa    1:c_sideloa 
+ node1               0:wl0      0:wl255     1:net17        1:net14     
+ node2               0:0        0:0         0:0            0:0         
+ model                                                                 
+ cap eff            99.1000f   99.1000f    22.5300f       22.5300f     
+ tc1                 0.         0.          0.             0.          
+ tc2                 0.         0.          0.             0.          
+ scale               1.0000     1.0000      1.0000         1.0000      
+ ic                  0.         0.          0.             0.          
+ m                   1.0000     1.0000      1.0000         1.0000      
+ w                   0.         0.          0.             0.          
+ l                   0.         0.          0.             0.          
+ temp               25.0000    25.0000     25.0000        25.0000      
+
+
+ **** voltage-controlled voltage sources
+      name        +             -          dimension  function  scale
+        8:e_0             8:net_3           0:0              1      poly       1.    
+        9:e_0             9:net_3           0:0              1      poly       1.    
+       10:e_0            10:net_3           0:0              1      poly       1.    
+
+
+ **** current-controlled current sources
+      name        +             -          dimension  function  multiplier
+        8:f_0             8:net_4           0:0              1      poly       1.    
+        8:f_1             8:net_4           0:0              1      poly       1.    
+        9:f_0             9:net_4           0:0              1      poly       1.    
+        9:f_1             9:net_4           0:0              1      poly       1.    
+       10:f_0            10:net_4           0:0              1      poly       1.    
+       10:f_1            10:net_4           0:0              1      poly       1.    
+
+
+ **** independent sources
+
+     name         node1        node2      dc volt    ac mag    ac phase    type
+  v_supply  vdd               0                    1.0000     0.         0.      dc   
+  v_supply1  vdd!              0                    1.0000     0.         0.      dc   
+ xclk_gen.vsrc xclk_gen.src               0                    0.         0.         0.      pulse
+             initial value     0.     
+             pulsed value.     1.0000 
+             delay time...   500.0000p
+             risetime.....    50.0000p
+             falltime.....    50.0000p
+             width........   450.0000p
+             period.......     1.0000n
+
+ xa0_gen.vsrc xa0_gen.src               0                    0.         0.         0.      pulse
+             initial value     0.     
+             pulsed value.     1.0000 
+             delay time...   375.0000p
+             risetime.....    50.0000p
+             falltime.....    50.0000p
+             width........   950.0000p
+             period.......     2.0000n
+
+ xa255_gen.vsrc xa255_gen.src               0                    0.         0.         0.      pulse
+             initial value     0.     
+             pulsed value.     1.0000 
+             delay time...     1.3750n
+             risetime.....    50.0000p
+             falltime.....    50.0000p
+             width........   950.0000p
+             period.......     2.0000n
+
+ xclk_gen.xgen.v_monitor xclk_gen.xgen.net_4             0                    1.0000     0.         0.      dc   
+ xclk_gen.xgen.v_sense xclk_gen.xgen.net_3             ck                   0.         0.         0.      dc   
+ xa0_gen.xgen.v_monitor xa0_gen.xgen.net_4             0                    1.0000     0.         0.      dc   
+ xa0_gen.xgen.v_sense xa0_gen.xgen.net_3             a0                   0.         0.         0.      dc   
+ xa255_gen.xgen.v_monitor xa255_gen.xgen.net_4             0                    1.0000     0.         0.      dc   
+ xa255_gen.xgen.v_sense xa255_gen.xgen.net_3             a255                 0.         0.         0.      dc   
+ xclk_gen.xgen.x_0.x_0.vstimulus_supply xclk_gen.xgen.x_0.x_0.vdd_stimulus      0                    1.0000     0.         0.      dc   
+ xclk_gen.xgen.x_0.x_1.vstimulus_supply xclk_gen.xgen.x_0.x_1.vdd_stimulus      0                    1.0000     0.         0.      dc   
+ xclk_gen.xgen.x_0.x_2.vstimulus_supply xclk_gen.xgen.x_0.x_2.vdd_stimulus      0                    1.0000     0.         0.      dc   
+ xclk_gen.xgen.x_0.x_3.vstimulus_supply xclk_gen.xgen.x_0.x_3.vdd_stimulus      0                    1.0000     0.         0.      dc   
+ xa0_gen.xgen.x_0.x_0.vstimulus_supply xa0_gen.xgen.x_0.x_0.vdd_stimulus      0                    1.0000     0.         0.      dc   
+ xa0_gen.xgen.x_0.x_1.vstimulus_supply xa0_gen.xgen.x_0.x_1.vdd_stimulus      0                    1.0000     0.         0.      dc   
+ xa0_gen.xgen.x_0.x_2.vstimulus_supply xa0_gen.xgen.x_0.x_2.vdd_stimulus      0                    1.0000     0.         0.      dc   
+ xa0_gen.xgen.x_0.x_3.vstimulus_supply xa0_gen.xgen.x_0.x_3.vdd_stimulus      0                    1.0000     0.         0.      dc   
+ xa255_gen.xgen.x_0.x_0.vstimulus_supply xa255_gen.xgen.x_0.x_0.vdd_stimulus      0                    1.0000     0.         0.      dc   
+ xa255_gen.xgen.x_0.x_1.vstimulus_supply xa255_gen.xgen.x_0.x_1.vdd_stimulus      0                    1.0000     0.         0.      dc   
+ xa255_gen.xgen.x_0.x_2.vstimulus_supply xa255_gen.xgen.x_0.x_2.vdd_stimulus      0                    1.0000     0.         0.      dc   
+ xa255_gen.xgen.x_0.x_3.vstimulus_supply xa255_gen.xgen.x_0.x_3.vdd_stimulus      0                    1.0000     0.         0.      dc   
+
+
+ **** mosfets
+
+
+ **** BSIM4 Model (Level 54)
+  
+  
+                                                              
+ element name       11:m10     11:m9      11:m1      11:m7    
+ drain              11:net9    11:net5     5:nand1    5:nand1 
+ gate                0:a0       0:vdd!     0:ck       0:a0    
+ source              0:0       11:net9    11:net5     0:vdd!  
+ bulk                0:0        0:0        0:0        0:vdd!  
+ model               0:nmos     0:nmos     0:nmos     0:pmos  
+ w eff             188.0000n  188.0000n  188.0000n   56.0000n 
+ l eff              29.0000n   29.0000n   29.0000n   29.0000n 
+ rd eff              0.         0.         0.         0.      
+ rs eff              0.         0.         0.         0.      
+ cdsat              16.9167a   16.9167a   16.9167a    6.0606a 
+ cssat              16.9167a   16.9167a   16.9167a    6.0606a 
+ capbd             245.8633a  245.8633a  245.8633a  111.2291a 
+ capbs             206.3425a  206.3425a  206.3425a   98.0555a 
+ temp               25.0000    25.0000    25.0000    25.0000  
+ aic                                                          
+ nf                  1.0000     1.0000     1.0000     1.0000  
+ min                 0.         0.         0.         0.      
+ rbdb               15.0000    15.0000    15.0000    15.0000  
+ rbsb               15.0000    15.0000    15.0000    15.0000  
+ rbpb                5.0000     5.0000     5.0000     5.0000  
+ rbps               15.0000    15.0000    15.0000    15.0000  
+ rbpd               15.0000    15.0000    15.0000    15.0000  
+ trnqsmod            0.         0.         0.         0.      
+ acnqsmod            0.         0.         0.         0.      
+ rbodymod            1.0000     1.0000     1.0000     1.0000  
+ rgatemod            1.0000     1.0000     1.0000     1.0000  
+ geomod              0.         0.         0.         0.      
+ rgeomod             0.         0.         0.         0.      
+ delvto              0.         0.         0.         0.      
+ mulu0               1.0000     1.0000     1.0000     1.0000  
+ delk1               0.         0.         0.         0.      
+ delnfct             0.         0.         0.         0.      
+ deltox              0.         0.         0.         0.      
+ sa                  0.         0.         0.         0.      
+ sb                  0.         0.         0.         0.      
+ sd                  0.         0.         0.         0.      
+ saeff               0.         0.         0.         0.      
+ sbeff               0.         0.         0.         0.      
+  
+  
+                                                              
+ element name       11:m6      11:m0      12:m10     12:m9    
+ drain               5:nand1    5:nand1   12:net9    12:net5  
+ gate                0:vdd!     0:ck       0:a0       0:0     
+ source              0:vdd!     0:vdd!     0:0       12:net9  
+ bulk                0:vdd!     0:vdd!     0:0        0:0     
+ model               0:pmos     0:pmos     0:nmos     0:nmos  
+ w eff              56.0000n   56.0000n  188.0000n  188.0000n 
+ l eff              29.0000n   29.0000n   29.0000n   29.0000n 
+ rd eff              0.         0.         0.         0.      
+ rs eff              0.         0.         0.         0.      
+ cdsat               6.0606a    6.0606a   16.9167a   16.9167a 
+ cssat               6.0606a    6.0606a   16.9167a   16.9167a 
+ capbd             111.2291a  111.2291a  245.8633a  245.8633a 
+ capbs              98.0555a   98.0555a  206.3425a  206.3425a 
+ temp               25.0000    25.0000    25.0000    25.0000  
+ aic                                                          
+ nf                  1.0000     1.0000     1.0000     1.0000  
+ min                 0.         0.         0.         0.      
+ rbdb               15.0000    15.0000    15.0000    15.0000  
+ rbsb               15.0000    15.0000    15.0000    15.0000  
+ rbpb                5.0000     5.0000     5.0000     5.0000  
+ rbps               15.0000    15.0000    15.0000    15.0000  
+ rbpd               15.0000    15.0000    15.0000    15.0000  
+ trnqsmod            0.         0.         0.         0.      
+ acnqsmod            0.         0.         0.         0.      
+ rbodymod            1.0000     1.0000     1.0000     1.0000  
+ rgatemod            1.0000     1.0000     1.0000     1.0000  
+ geomod              0.         0.         0.         0.      
+ rgeomod             0.         0.         0.         0.      
+ delvto              0.         0.         0.         0.      
+ mulu0               1.0000     1.0000     1.0000     1.0000  
+ delk1               0.         0.         0.         0.      
+ delnfct             0.         0.         0.         0.      
+ deltox              0.         0.         0.         0.      
+ sa                  0.         0.         0.         0.      
+ sb                  0.         0.         0.         0.      
+ sd                  0.         0.         0.         0.      
+ saeff               0.         0.         0.         0.      
+ sbeff               0.         0.         0.         0.      
+  
+  
+                                                              
+ element name       12:m1      12:m7      12:m6      12:m0    
+ drain               5:net22    5:net22    5:net22    5:net22 
+ gate                0:ck       0:a0       0:0        0:ck    
+ source             12:net5     0:vdd!     0:vdd!     0:vdd!  
+ bulk                0:0        0:vdd!     0:vdd!     0:vdd!  
+ model               0:nmos     0:pmos     0:pmos     0:pmos  
+ w eff             188.0000n   56.0000n   56.0000n   56.0000n 
+ l eff              29.0000n   29.0000n   29.0000n   29.0000n 
+ rd eff              0.         0.         0.         0.      
+ rs eff              0.         0.         0.         0.      
+ cdsat              16.9167a    6.0606a    6.0606a    6.0606a 
+ cssat              16.9167a    6.0606a    6.0606a    6.0606a 
+ capbd             245.8633a  111.2291a  111.2291a  111.2291a 
+ capbs             206.3425a   98.0555a   98.0555a   98.0555a 
+ temp               25.0000    25.0000    25.0000    25.0000  
+ aic                                                          
+ nf                  1.0000     1.0000     1.0000     1.0000  
+ min                 0.         0.         0.         0.      
+ rbdb               15.0000    15.0000    15.0000    15.0000  
+ rbsb               15.0000    15.0000    15.0000    15.0000  
+ rbpb                5.0000     5.0000     5.0000     5.0000  
+ rbps               15.0000    15.0000    15.0000    15.0000  
+ rbpd               15.0000    15.0000    15.0000    15.0000  
+ trnqsmod            0.         0.         0.         0.      
+ acnqsmod            0.         0.         0.         0.      
+ rbodymod            1.0000     1.0000     1.0000     1.0000  
+ rgatemod            1.0000     1.0000     1.0000     1.0000  
+ geomod              0.         0.         0.         0.      
+ rgeomod             0.         0.         0.         0.      
+ delvto              0.         0.         0.         0.      
+ mulu0               1.0000     1.0000     1.0000     1.0000  
+ delk1               0.         0.         0.         0.      
+ delnfct             0.         0.         0.         0.      
+ deltox              0.         0.         0.         0.      
+ sa                  0.         0.         0.         0.      
+ sb                  0.         0.         0.         0.      
+ sd                  0.         0.         0.         0.      
+ saeff               0.         0.         0.         0.      
+ sbeff               0.         0.         0.         0.      
+  
+  
+                                                                  
+ element name       13:m10     13:m9      13:m1        13:m7      
+ drain              13:net9    13:net5     5:nand1_1    5:nand1_1 
+ gate                0:a255     0:vdd!     0:ck         0:a255    
+ source              0:0       13:net9    13:net5       0:vdd!    
+ bulk                0:0        0:0        0:0          0:vdd!    
+ model               0:nmos     0:nmos     0:nmos       0:pmos    
+ w eff             188.0000n  188.0000n  188.0000n     56.0000n   
+ l eff              29.0000n   29.0000n   29.0000n     29.0000n   
+ rd eff              0.         0.         0.           0.        
+ rs eff              0.         0.         0.           0.        
+ cdsat              16.9167a   16.9167a   16.9167a      6.0606a   
+ cssat              16.9167a   16.9167a   16.9167a      6.0606a   
+ capbd             245.8633a  245.8633a  245.8633a    111.2291a   
+ capbs             206.3425a  206.3425a  206.3425a     98.0555a   
+ temp               25.0000    25.0000    25.0000      25.0000    
+ aic                                                              
+ nf                  1.0000     1.0000     1.0000       1.0000    
+ min                 0.         0.         0.           0.        
+ rbdb               15.0000    15.0000    15.0000      15.0000    
+ rbsb               15.0000    15.0000    15.0000      15.0000    
+ rbpb                5.0000     5.0000     5.0000       5.0000    
+ rbps               15.0000    15.0000    15.0000      15.0000    
+ rbpd               15.0000    15.0000    15.0000      15.0000    
+ trnqsmod            0.         0.         0.           0.        
+ acnqsmod            0.         0.         0.           0.        
+ rbodymod            1.0000     1.0000     1.0000       1.0000    
+ rgatemod            1.0000     1.0000     1.0000       1.0000    
+ geomod              0.         0.         0.           0.        
+ rgeomod             0.         0.         0.           0.        
+ delvto              0.         0.         0.           0.        
+ mulu0               1.0000     1.0000     1.0000       1.0000    
+ delk1               0.         0.         0.           0.        
+ delnfct             0.         0.         0.           0.        
+ deltox              0.         0.         0.           0.        
+ sa                  0.         0.         0.           0.        
+ sb                  0.         0.         0.           0.        
+ sd                  0.         0.         0.           0.        
+ saeff               0.         0.         0.           0.        
+ sbeff               0.         0.         0.           0.        
+  
+  
+                                                                  
+ element name       13:m6        13:m0        14:m10     14:m9    
+ drain               5:nand1_1    5:nand1_1   14:net9    14:net5  
+ gate                0:vdd!       0:ck         0:a255     0:0     
+ source              0:vdd!       0:vdd!       0:0       14:net9  
+ bulk                0:vdd!       0:vdd!       0:0        0:0     
+ model               0:pmos       0:pmos       0:nmos     0:nmos  
+ w eff              56.0000n     56.0000n    188.0000n  188.0000n 
+ l eff              29.0000n     29.0000n     29.0000n   29.0000n 
+ rd eff              0.           0.           0.         0.      
+ rs eff              0.           0.           0.         0.      
+ cdsat               6.0606a      6.0606a     16.9167a   16.9167a 
+ cssat               6.0606a      6.0606a     16.9167a   16.9167a 
+ capbd             111.2291a    111.2291a    245.8633a  245.8633a 
+ capbs              98.0555a     98.0555a    206.3425a  206.3425a 
+ temp               25.0000      25.0000      25.0000    25.0000  
+ aic                                                              
+ nf                  1.0000       1.0000       1.0000     1.0000  
+ min                 0.           0.           0.         0.      
+ rbdb               15.0000      15.0000      15.0000    15.0000  
+ rbsb               15.0000      15.0000      15.0000    15.0000  
+ rbpb                5.0000       5.0000       5.0000     5.0000  
+ rbps               15.0000      15.0000      15.0000    15.0000  
+ rbpd               15.0000      15.0000      15.0000    15.0000  
+ trnqsmod            0.           0.           0.         0.      
+ acnqsmod            0.           0.           0.         0.      
+ rbodymod            1.0000       1.0000       1.0000     1.0000  
+ rgatemod            1.0000       1.0000       1.0000     1.0000  
+ geomod              0.           0.           0.         0.      
+ rgeomod             0.           0.           0.         0.      
+ delvto              0.           0.           0.         0.      
+ mulu0               1.0000       1.0000       1.0000     1.0000  
+ delk1               0.           0.           0.         0.      
+ delnfct             0.           0.           0.         0.      
+ deltox              0.           0.           0.         0.      
+ sa                  0.           0.           0.         0.      
+ sb                  0.           0.           0.         0.      
+ sd                  0.           0.           0.         0.      
+ saeff               0.           0.           0.         0.      
+ sbeff               0.           0.           0.         0.      
+  
+  
+                                                              
+ element name       14:m1      14:m7      14:m6      14:m0    
+ drain               5:net14    5:net14    5:net14    5:net14 
+ gate                0:ck       0:a255     0:0        0:ck    
+ source             14:net5     0:vdd!     0:vdd!     0:vdd!  
+ bulk                0:0        0:vdd!     0:vdd!     0:vdd!  
+ model               0:nmos     0:pmos     0:pmos     0:pmos  
+ w eff             188.0000n   56.0000n   56.0000n   56.0000n 
+ l eff              29.0000n   29.0000n   29.0000n   29.0000n 
+ rd eff              0.         0.         0.         0.      
+ rs eff              0.         0.         0.         0.      
+ cdsat              16.9167a    6.0606a    6.0606a    6.0606a 
+ cssat              16.9167a    6.0606a    6.0606a    6.0606a 
+ capbd             245.8633a  111.2291a  111.2291a  111.2291a 
+ capbs             206.3425a   98.0555a   98.0555a   98.0555a 
+ temp               25.0000    25.0000    25.0000    25.0000  
+ aic                                                          
+ nf                  1.0000     1.0000     1.0000     1.0000  
+ min                 0.         0.         0.         0.      
+ rbdb               15.0000    15.0000    15.0000    15.0000  
+ rbsb               15.0000    15.0000    15.0000    15.0000  
+ rbpb                5.0000     5.0000     5.0000     5.0000  
+ rbps               15.0000    15.0000    15.0000    15.0000  
+ rbpd               15.0000    15.0000    15.0000    15.0000  
+ trnqsmod            0.         0.         0.         0.      
+ acnqsmod            0.         0.         0.         0.      
+ rbodymod            1.0000     1.0000     1.0000     1.0000  
+ rgatemod            1.0000     1.0000     1.0000     1.0000  
+ geomod              0.         0.         0.         0.      
+ rgeomod             0.         0.         0.         0.      
+ delvto              0.         0.         0.         0.      
+ mulu0               1.0000     1.0000     1.0000     1.0000  
+ delk1               0.         0.         0.         0.      
+ delnfct             0.         0.         0.         0.      
+ deltox              0.         0.         0.         0.      
+ sa                  0.         0.         0.         0.      
+ sb                  0.         0.         0.         0.      
+ sd                  0.         0.         0.         0.      
+ saeff               0.         0.         0.         0.      
+ sbeff               0.         0.         0.         0.      
+  
+  
+                                                                  
+ element name       15:m1      15:m2      16:m1        16:m2      
+ drain               5:net6     5:net6     1:net1       1:net1    
+ gate                5:net14    5:net14    5:nand1_1    5:nand1_1 
+ source              0:vdd!     0:0        0:vdd!       0:0       
+ bulk                0:vdd!     0:0        0:vdd!       0:0       
+ model               0:pmos     0:nmos     0:pmos       0:nmos    
+ w eff             892.0000n  144.0000n  892.0000n    144.0000n   
+ l eff              29.0000n   29.0000n   29.0000n     29.0000n   
+ rd eff              0.         0.         0.           0.        
+ rs eff              0.         0.         0.           0.        
+ cdsat              74.8155a   13.2980a   74.8155a     13.2980a   
+ cssat              74.8155a   13.2980a   74.8155a     13.2980a   
+ capbd             963.9123a  200.9852a  963.9123a    200.9852a   
+ capbs             783.8731a  170.2468a  783.8731a    170.2468a   
+ temp               25.0000    25.0000    25.0000      25.0000    
+ aic                                                              
+ nf                  1.0000     1.0000     1.0000       1.0000    
+ min                 0.         0.         0.           0.        
+ rbdb               15.0000    15.0000    15.0000      15.0000    
+ rbsb               15.0000    15.0000    15.0000      15.0000    
+ rbpb                5.0000     5.0000     5.0000       5.0000    
+ rbps               15.0000    15.0000    15.0000      15.0000    
+ rbpd               15.0000    15.0000    15.0000      15.0000    
+ trnqsmod            0.         0.         0.           0.        
+ acnqsmod            0.         0.         0.           0.        
+ rbodymod            1.0000     1.0000     1.0000       1.0000    
+ rgatemod            1.0000     1.0000     1.0000       1.0000    
+ geomod              0.         0.         0.           0.        
+ rgeomod             0.         0.         0.           0.        
+ delvto              0.         0.         0.           0.        
+ mulu0               1.0000     1.0000     1.0000       1.0000    
+ delk1               0.         0.         0.           0.        
+ delnfct             0.         0.         0.           0.        
+ deltox              0.         0.         0.           0.        
+ sa                  0.         0.         0.           0.        
+ sb                  0.         0.         0.           0.        
+ sd                  0.         0.         0.           0.        
+ saeff               0.         0.         0.           0.        
+ sbeff               0.         0.         0.           0.        
+  
+  
+                                                              
+ element name       17:m1      17:m2      18:m1      18:m2    
+ drain               5:net10    5:net10    1:net2     1:net2  
+ gate                5:net22    5:net22    5:nand1    5:nand1 
+ source              0:vdd!     0:0        0:vdd!     0:0     
+ bulk                0:vdd!     0:0        0:vdd!     0:0     
+ model               0:pmos     0:nmos     0:pmos     0:nmos  
+ w eff             892.0000n  144.0000n  892.0000n  144.0000n 
+ l eff              29.0000n   29.0000n   29.0000n   29.0000n 
+ rd eff              0.         0.         0.         0.      
+ rs eff              0.         0.         0.         0.      
+ cdsat              74.8155a   13.2980a   74.8155a   13.2980a 
+ cssat              74.8155a   13.2980a   74.8155a   13.2980a 
+ capbd             963.9123a  200.9852a  963.9123a  200.9852a 
+ capbs             783.8731a  170.2468a  783.8731a  170.2468a 
+ temp               25.0000    25.0000    25.0000    25.0000  
+ aic                                                          
+ nf                  1.0000     1.0000     1.0000     1.0000  
+ min                 0.         0.         0.         0.      
+ rbdb               15.0000    15.0000    15.0000    15.0000  
+ rbsb               15.0000    15.0000    15.0000    15.0000  
+ rbpb                5.0000     5.0000     5.0000     5.0000  
+ rbps               15.0000    15.0000    15.0000    15.0000  
+ rbpd               15.0000    15.0000    15.0000    15.0000  
+ trnqsmod            0.         0.         0.         0.      
+ acnqsmod            0.         0.         0.         0.      
+ rbodymod            1.0000     1.0000     1.0000     1.0000  
+ rgatemod            1.0000     1.0000     1.0000     1.0000  
+ geomod              0.         0.         0.         0.      
+ rgeomod             0.         0.         0.         0.      
+ delvto              0.         0.         0.         0.      
+ mulu0               1.0000     1.0000     1.0000     1.0000  
+ delk1               0.         0.         0.         0.      
+ delnfct             0.         0.         0.         0.      
+ deltox              0.         0.         0.         0.      
+ sa                  0.         0.         0.         0.      
+ sb                  0.         0.         0.         0.      
+ sd                  0.         0.         0.         0.      
+ saeff               0.         0.         0.         0.      
+ sbeff               0.         0.         0.         0.      
+  
+  
+                                                              
+ element name       19:m1      19:m2      20:m1      20:m2    
+ drain               0:wl255    0:wl255    0:wl0      0:wl0   
+ gate                6:net11    6:net11    6:net17    6:net17 
+ source              0:vdd!     0:0        0:vdd!     0:0     
+ bulk                0:vdd!     0:0        0:vdd!     0:0     
+ model               0:pmos     0:nmos     0:pmos     0:nmos  
+ w eff              34.2220u    5.6880u   34.2220u    5.6880u 
+ l eff              29.0000n   29.0000n   29.0000n   29.0000n 
+ rd eff              0.         0.         0.         0.      
+ rs eff              0.         0.         0.         0.      
+ cdsat               2.8160f  469.2512a    2.8160f  469.2512a 
+ cssat               2.8160f  469.2512a    2.8160f  469.2512a 
+ capbd              34.9590f    5.8556f   34.9590f    5.8556f 
+ capbs              28.1263f    4.7183f   28.1263f    4.7183f 
+ temp               25.0000    25.0000    25.0000    25.0000  
+ aic                                                          
+ nf                  1.0000     1.0000     1.0000     1.0000  
+ min                 0.         0.         0.         0.      
+ rbdb               15.0000    15.0000    15.0000    15.0000  
+ rbsb               15.0000    15.0000    15.0000    15.0000  
+ rbpb                5.0000     5.0000     5.0000     5.0000  
+ rbps               15.0000    15.0000    15.0000    15.0000  
+ rbpd               15.0000    15.0000    15.0000    15.0000  
+ trnqsmod            0.         0.         0.         0.      
+ acnqsmod            0.         0.         0.         0.      
+ rbodymod            1.0000     1.0000     1.0000     1.0000  
+ rgatemod            1.0000     1.0000     1.0000     1.0000  
+ geomod              0.         0.         0.         0.      
+ rgeomod             0.         0.         0.         0.      
+ delvto              0.         0.         0.         0.      
+ mulu0               1.0000     1.0000     1.0000     1.0000  
+ delk1               0.         0.         0.         0.      
+ delnfct             0.         0.         0.         0.      
+ deltox              0.         0.         0.         0.      
+ sa                  0.         0.         0.         0.      
+ sb                  0.         0.         0.         0.      
+ sd                  0.         0.         0.         0.      
+ saeff               0.         0.         0.         0.      
+ sbeff               0.         0.         0.         0.      
+  
+  
+                                                              
+ element name       21:m2      21:m0      21:m3      21:m1    
+ drain               6:net14    6:net14   21:mid_a    6:net14 
+ gate                1:net14    0:0        1:net14    0:0     
+ source              0:vdd!     0:vdd!     0:0       21:mid_a 
+ bulk                0:vdd!     0:vdd!     0:0        0:0     
+ model               0:pmos     0:pmos     0:nmos     0:nmos  
+ w eff              34.1700u   34.1700u   97.5300u   97.5300u 
+ l eff              29.0000n   29.0000n   29.0000n   29.0000n 
+ rd eff              0.         0.         0.         0.      
+ rs eff              0.         0.         0.         0.      
+ cdsat               2.8321f    2.8321f    8.0430f    8.0430f 
+ cssat               2.8321f    2.8321f    8.0430f    8.0430f 
+ capbd               2.3776f    2.3776f    6.6859f    6.6859f 
+ capbs               1.9209f    1.9209f    5.3861f    5.3861f 
+ temp               25.0000    25.0000    25.0000    25.0000  
+ aic                                                          
+ nf                  1.0000     1.0000     1.0000     1.0000  
+ min                 0.         0.         0.         0.      
+ rbdb               15.0000    15.0000    15.0000    15.0000  
+ rbsb               15.0000    15.0000    15.0000    15.0000  
+ rbpb                5.0000     5.0000     5.0000     5.0000  
+ rbps               15.0000    15.0000    15.0000    15.0000  
+ rbpd               15.0000    15.0000    15.0000    15.0000  
+ trnqsmod            0.         0.         0.         0.      
+ acnqsmod            0.         0.         0.         0.      
+ rbodymod            1.0000     1.0000     1.0000     1.0000  
+ rgatemod            1.0000     1.0000     1.0000     1.0000  
+ geomod              0.         0.         0.         0.      
+ rgeomod             0.         0.         0.         0.      
+ delvto              0.         0.         0.         0.      
+ mulu0               1.0000     1.0000     1.0000     1.0000  
+ delk1               0.         0.         0.         0.      
+ delnfct             0.         0.         0.         0.      
+ deltox              0.         0.         0.         0.      
+ sa                  0.         0.         0.         0.      
+ sb                  0.         0.         0.         0.      
+ sd                  0.         0.         0.         0.      
+ saeff               0.         0.         0.         0.      
+ sbeff               0.         0.         0.         0.      
+  
+  
+                                                              
+ element name       22:m2      22:m0      22:m3      22:m1    
+ drain               6:net8     6:net8    22:mid_a    6:net8  
+ gate                1:net17    0:0        1:net17    0:0     
+ source              0:vdd!     0:vdd!     0:0       22:mid_a 
+ bulk                0:vdd!     0:vdd!     0:0        0:0     
+ model               0:pmos     0:pmos     0:nmos     0:nmos  
+ w eff              34.1700u   34.1700u   97.5300u   97.5300u 
+ l eff              29.0000n   29.0000n   29.0000n   29.0000n 
+ rd eff              0.         0.         0.         0.      
+ rs eff              0.         0.         0.         0.      
+ cdsat               2.8321f    2.8321f    8.0430f    8.0430f 
+ cssat               2.8321f    2.8321f    8.0430f    8.0430f 
+ capbd               2.3776f    2.3776f    6.6859f    6.6859f 
+ capbs               1.9209f    1.9209f    5.3861f    5.3861f 
+ temp               25.0000    25.0000    25.0000    25.0000  
+ aic                                                          
+ nf                  1.0000     1.0000     1.0000     1.0000  
+ min                 0.         0.         0.         0.      
+ rbdb               15.0000    15.0000    15.0000    15.0000  
+ rbsb               15.0000    15.0000    15.0000    15.0000  
+ rbpb                5.0000     5.0000     5.0000     5.0000  
+ rbps               15.0000    15.0000    15.0000    15.0000  
+ rbpd               15.0000    15.0000    15.0000    15.0000  
+ trnqsmod            0.         0.         0.         0.      
+ acnqsmod            0.         0.         0.         0.      
+ rbodymod            1.0000     1.0000     1.0000     1.0000  
+ rgatemod            1.0000     1.0000     1.0000     1.0000  
+ geomod              0.         0.         0.         0.      
+ rgeomod             0.         0.         0.         0.      
+ delvto              0.         0.         0.         0.      
+ mulu0               1.0000     1.0000     1.0000     1.0000  
+ delk1               0.         0.         0.         0.      
+ delnfct             0.         0.         0.         0.      
+ deltox              0.         0.         0.         0.      
+ sa                  0.         0.         0.         0.      
+ sb                  0.         0.         0.         0.      
+ sd                  0.         0.         0.         0.      
+ saeff               0.         0.         0.         0.      
+ sbeff               0.         0.         0.         0.      
+  
+  
+                                                              
+ element name       23:m2      23:m0      23:m3      23:m1    
+ drain               6:net11    6:net11   23:mid_a    6:net11 
+ gate                1:net17    0:vdd!     1:net17    0:vdd!  
+ source              0:vdd!     0:vdd!     0:0       23:mid_a 
+ bulk                0:vdd!     0:vdd!     0:0        0:0     
+ model               0:pmos     0:pmos     0:nmos     0:nmos  
+ w eff               2.2780u    2.2780u    6.5020u    6.5020u 
+ l eff              29.0000n   29.0000n   29.0000n   29.0000n 
+ rd eff              0.         0.         0.         0.      
+ rs eff              0.         0.         0.         0.      
+ cdsat             188.8038a  188.8038a  536.1967a  536.1967a 
+ cssat             188.8038a  188.8038a  536.1967a  536.1967a 
+ capbd               2.3776f    2.3776f    6.6859f    6.6859f 
+ capbs               1.9209f    1.9209f    5.3861f    5.3861f 
+ temp               25.0000    25.0000    25.0000    25.0000  
+ aic                                                          
+ nf                  1.0000     1.0000     1.0000     1.0000  
+ min                 0.         0.         0.         0.      
+ rbdb               15.0000    15.0000    15.0000    15.0000  
+ rbsb               15.0000    15.0000    15.0000    15.0000  
+ rbpb                5.0000     5.0000     5.0000     5.0000  
+ rbps               15.0000    15.0000    15.0000    15.0000  
+ rbpd               15.0000    15.0000    15.0000    15.0000  
+ trnqsmod            0.         0.         0.         0.      
+ acnqsmod            0.         0.         0.         0.      
+ rbodymod            1.0000     1.0000     1.0000     1.0000  
+ rgatemod            1.0000     1.0000     1.0000     1.0000  
+ geomod              0.         0.         0.         0.      
+ rgeomod             0.         0.         0.         0.      
+ delvto              0.         0.         0.         0.      
+ mulu0               1.0000     1.0000     1.0000     1.0000  
+ delk1               0.         0.         0.         0.      
+ delnfct             0.         0.         0.         0.      
+ deltox              0.         0.         0.         0.      
+ sa                  0.         0.         0.         0.      
+ sb                  0.         0.         0.         0.      
+ sd                  0.         0.         0.         0.      
+ saeff               0.         0.         0.         0.      
+ sbeff               0.         0.         0.         0.      
+  
+  
+                                                              
+ element name       24:m2      24:m0      24:m3      24:m1    
+ drain               6:net17    6:net17   24:mid_a    6:net17 
+ gate                1:net14    0:vdd!     1:net14    0:vdd!  
+ source              0:vdd!     0:vdd!     0:0       24:mid_a 
+ bulk                0:vdd!     0:vdd!     0:0        0:0     
+ model               0:pmos     0:pmos     0:nmos     0:nmos  
+ w eff               2.2780u    2.2780u    6.5020u    6.5020u 
+ l eff              29.0000n   29.0000n   29.0000n   29.0000n 
+ rd eff              0.         0.         0.         0.      
+ rs eff              0.         0.         0.         0.      
+ cdsat             188.8038a  188.8038a  536.1967a  536.1967a 
+ cssat             188.8038a  188.8038a  536.1967a  536.1967a 
+ capbd               2.3776f    2.3776f    6.6859f    6.6859f 
+ capbs               1.9209f    1.9209f    5.3861f    5.3861f 
+ temp               25.0000    25.0000    25.0000    25.0000  
+ aic                                                          
+ nf                  1.0000     1.0000     1.0000     1.0000  
+ min                 0.         0.         0.         0.      
+ rbdb               15.0000    15.0000    15.0000    15.0000  
+ rbsb               15.0000    15.0000    15.0000    15.0000  
+ rbpb                5.0000     5.0000     5.0000     5.0000  
+ rbps               15.0000    15.0000    15.0000    15.0000  
+ rbpd               15.0000    15.0000    15.0000    15.0000  
+ trnqsmod            0.         0.         0.         0.      
+ acnqsmod            0.         0.         0.         0.      
+ rbodymod            1.0000     1.0000     1.0000     1.0000  
+ rgatemod            1.0000     1.0000     1.0000     1.0000  
+ geomod              0.         0.         0.         0.      
+ rgeomod             0.         0.         0.         0.      
+ delvto              0.         0.         0.         0.      
+ mulu0               1.0000     1.0000     1.0000     1.0000  
+ delk1               0.         0.         0.         0.      
+ delnfct             0.         0.         0.         0.      
+ deltox              0.         0.         0.         0.      
+ sa                  0.         0.         0.         0.      
+ sb                  0.         0.         0.         0.      
+ sd                  0.         0.         0.         0.      
+ saeff               0.         0.         0.         0.      
+ sbeff               0.         0.         0.         0.      
+  
+  
+                                                              
+ element name       25:m1      25:m2      26:m1      26:m2    
+ drain               6:net26    6:net26    6:net22    6:net22 
+ gate                6:net14    6:net14    6:net8     6:net8  
+ source              0:vdd!     0:0        0:vdd!     0:0     
+ bulk                0:vdd!     0:0        0:vdd!     0:0     
+ model               0:pmos     0:nmos     0:pmos     0:nmos  
+ w eff             513.3300u   85.3200u  513.3300u   85.3200u 
+ l eff              29.0000n   29.0000n   29.0000n   29.0000n 
+ rd eff              0.         0.         0.         0.      
+ rs eff              0.         0.         0.         0.      
+ cdsat              42.2394f    7.0388f   42.2394f    7.0388f 
+ cssat              42.2394f    7.0388f   42.2394f    7.0388f 
+ capbd              34.9590f    5.8556f   34.9590f    5.8556f 
+ capbs              28.1263f    4.7183f   28.1263f    4.7183f 
+ temp               25.0000    25.0000    25.0000    25.0000  
+ aic                                                          
+ nf                  1.0000     1.0000     1.0000     1.0000  
+ min                 0.         0.         0.         0.      
+ rbdb               15.0000    15.0000    15.0000    15.0000  
+ rbsb               15.0000    15.0000    15.0000    15.0000  
+ rbpb                5.0000     5.0000     5.0000     5.0000  
+ rbps               15.0000    15.0000    15.0000    15.0000  
+ rbpd               15.0000    15.0000    15.0000    15.0000  
+ trnqsmod            0.         0.         0.         0.      
+ acnqsmod            0.         0.         0.         0.      
+ rbodymod            1.0000     1.0000     1.0000     1.0000  
+ rgatemod            1.0000     1.0000     1.0000     1.0000  
+ geomod              0.         0.         0.         0.      
+ rgeomod             0.         0.         0.         0.      
+ delvto              0.         0.         0.         0.      
+ mulu0               1.0000     1.0000     1.0000     1.0000  
+ delk1               0.         0.         0.         0.      
+ delnfct             0.         0.         0.         0.      
+ deltox              0.         0.         0.         0.      
+ sa                  0.         0.         0.         0.      
+ sb                  0.         0.         0.         0.      
+ sd                  0.         0.         0.         0.      
+ saeff               0.         0.         0.         0.      
+ sbeff               0.         0.         0.         0.      
+  
+  
+                                                                 
+ element name       27:m2       27:m0       27:m3      27:m1     
+ drain               7:net057    7:net057   27:mid_a    7:net057 
+ gate                1:net1      0:vdd!      1:net1     0:vdd!   
+ source              0:vdd!      0:vdd!      0:0       27:mid_a  
+ bulk                0:vdd!      0:vdd!      0:0        0:0      
+ model               0:pmos      0:pmos      0:nmos     0:nmos   
+ w eff             166.0000n   166.0000n   518.0000n  518.0000n  
+ l eff              29.0000n    29.0000n    29.0000n   29.0000n  
+ rd eff              0.          0.          0.         0.       
+ rs eff              0.          0.          0.         0.       
+ cdsat              15.1073a    15.1073a    44.0567a   44.0567a  
+ cssat              15.1073a    15.1073a    44.0567a   44.0567a  
+ capbd             223.4243a   223.4243a   582.4488a  582.4488a  
+ capbs             188.2947a   188.2947a   477.0600a  477.0600a  
+ temp               25.0000     25.0000     25.0000    25.0000   
+ aic                                                             
+ nf                  1.0000      1.0000      1.0000     1.0000   
+ min                 0.          0.          0.         0.       
+ rbdb               15.0000     15.0000     15.0000    15.0000   
+ rbsb               15.0000     15.0000     15.0000    15.0000   
+ rbpb                5.0000      5.0000      5.0000     5.0000   
+ rbps               15.0000     15.0000     15.0000    15.0000   
+ rbpd               15.0000     15.0000     15.0000    15.0000   
+ trnqsmod            0.          0.          0.         0.       
+ acnqsmod            0.          0.          0.         0.       
+ rbodymod            1.0000      1.0000      1.0000     1.0000   
+ rgatemod            1.0000      1.0000      1.0000     1.0000   
+ geomod              0.          0.          0.         0.       
+ rgeomod             0.          0.          0.         0.       
+ delvto              0.          0.          0.         0.       
+ mulu0               1.0000      1.0000      1.0000     1.0000   
+ delk1               0.          0.          0.         0.       
+ delnfct             0.          0.          0.         0.       
+ deltox              0.          0.          0.         0.       
+ sa                  0.          0.          0.         0.       
+ sb                  0.          0.          0.         0.       
+ sd                  0.          0.          0.         0.       
+ saeff               0.          0.          0.         0.       
+ sbeff               0.          0.          0.         0.       
+  
+  
+                                                              
+ element name       28:m2      28:m0      28:m3      28:m1    
+ drain               7:net77    7:net77   28:mid_a    7:net77 
+ gate                1:net2     0:vdd!     1:net2     0:vdd!  
+ source              0:vdd!     0:vdd!     0:0       28:mid_a 
+ bulk                0:vdd!     0:vdd!     0:0        0:0     
+ model               0:pmos     0:pmos     0:nmos     0:nmos  
+ w eff             166.0000n  166.0000n  518.0000n  518.0000n 
+ l eff              29.0000n   29.0000n   29.0000n   29.0000n 
+ rd eff              0.         0.         0.         0.      
+ rs eff              0.         0.         0.         0.      
+ cdsat              15.1073a   15.1073a   44.0567a   44.0567a 
+ cssat              15.1073a   15.1073a   44.0567a   44.0567a 
+ capbd             223.4243a  223.4243a  582.4488a  582.4488a 
+ capbs             188.2947a  188.2947a  477.0600a  477.0600a 
+ temp               25.0000    25.0000    25.0000    25.0000  
+ aic                                                          
+ nf                  1.0000     1.0000     1.0000     1.0000  
+ min                 0.         0.         0.         0.      
+ rbdb               15.0000    15.0000    15.0000    15.0000  
+ rbsb               15.0000    15.0000    15.0000    15.0000  
+ rbpb                5.0000     5.0000     5.0000     5.0000  
+ rbps               15.0000    15.0000    15.0000    15.0000  
+ rbpd               15.0000    15.0000    15.0000    15.0000  
+ trnqsmod            0.         0.         0.         0.      
+ acnqsmod            0.         0.         0.         0.      
+ rbodymod            1.0000     1.0000     1.0000     1.0000  
+ rgatemod            1.0000     1.0000     1.0000     1.0000  
+ geomod              0.         0.         0.         0.      
+ rgeomod             0.         0.         0.         0.      
+ delvto              0.         0.         0.         0.      
+ mulu0               1.0000     1.0000     1.0000     1.0000  
+ delk1               0.         0.         0.         0.      
+ delnfct             0.         0.         0.         0.      
+ deltox              0.         0.         0.         0.      
+ sa                  0.         0.         0.         0.      
+ sb                  0.         0.         0.         0.      
+ sd                  0.         0.         0.         0.      
+ saeff               0.         0.         0.         0.      
+ sbeff               0.         0.         0.         0.      
+  
+  
+                                                                  
+ element name       29:m1       29:m2       30:m1       30:m2     
+ drain               7:net036    7:net036    7:net032    7:net032 
+ gate                7:net057    7:net057    7:net77     7:net77  
+ source              0:vdd!      0:0         0:vdd!      0:0      
+ bulk                0:vdd!      0:0         0:vdd!      0:0      
+ model               0:pmos      0:nmos      0:pmos      0:nmos   
+ w eff               2.9160u   474.0000n     2.9160u   474.0000n  
+ l eff              29.0000n    29.0000n    29.0000n    29.0000n  
+ rd eff              0.          0.          0.          0.       
+ rs eff              0.          0.          0.          0.       
+ cdsat             241.2746a    40.4381a   241.2746a    40.4381a  
+ cssat             241.2746a    40.4381a   241.2746a    40.4381a  
+ capbd               3.0283f   537.5707a     3.0283f   537.5707a  
+ capbs               2.4443f   440.9643a     2.4443f   440.9643a  
+ temp               25.0000     25.0000     25.0000     25.0000   
+ aic                                                              
+ nf                  1.0000      1.0000      1.0000      1.0000   
+ min                 0.          0.          0.          0.       
+ rbdb               15.0000     15.0000     15.0000     15.0000   
+ rbsb               15.0000     15.0000     15.0000     15.0000   
+ rbpb                5.0000      5.0000      5.0000      5.0000   
+ rbps               15.0000     15.0000     15.0000     15.0000   
+ rbpd               15.0000     15.0000     15.0000     15.0000   
+ trnqsmod            0.          0.          0.          0.       
+ acnqsmod            0.          0.          0.          0.       
+ rbodymod            1.0000      1.0000      1.0000      1.0000   
+ rgatemod            1.0000      1.0000      1.0000      1.0000   
+ geomod              0.          0.          0.          0.       
+ rgeomod             0.          0.          0.          0.       
+ delvto              0.          0.          0.          0.       
+ mulu0               1.0000      1.0000      1.0000      1.0000   
+ delk1               0.          0.          0.          0.       
+ delnfct             0.          0.          0.          0.       
+ deltox              0.          0.          0.          0.       
+ sa                  0.          0.          0.          0.       
+ sb                  0.          0.          0.          0.       
+ sd                  0.          0.          0.          0.       
+ saeff               0.          0.          0.          0.       
+ sbeff               0.          0.          0.          0.       
+  
+  
+                                                                  
+ element name       31:m1       31:m2       32:m1       32:m2     
+ drain               7:net052    7:net052    7:net046    7:net046 
+ gate                7:net036    7:net036    7:net032    7:net032 
+ source              0:vdd!      0:0         0:vdd!      0:0      
+ bulk                0:vdd!      0:0         0:vdd!      0:0      
+ model               0:pmos      0:nmos      0:pmos      0:nmos   
+ w eff               3.0260u     6.0840u     3.0260u     6.0840u  
+ l eff              29.0000n    29.0000n    29.0000n    29.0000n  
+ rd eff              0.          0.          0.          0.       
+ rs eff              0.          0.          0.          0.       
+ cdsat             250.3213a   501.8193a   250.3213a   501.8193a  
+ cssat             250.3213a   501.8193a   250.3213a   501.8193a  
+ capbd               3.1405f     6.2595f     3.1405f     6.2595f  
+ capbs               2.5345f     5.0432f     2.5345f     5.0432f  
+ temp               25.0000     25.0000     25.0000     25.0000   
+ aic                                                              
+ nf                  1.0000      1.0000      1.0000      1.0000   
+ min                 0.          0.          0.          0.       
+ rbdb               15.0000     15.0000     15.0000     15.0000   
+ rbsb               15.0000     15.0000     15.0000     15.0000   
+ rbpb                5.0000      5.0000      5.0000      5.0000   
+ rbps               15.0000     15.0000     15.0000     15.0000   
+ rbpd               15.0000     15.0000     15.0000     15.0000   
+ trnqsmod            0.          0.          0.          0.       
+ acnqsmod            0.          0.          0.          0.       
+ rbodymod            1.0000      1.0000      1.0000      1.0000   
+ rgatemod            1.0000      1.0000      1.0000      1.0000   
+ geomod              0.          0.          0.          0.       
+ rgeomod             0.          0.          0.          0.       
+ delvto              0.          0.          0.          0.       
+ mulu0               1.0000      1.0000      1.0000      1.0000   
+ delk1               0.          0.          0.          0.       
+ delnfct             0.          0.          0.          0.       
+ deltox              0.          0.          0.          0.       
+ sa                  0.          0.          0.          0.       
+ sb                  0.          0.          0.          0.       
+ sd                  0.          0.          0.          0.       
+ saeff               0.          0.          0.          0.       
+ sbeff               0.          0.          0.          0.       
+  
+  
+                                                              
+ element name       33:m2      33:m0      33:m3      33:m1    
+ drain               7:net55    7:net55   33:mid_a    7:net55 
+ gate                1:net2     0:0        1:net2     0:0     
+ source              0:vdd!     0:vdd!     0:0       33:mid_a 
+ bulk                0:vdd!     0:vdd!     0:0        0:0     
+ model               0:pmos     0:pmos     0:nmos     0:nmos  
+ w eff             498.0000n  498.0000n    1.5540u    1.5540u 
+ l eff              29.0000n   29.0000n   29.0000n   29.0000n 
+ rd eff              0.         0.         0.         0.      
+ rs eff              0.         0.         0.         0.      
+ cdsat              45.3220a   45.3220a  132.1702a  132.1702a 
+ cssat              45.3220a   45.3220a  132.1702a  132.1702a 
+ capbd             223.4243a  223.4243a  582.4488a  582.4488a 
+ capbs             188.2947a  188.2947a  477.0600a  477.0600a 
+ temp               25.0000    25.0000    25.0000    25.0000  
+ aic                                                          
+ nf                  1.0000     1.0000     1.0000     1.0000  
+ min                 0.         0.         0.         0.      
+ rbdb               15.0000    15.0000    15.0000    15.0000  
+ rbsb               15.0000    15.0000    15.0000    15.0000  
+ rbpb                5.0000     5.0000     5.0000     5.0000  
+ rbps               15.0000    15.0000    15.0000    15.0000  
+ rbpd               15.0000    15.0000    15.0000    15.0000  
+ trnqsmod            0.         0.         0.         0.      
+ acnqsmod            0.         0.         0.         0.      
+ rbodymod            1.0000     1.0000     1.0000     1.0000  
+ rgatemod            1.0000     1.0000     1.0000     1.0000  
+ geomod              0.         0.         0.         0.      
+ rgeomod             0.         0.         0.         0.      
+ delvto              0.         0.         0.         0.      
+ mulu0               1.0000     1.0000     1.0000     1.0000  
+ delk1               0.         0.         0.         0.      
+ delnfct             0.         0.         0.         0.      
+ deltox              0.         0.         0.         0.      
+ sa                  0.         0.         0.         0.      
+ sb                  0.         0.         0.         0.      
+ sd                  0.         0.         0.         0.      
+ saeff               0.         0.         0.         0.      
+ sbeff               0.         0.         0.         0.      
+  
+  
+                                                              
+ element name       34:m2      34:m0      34:m3      34:m1    
+ drain               7:net63    7:net63   34:mid_a    7:net63 
+ gate                1:net1     0:0        1:net1     0:0     
+ source              0:vdd!     0:vdd!     0:0       34:mid_a 
+ bulk                0:vdd!     0:vdd!     0:0        0:0     
+ model               0:pmos     0:pmos     0:nmos     0:nmos  
+ w eff             498.0000n  498.0000n    1.5540u    1.5540u 
+ l eff              29.0000n   29.0000n   29.0000n   29.0000n 
+ rd eff              0.         0.         0.         0.      
+ rs eff              0.         0.         0.         0.      
+ cdsat              45.3220a   45.3220a  132.1702a  132.1702a 
+ cssat              45.3220a   45.3220a  132.1702a  132.1702a 
+ capbd             223.4243a  223.4243a  582.4488a  582.4488a 
+ capbs             188.2947a  188.2947a  477.0600a  477.0600a 
+ temp               25.0000    25.0000    25.0000    25.0000  
+ aic                                                          
+ nf                  1.0000     1.0000     1.0000     1.0000  
+ min                 0.         0.         0.         0.      
+ rbdb               15.0000    15.0000    15.0000    15.0000  
+ rbsb               15.0000    15.0000    15.0000    15.0000  
+ rbpb                5.0000     5.0000     5.0000     5.0000  
+ rbps               15.0000    15.0000    15.0000    15.0000  
+ rbpd               15.0000    15.0000    15.0000    15.0000  
+ trnqsmod            0.         0.         0.         0.      
+ acnqsmod            0.         0.         0.         0.      
+ rbodymod            1.0000     1.0000     1.0000     1.0000  
+ rgatemod            1.0000     1.0000     1.0000     1.0000  
+ geomod              0.         0.         0.         0.      
+ rgeomod             0.         0.         0.         0.      
+ delvto              0.         0.         0.         0.      
+ mulu0               1.0000     1.0000     1.0000     1.0000  
+ delk1               0.         0.         0.         0.      
+ delnfct             0.         0.         0.         0.      
+ deltox              0.         0.         0.         0.      
+ sa                  0.         0.         0.         0.      
+ sb                  0.         0.         0.         0.      
+ sd                  0.         0.         0.         0.      
+ saeff               0.         0.         0.         0.      
+ sbeff               0.         0.         0.         0.      
+  
+  
+                                                                  
+ element name       35:m1       35:m2       36:m1       36:m2     
+ drain               7:net049    7:net049    7:net043    7:net043 
+ gate                7:net69     7:net69     7:net73     7:net73  
+ source              0:vdd!      0:0         0:vdd!      0:0      
+ bulk                0:vdd!      0:0         0:vdd!      0:0      
+ model               0:pmos      0:nmos      0:pmos      0:nmos   
+ w eff               9.0780u    18.2520u     9.0780u    18.2520u  
+ l eff              29.0000n    29.0000n    29.0000n    29.0000n  
+ rd eff              0.          0.          0.          0.       
+ rs eff              0.          0.          0.          0.       
+ cdsat             750.9639a     1.5055f   750.9639a     1.5055f  
+ cssat             750.9639a     1.5055f   750.9639a     1.5055f  
+ capbd               3.1405f     6.2595f     3.1405f     6.2595f  
+ capbs               2.5345f     5.0432f     2.5345f     5.0432f  
+ temp               25.0000     25.0000     25.0000     25.0000   
+ aic                                                              
+ nf                  1.0000      1.0000      1.0000      1.0000   
+ min                 0.          0.          0.          0.       
+ rbdb               15.0000     15.0000     15.0000     15.0000   
+ rbsb               15.0000     15.0000     15.0000     15.0000   
+ rbpb                5.0000      5.0000      5.0000      5.0000   
+ rbps               15.0000     15.0000     15.0000     15.0000   
+ rbpd               15.0000     15.0000     15.0000     15.0000   
+ trnqsmod            0.          0.          0.          0.       
+ acnqsmod            0.          0.          0.          0.       
+ rbodymod            1.0000      1.0000      1.0000      1.0000   
+ rgatemod            1.0000      1.0000      1.0000      1.0000   
+ geomod              0.          0.          0.          0.       
+ rgeomod             0.          0.          0.          0.       
+ delvto              0.          0.          0.          0.       
+ mulu0               1.0000      1.0000      1.0000      1.0000   
+ delk1               0.          0.          0.          0.       
+ delnfct             0.          0.          0.          0.       
+ deltox              0.          0.          0.          0.       
+ sa                  0.          0.          0.          0.       
+ sb                  0.          0.          0.          0.       
+ sd                  0.          0.          0.          0.       
+ saeff               0.          0.          0.          0.       
+ sbeff               0.          0.          0.          0.       
+  
+  
+                                                              
+ element name       37:m1      37:m2      38:m1      38:m2    
+ drain               7:net69    7:net69    7:net73    7:net73 
+ gate                7:net55    7:net55    7:net63    7:net63 
+ source              0:vdd!     0:0        0:vdd!     0:0     
+ bulk                0:vdd!     0:0        0:vdd!     0:0     
+ model               0:pmos     0:nmos     0:pmos     0:nmos  
+ w eff               8.7480u    1.4220u    8.7480u    1.4220u 
+ l eff              29.0000n   29.0000n   29.0000n   29.0000n 
+ rd eff              0.         0.         0.         0.      
+ rs eff              0.         0.         0.         0.      
+ cdsat             723.8238a  121.3142a  723.8238a  121.3142a 
+ cssat             723.8238a  121.3142a  723.8238a  121.3142a 
+ capbd               3.0283f  537.5707a    3.0283f  537.5707a 
+ capbs               2.4443f  440.9643a    2.4443f  440.9643a 
+ temp               25.0000    25.0000    25.0000    25.0000  
+ aic                                                          
+ nf                  1.0000     1.0000     1.0000     1.0000  
+ min                 0.         0.         0.         0.      
+ rbdb               15.0000    15.0000    15.0000    15.0000  
+ rbsb               15.0000    15.0000    15.0000    15.0000  
+ rbpb                5.0000     5.0000     5.0000     5.0000  
+ rbps               15.0000    15.0000    15.0000    15.0000  
+ rbpd               15.0000    15.0000    15.0000    15.0000  
+ trnqsmod            0.         0.         0.         0.      
+ acnqsmod            0.         0.         0.         0.      
+ rbodymod            1.0000     1.0000     1.0000     1.0000  
+ rgatemod            1.0000     1.0000     1.0000     1.0000  
+ geomod              0.         0.         0.         0.      
+ rgeomod             0.         0.         0.         0.      
+ delvto              0.         0.         0.         0.      
+ mulu0               1.0000     1.0000     1.0000     1.0000  
+ delk1               0.         0.         0.         0.      
+ delnfct             0.         0.         0.         0.      
+ deltox              0.         0.         0.         0.      
+ sa                  0.         0.         0.         0.      
+ sb                  0.         0.         0.         0.      
+ sd                  0.         0.         0.         0.      
+ saeff               0.         0.         0.         0.      
+ sbeff               0.         0.         0.         0.      
+  
+  
+                                                                  
+ element name       39:m1       39:m2       40:m1       40:m2     
+ drain               1:net17     1:net17     1:net14     1:net14  
+ gate                7:net052    7:net052    7:net046    7:net046 
+ source              0:vdd!      0:0         0:vdd!      0:0      
+ bulk                0:vdd!      0:0         0:vdd!      0:0      
+ model               0:pmos      0:nmos      0:pmos      0:nmos   
+ w eff              48.6760u     8.1080u    48.6760u     8.1080u  
+ l eff              29.0000n    29.0000n    29.0000n    29.0000n  
+ rd eff              0.          0.          0.          0.       
+ rs eff              0.          0.          0.          0.       
+ cdsat               4.0047f   668.2784a     4.0047f   668.2784a  
+ cssat               4.0047f   668.2784a     4.0047f   668.2784a  
+ capbd              49.7015f     8.3239f    49.7015f     8.3239f  
+ capbs              39.9838f     6.7036f    39.9838f     6.7036f  
+ temp               25.0000     25.0000     25.0000     25.0000   
+ aic                                                              
+ nf                  1.0000      1.0000      1.0000      1.0000   
+ min                 0.          0.          0.          0.       
+ rbdb               15.0000     15.0000     15.0000     15.0000   
+ rbsb               15.0000     15.0000     15.0000     15.0000   
+ rbpb                5.0000      5.0000      5.0000      5.0000   
+ rbps               15.0000     15.0000     15.0000     15.0000   
+ rbpd               15.0000     15.0000     15.0000     15.0000   
+ trnqsmod            0.          0.          0.          0.       
+ acnqsmod            0.          0.          0.          0.       
+ rbodymod            1.0000      1.0000      1.0000      1.0000   
+ rgatemod            1.0000      1.0000      1.0000      1.0000   
+ geomod              0.          0.          0.          0.       
+ rgeomod             0.          0.          0.          0.       
+ delvto              0.          0.          0.          0.       
+ mulu0               1.0000      1.0000      1.0000      1.0000   
+ delk1               0.          0.          0.          0.       
+ delnfct             0.          0.          0.          0.       
+ deltox              0.          0.          0.          0.       
+ sa                  0.          0.          0.          0.       
+ sb                  0.          0.          0.          0.       
+ sd                  0.          0.          0.          0.       
+ saeff               0.          0.          0.          0.       
+ sbeff               0.          0.          0.          0.       
+  
+  
+                                                                  
+ element name       41:m1       41:m2       42:m1       42:m2     
+ drain               7:net028    7:net028    7:net024    7:net024 
+ gate                7:net049    7:net049    7:net043    7:net043 
+ source              0:vdd!      0:0         0:vdd!      0:0      
+ bulk                0:vdd!      0:0         0:vdd!      0:0      
+ model               0:pmos      0:nmos      0:pmos      0:nmos   
+ w eff             146.0280u    24.3240u   146.0280u    24.3240u  
+ l eff              29.0000n    29.0000n    29.0000n    29.0000n  
+ rd eff              0.          0.          0.          0.       
+ rs eff              0.          0.          0.          0.       
+ cdsat              12.0141f     2.0048f    12.0141f     2.0048f  
+ cssat              12.0141f     2.0048f    12.0141f     2.0048f  
+ capbd              49.7015f     8.3239f    49.7015f     8.3239f  
+ capbs              39.9838f     6.7036f    39.9838f     6.7036f  
+ temp               25.0000     25.0000     25.0000     25.0000   
+ aic                                                              
+ nf                  1.0000      1.0000      1.0000      1.0000   
+ min                 0.          0.          0.          0.       
+ rbdb               15.0000     15.0000     15.0000     15.0000   
+ rbsb               15.0000     15.0000     15.0000     15.0000   
+ rbpb                5.0000      5.0000      5.0000      5.0000   
+ rbps               15.0000     15.0000     15.0000     15.0000   
+ rbpd               15.0000     15.0000     15.0000     15.0000   
+ trnqsmod            0.          0.          0.          0.       
+ acnqsmod            0.          0.          0.          0.       
+ rbodymod            1.0000      1.0000      1.0000      1.0000   
+ rgatemod            1.0000      1.0000      1.0000      1.0000   
+ geomod              0.          0.          0.          0.       
+ rgeomod             0.          0.          0.          0.       
+ delvto              0.          0.          0.          0.       
+ mulu0               1.0000      1.0000      1.0000      1.0000   
+ delk1               0.          0.          0.          0.       
+ delnfct             0.          0.          0.          0.       
+ deltox              0.          0.          0.          0.       
+ sa                  0.          0.          0.          0.       
+ sb                  0.          0.          0.          0.       
+ sd                  0.          0.          0.          0.       
+ saeff               0.          0.          0.          0.       
+ sbeff               0.          0.          0.          0.       
+  
+  
+                                                                      
+ element name       46:m_0     46:m_1         47:m_0     47:m_1       
+ drain              43:net_1   43:net_1        8:net_2    8:net_2     
+ gate                2:src      2:src         43:net_1   43:net_1     
+ source              0:0       46:vdd_stimu    0:0       47:vdd_stimu 
+ bulk                0:0       46:vdd_stimu    0:0       47:vdd_stimu 
+ model               0:nmos     0:pmos         0:nmos     0:pmos      
+ w eff             166.0000n  518.0000n      664.0000n    2.0720u     
+ l eff              29.0000n   29.0000n       29.0000n   29.0000n     
+ rd eff              0.         0.             0.         0.          
+ rs eff              0.         0.             0.         0.          
+ cdsat              15.1073a   44.0567a       60.4294a  176.2270a     
+ cssat              15.1073a   44.0567a       60.4294a  176.2270a     
+ capbd             223.4243a  582.4488a      223.4243a  582.4488a     
+ capbs             188.2947a  477.0600a      188.2947a  477.0600a     
+ temp               25.0000    25.0000        25.0000    25.0000      
+ aic                                                                  
+ nf                  1.0000     1.0000         1.0000     1.0000      
+ min                 0.         0.             0.         0.          
+ rbdb               15.0000    15.0000        15.0000    15.0000      
+ rbsb               15.0000    15.0000        15.0000    15.0000      
+ rbpb                5.0000     5.0000         5.0000     5.0000      
+ rbps               15.0000    15.0000        15.0000    15.0000      
+ rbpd               15.0000    15.0000        15.0000    15.0000      
+ trnqsmod            0.         0.             0.         0.          
+ acnqsmod            0.         0.             0.         0.          
+ rbodymod            1.0000     1.0000         1.0000     1.0000      
+ rgatemod            1.0000     1.0000         1.0000     1.0000      
+ geomod              0.         0.             0.         0.          
+ rgeomod             0.         0.             0.         0.          
+ delvto              0.         0.             0.         0.          
+ mulu0               1.0000     1.0000         1.0000     1.0000      
+ delk1               0.         0.             0.         0.          
+ delnfct             0.         0.             0.         0.          
+ deltox              0.         0.             0.         0.          
+ sa                  0.         0.             0.         0.          
+ sb                  0.         0.             0.         0.          
+ sd                  0.         0.             0.         0.          
+ saeff               0.         0.             0.         0.          
+ sbeff               0.         0.             0.         0.          
+  
+  
+                                                                      
+ element name       48:m_0     48:m_1         49:m_0     49:m_1       
+ drain              43:net_3   43:net_3       43:net_4   43:net_4     
+ gate                8:net_2    8:net_2       43:net_3   43:net_3     
+ source              0:0       48:vdd_stimu    0:0       49:vdd_stimu 
+ bulk                0:0       48:vdd_stimu    0:0       49:vdd_stimu 
+ model               0:nmos     0:pmos         0:nmos     0:pmos      
+ w eff               2.6560u    8.2880u       10.6240u   33.1520u     
+ l eff              29.0000n   29.0000n       29.0000n   29.0000n     
+ rd eff              0.         0.             0.         0.          
+ rs eff              0.         0.             0.         0.          
+ cdsat             241.7174a  704.9080a      966.8698a    2.8196f     
+ cssat             241.7174a  704.9080a      966.8698a    2.8196f     
+ capbd             223.4243a  582.4488a      223.4243a  582.4488a     
+ capbs             188.2947a  477.0600a      188.2947a  477.0600a     
+ temp               25.0000    25.0000        25.0000    25.0000      
+ aic                                                                  
+ nf                  1.0000     1.0000         1.0000     1.0000      
+ min                 0.         0.             0.         0.          
+ rbdb               15.0000    15.0000        15.0000    15.0000      
+ rbsb               15.0000    15.0000        15.0000    15.0000      
+ rbpb                5.0000     5.0000         5.0000     5.0000      
+ rbps               15.0000    15.0000        15.0000    15.0000      
+ rbpd               15.0000    15.0000        15.0000    15.0000      
+ trnqsmod            0.         0.             0.         0.          
+ acnqsmod            0.         0.             0.         0.          
+ rbodymod            1.0000     1.0000         1.0000     1.0000      
+ rgatemod            1.0000     1.0000         1.0000     1.0000      
+ geomod              0.         0.             0.         0.          
+ rgeomod             0.         0.             0.         0.          
+ delvto              0.         0.             0.         0.          
+ mulu0               1.0000     1.0000         1.0000     1.0000      
+ delk1               0.         0.             0.         0.          
+ delnfct             0.         0.             0.         0.          
+ deltox              0.         0.             0.         0.          
+ sa                  0.         0.             0.         0.          
+ sb                  0.         0.             0.         0.          
+ sd                  0.         0.             0.         0.          
+ saeff               0.         0.             0.         0.          
+ sbeff               0.         0.             0.         0.          
+  
+  
+                                                                      
+ element name       50:m_0     50:m_1         51:m_0     51:m_1       
+ drain              44:net_1   44:net_1        9:net_2    9:net_2     
+ gate                3:src      3:src         44:net_1   44:net_1     
+ source              0:0       50:vdd_stimu    0:0       51:vdd_stimu 
+ bulk                0:0       50:vdd_stimu    0:0       51:vdd_stimu 
+ model               0:nmos     0:pmos         0:nmos     0:pmos      
+ w eff             166.0000n  518.0000n      664.0000n    2.0720u     
+ l eff              29.0000n   29.0000n       29.0000n   29.0000n     
+ rd eff              0.         0.             0.         0.          
+ rs eff              0.         0.             0.         0.          
+ cdsat              15.1073a   44.0567a       60.4294a  176.2270a     
+ cssat              15.1073a   44.0567a       60.4294a  176.2270a     
+ capbd             223.4243a  582.4488a      223.4243a  582.4488a     
+ capbs             188.2947a  477.0600a      188.2947a  477.0600a     
+ temp               25.0000    25.0000        25.0000    25.0000      
+ aic                                                                  
+ nf                  1.0000     1.0000         1.0000     1.0000      
+ min                 0.         0.             0.         0.          
+ rbdb               15.0000    15.0000        15.0000    15.0000      
+ rbsb               15.0000    15.0000        15.0000    15.0000      
+ rbpb                5.0000     5.0000         5.0000     5.0000      
+ rbps               15.0000    15.0000        15.0000    15.0000      
+ rbpd               15.0000    15.0000        15.0000    15.0000      
+ trnqsmod            0.         0.             0.         0.          
+ acnqsmod            0.         0.             0.         0.          
+ rbodymod            1.0000     1.0000         1.0000     1.0000      
+ rgatemod            1.0000     1.0000         1.0000     1.0000      
+ geomod              0.         0.             0.         0.          
+ rgeomod             0.         0.             0.         0.          
+ delvto              0.         0.             0.         0.          
+ mulu0               1.0000     1.0000         1.0000     1.0000      
+ delk1               0.         0.             0.         0.          
+ delnfct             0.         0.             0.         0.          
+ deltox              0.         0.             0.         0.          
+ sa                  0.         0.             0.         0.          
+ sb                  0.         0.             0.         0.          
+ sd                  0.         0.             0.         0.          
+ saeff               0.         0.             0.         0.          
+ sbeff               0.         0.             0.         0.          
+  
+  
+                                                                      
+ element name       52:m_0     52:m_1         53:m_0     53:m_1       
+ drain              44:net_3   44:net_3       44:net_4   44:net_4     
+ gate                9:net_2    9:net_2       44:net_3   44:net_3     
+ source              0:0       52:vdd_stimu    0:0       53:vdd_stimu 
+ bulk                0:0       52:vdd_stimu    0:0       53:vdd_stimu 
+ model               0:nmos     0:pmos         0:nmos     0:pmos      
+ w eff               2.6560u    8.2880u       10.6240u   33.1520u     
+ l eff              29.0000n   29.0000n       29.0000n   29.0000n     
+ rd eff              0.         0.             0.         0.          
+ rs eff              0.         0.             0.         0.          
+ cdsat             241.7174a  704.9080a      966.8698a    2.8196f     
+ cssat             241.7174a  704.9080a      966.8698a    2.8196f     
+ capbd             223.4243a  582.4488a      223.4243a  582.4488a     
+ capbs             188.2947a  477.0600a      188.2947a  477.0600a     
+ temp               25.0000    25.0000        25.0000    25.0000      
+ aic                                                                  
+ nf                  1.0000     1.0000         1.0000     1.0000      
+ min                 0.         0.             0.         0.          
+ rbdb               15.0000    15.0000        15.0000    15.0000      
+ rbsb               15.0000    15.0000        15.0000    15.0000      
+ rbpb                5.0000     5.0000         5.0000     5.0000      
+ rbps               15.0000    15.0000        15.0000    15.0000      
+ rbpd               15.0000    15.0000        15.0000    15.0000      
+ trnqsmod            0.         0.             0.         0.          
+ acnqsmod            0.         0.             0.         0.          
+ rbodymod            1.0000     1.0000         1.0000     1.0000      
+ rgatemod            1.0000     1.0000         1.0000     1.0000      
+ geomod              0.         0.             0.         0.          
+ rgeomod             0.         0.             0.         0.          
+ delvto              0.         0.             0.         0.          
+ mulu0               1.0000     1.0000         1.0000     1.0000      
+ delk1               0.         0.             0.         0.          
+ delnfct             0.         0.             0.         0.          
+ deltox              0.         0.             0.         0.          
+ sa                  0.         0.             0.         0.          
+ sb                  0.         0.             0.         0.          
+ sd                  0.         0.             0.         0.          
+ saeff               0.         0.             0.         0.          
+ sbeff               0.         0.             0.         0.          
+  
+  
+                                                                      
+ element name       54:m_0     54:m_1         55:m_0     55:m_1       
+ drain              45:net_1   45:net_1       10:net_2   10:net_2     
+ gate                4:src      4:src         45:net_1   45:net_1     
+ source              0:0       54:vdd_stimu    0:0       55:vdd_stimu 
+ bulk                0:0       54:vdd_stimu    0:0       55:vdd_stimu 
+ model               0:nmos     0:pmos         0:nmos     0:pmos      
+ w eff             166.0000n  518.0000n      664.0000n    2.0720u     
+ l eff              29.0000n   29.0000n       29.0000n   29.0000n     
+ rd eff              0.         0.             0.         0.          
+ rs eff              0.         0.             0.         0.          
+ cdsat              15.1073a   44.0567a       60.4294a  176.2270a     
+ cssat              15.1073a   44.0567a       60.4294a  176.2270a     
+ capbd             223.4243a  582.4488a      223.4243a  582.4488a     
+ capbs             188.2947a  477.0600a      188.2947a  477.0600a     
+ temp               25.0000    25.0000        25.0000    25.0000      
+ aic                                                                  
+ nf                  1.0000     1.0000         1.0000     1.0000      
+ min                 0.         0.             0.         0.          
+ rbdb               15.0000    15.0000        15.0000    15.0000      
+ rbsb               15.0000    15.0000        15.0000    15.0000      
+ rbpb                5.0000     5.0000         5.0000     5.0000      
+ rbps               15.0000    15.0000        15.0000    15.0000      
+ rbpd               15.0000    15.0000        15.0000    15.0000      
+ trnqsmod            0.         0.             0.         0.          
+ acnqsmod            0.         0.             0.         0.          
+ rbodymod            1.0000     1.0000         1.0000     1.0000      
+ rgatemod            1.0000     1.0000         1.0000     1.0000      
+ geomod              0.         0.             0.         0.          
+ rgeomod             0.         0.             0.         0.          
+ delvto              0.         0.             0.         0.          
+ mulu0               1.0000     1.0000         1.0000     1.0000      
+ delk1               0.         0.             0.         0.          
+ delnfct             0.         0.             0.         0.          
+ deltox              0.         0.             0.         0.          
+ sa                  0.         0.             0.         0.          
+ sb                  0.         0.             0.         0.          
+ sd                  0.         0.             0.         0.          
+ saeff               0.         0.             0.         0.          
+ sbeff               0.         0.             0.         0.          
+  
+  
+                                                                      
+ element name       56:m_0     56:m_1         57:m_0     57:m_1       
+ drain              45:net_3   45:net_3       45:net_4   45:net_4     
+ gate               10:net_2   10:net_2       45:net_3   45:net_3     
+ source              0:0       56:vdd_stimu    0:0       57:vdd_stimu 
+ bulk                0:0       56:vdd_stimu    0:0       57:vdd_stimu 
+ model               0:nmos     0:pmos         0:nmos     0:pmos      
+ w eff               2.6560u    8.2880u       10.6240u   33.1520u     
+ l eff              29.0000n   29.0000n       29.0000n   29.0000n     
+ rd eff              0.         0.             0.         0.          
+ rs eff              0.         0.             0.         0.          
+ cdsat             241.7174a  704.9080a      966.8698a    2.8196f     
+ cssat             241.7174a  704.9080a      966.8698a    2.8196f     
+ capbd             223.4243a  582.4488a      223.4243a  582.4488a     
+ capbs             188.2947a  477.0600a      188.2947a  477.0600a     
+ temp               25.0000    25.0000        25.0000    25.0000      
+ aic                                                                  
+ nf                  1.0000     1.0000         1.0000     1.0000      
+ min                 0.         0.             0.         0.          
+ rbdb               15.0000    15.0000        15.0000    15.0000      
+ rbsb               15.0000    15.0000        15.0000    15.0000      
+ rbpb                5.0000     5.0000         5.0000     5.0000      
+ rbps               15.0000    15.0000        15.0000    15.0000      
+ rbpd               15.0000    15.0000        15.0000    15.0000      
+ trnqsmod            0.         0.             0.         0.          
+ acnqsmod            0.         0.             0.         0.          
+ rbodymod            1.0000     1.0000         1.0000     1.0000      
+ rgatemod            1.0000     1.0000         1.0000     1.0000      
+ geomod              0.         0.             0.         0.          
+ rgeomod             0.         0.             0.         0.          
+ delvto              0.         0.             0.         0.          
+ mulu0               1.0000     1.0000         1.0000     1.0000      
+ delk1               0.         0.             0.         0.          
+ delnfct             0.         0.             0.         0.          
+ deltox              0.         0.             0.         0.          
+ sa                  0.         0.             0.         0.          
+ sb                  0.         0.             0.         0.          
+ sd                  0.         0.             0.         0.          
+ saeff               0.         0.             0.         0.          
+ sbeff               0.         0.             0.         0.          
+  
+
+
+ **** subcircuit calls
+    name        subcircuit         external nodes
+
+
+         0:xi17     decoder_        0:wl0         0:wl255       0:a0      
+                               0:a255        0:ck      
+
+
+         0:xclk_gen clk_gen         0:ck      
+         0:xa0_gen  a0_gen          0:a0      
+         0:xa255_ge a255_gen        0:a255    
+         1:xi5      predecod        0:a0          0:a255        0:ck      
+                               1:net2        1:net1    
+
+
+         1:xi1      decode_s        0:wl0         0:wl255       1:net14   
+                               1:net17   
+
+
+         1:xi4      predecod        1:net2        1:net1        1:net14   
+                               1:net17   
+
+
+         2:xgen     signal_g        2:src         0:ck      
+         3:xgen     signal_g        3:src         0:a0      
+         4:xgen     signal_g        4:src         0:a255    
+         5:xi36     nand3           0:ck          0:vdd!        0:a0      
+                               5:nand1   
+
+
+         5:xi37     nand3           0:ck          0:0           0:a0      
+                               5:net22   
+
+
+         5:xi38     nand3           0:ck          0:vdd!        0:a255    
+                               5:nand1_1 
+
+
+         5:xi39     nand3           0:ck          0:0           0:a255    
+                               5:net14   
+
+
+         5:xu3      inv_pcel        5:net14       5:net6    
+         5:xu2      inv_pcel        5:nand1_1     1:net1    
+         5:xu1      inv_pcel        5:net22       5:net10   
+         5:xu0      inv_pcel        5:nand1       1:net2    
+         6:xu7      inv_pcel        6:net11       0:wl255   
+         6:xu5      inv_pcel        6:net17       0:wl0     
+         6:xu1      nand_pce        0:0           1:net14       6:net14   
+         6:xu3      nand_pce        0:0           1:net17       6:net8    
+         6:xu2      nand_pce        0:vdd!        1:net17       6:net11   
+         6:xu0      nand_pce        0:vdd!        1:net14       6:net17   
+         6:xu6      inv_pcel        6:net14       6:net26   
+         6:xu8      inv_pcel        6:net8        6:net22   
+         7:xi17     nand_pce        0:vdd!        1:net1        7:net057  
+         7:xi15     nand_pce        0:vdd!        1:net2        7:net77   
+         7:xu2      inv_pcel        7:net057      7:net036  
+         7:xu0      inv_pcel        7:net77       7:net032  
+         7:xu13     inv_pcel        7:net036      7:net052  
+         7:xu15     inv_pcel        7:net032      7:net046  
+         7:xi16     nand_pce        0:0           1:net2        7:net55   
+         7:xi18     nand_pce        0:0           1:net1        7:net63   
+         7:xu14     inv_pcel        7:net69       7:net049  
+         7:xu12     inv_pcel        7:net73       7:net043  
+         7:xu1      inv_pcel        7:net55       7:net69   
+         7:xu3      inv_pcel        7:net63       7:net73   
+         7:xu10     inv_pcel        7:net052      1:net17   
+         7:xu8      inv_pcel        7:net046      1:net14   
+         7:xu9      inv_pcel        7:net049      7:net028  
+         7:xu11     inv_pcel        7:net043      7:net024  
+         8:x_0      inv_chai        2:src         8:net_2   
+         9:x_0      inv_chai        3:src         9:net_2   
+        10:x_0      inv_chai        4:src        10:net_2   
+        43:x_0      inv_stim        2:src        43:net_1   
+        43:x_1      inv_stim       43:net_1       8:net_2   
+        43:x_2      inv_stim        8:net_2      43:net_3   
+        43:x_3      inv_stim       43:net_3      43:net_4   
+        44:x_0      inv_stim        3:src        44:net_1   
+        44:x_1      inv_stim       44:net_1       9:net_2   
+        44:x_2      inv_stim        9:net_2      44:net_3   
+        44:x_3      inv_stim       44:net_3      44:net_4   
+        45:x_0      inv_stim        4:src        45:net_1   
+        45:x_1      inv_stim       45:net_1      10:net_2   
+        45:x_2      inv_stim       10:net_2      45:net_3   
+        45:x_3      inv_stim       45:net_3      45:net_4   
+  
+
+ **warning** the following singular supplies were terminated to 1 meg resistor 
+   supply       node1            node2
+  v_supply                0:vdd              defined in subckt 0                     0:0                defined in subckt 0               
+      
+ **info** set option symb=1 internally to help for convergence.
+ *****************************************************************
+ ******  option summary
+ ******
+ runlvl  = 5         bypass  = 2         
+  Opening plot unit= 15
+ file=task1.pa0                                                                
+
+1****** HSPICE -- F-2011.09-SP2 32-BIT (Feb 27 2012) linux ******               
+ ******  
+ * file: task1.sp
+
+  ******  temperature-adjusted values tnom=  25.000 temp=  27.000 *****
+
+ constants  - temp             kt               vt               gapsi            ni
+            300.1500         4.144e-21         25.8642m          1.1151         1.482e+16      
+
+ *** resistors
+    name        eff val        eff val(ac)
+
+
+ *** capacitors
+    name        eff val
+
+
+ *** e elements
+    name          scaleff val
+
+
+ *** f elements
+    name          scaleff val
+
+
+
+ *** mosfet element parameters
+ name             rd eff           rs eff           cdsat            cssat              vto                beta
+
+
+       11:m10                 0.               0.              23.5312a         23.5312a          0.               0.           
+       11:m9                  0.               0.              23.5312a         23.5312a          0.               0.           
+       11:m1                  0.               0.              23.5312a         23.5312a          0.               0.           
+       11:m7                  0.               0.               8.4304a          8.4304a          0.               0.           
+       11:m6                  0.               0.               8.4304a          8.4304a          0.               0.           
+       11:m0                  0.               0.               8.4304a          8.4304a          0.               0.           
+       12:m10                 0.               0.              23.5312a         23.5312a          0.               0.           
+       12:m9                  0.               0.              23.5312a         23.5312a          0.               0.           
+       12:m1                  0.               0.              23.5312a         23.5312a          0.               0.           
+       12:m7                  0.               0.               8.4304a          8.4304a          0.               0.           
+       12:m6                  0.               0.               8.4304a          8.4304a          0.               0.           
+       12:m0                  0.               0.               8.4304a          8.4304a          0.               0.           
+       13:m10                 0.               0.              23.5312a         23.5312a          0.               0.           
+       13:m9                  0.               0.              23.5312a         23.5312a          0.               0.           
+       13:m1                  0.               0.              23.5312a         23.5312a          0.               0.           
+       13:m7                  0.               0.               8.4304a          8.4304a          0.               0.           
+       13:m6                  0.               0.               8.4304a          8.4304a          0.               0.           
+       13:m0                  0.               0.               8.4304a          8.4304a          0.               0.           
+       14:m10                 0.               0.              23.5312a         23.5312a          0.               0.           
+       14:m9                  0.               0.              23.5312a         23.5312a          0.               0.           
+       14:m1                  0.               0.              23.5312a         23.5312a          0.               0.           
+       14:m7                  0.               0.               8.4304a          8.4304a          0.               0.           
+       14:m6                  0.               0.               8.4304a          8.4304a          0.               0.           
+       14:m0                  0.               0.               8.4304a          8.4304a          0.               0.           
+       15:m1                  0.               0.             104.0688a        104.0688a          0.               0.           
+       15:m2                  0.               0.              18.4976a         18.4976a          0.               0.           
+       16:m1                  0.               0.             104.0688a        104.0688a          0.               0.           
+       16:m2                  0.               0.              18.4976a         18.4976a          0.               0.           
+       17:m1                  0.               0.             104.0688a        104.0688a          0.               0.           
+       17:m2                  0.               0.              18.4976a         18.4976a          0.               0.           
+       18:m1                  0.               0.             104.0688a        104.0688a          0.               0.           
+       18:m2                  0.               0.              18.4976a         18.4976a          0.               0.           
+       19:m1                  0.               0.               3.9170f          3.9170f          0.               0.           
+       19:m2                  0.               0.             652.7312a        652.7312a          0.               0.           
+       20:m1                  0.               0.               3.9170f          3.9170f          0.               0.           
+       20:m2                  0.               0.             652.7312a        652.7312a          0.               0.           
+       21:m2                  0.               0.               3.9394f          3.9394f          0.               0.           
+       21:m0                  0.               0.               3.9394f          3.9394f          0.               0.           
+       21:m3                  0.               0.              11.1878f         11.1878f          0.               0.           
+       21:m1                  0.               0.              11.1878f         11.1878f          0.               0.           
+       22:m2                  0.               0.               3.9394f          3.9394f          0.               0.           
+       22:m0                  0.               0.               3.9394f          3.9394f          0.               0.           
+       22:m3                  0.               0.              11.1878f         11.1878f          0.               0.           
+       22:m1                  0.               0.              11.1878f         11.1878f          0.               0.           
+       23:m2                  0.               0.             262.6272a        262.6272a          0.               0.           
+       23:m0                  0.               0.             262.6272a        262.6272a          0.               0.           
+       23:m3                  0.               0.             745.8528a        745.8528a          0.               0.           
+       23:m1                  0.               0.             745.8528a        745.8528a          0.               0.           
+       24:m2                  0.               0.             262.6272a        262.6272a          0.               0.           
+       24:m0                  0.               0.             262.6272a        262.6272a          0.               0.           
+       24:m3                  0.               0.             745.8528a        745.8528a          0.               0.           
+       24:m1                  0.               0.             745.8528a        745.8528a          0.               0.           
+       25:m1                  0.               0.              58.7553f         58.7553f          0.               0.           
+       25:m2                  0.               0.               9.7910f          9.7910f          0.               0.           
+       26:m1                  0.               0.              58.7553f         58.7553f          0.               0.           
+       26:m2                  0.               0.               9.7910f          9.7910f          0.               0.           
+       27:m2                  0.               0.              21.0144a         21.0144a          0.               0.           
+       27:m0                  0.               0.              21.0144a         21.0144a          0.               0.           
+       27:m3                  0.               0.              61.2832a         61.2832a          0.               0.           
+       27:m1                  0.               0.              61.2832a         61.2832a          0.               0.           
+       28:m2                  0.               0.              21.0144a         21.0144a          0.               0.           
+       28:m0                  0.               0.              21.0144a         21.0144a          0.               0.           
+       28:m3                  0.               0.              61.2832a         61.2832a          0.               0.           
+       28:m1                  0.               0.              61.2832a         61.2832a          0.               0.           
+       29:m1                  0.               0.             335.6144a        335.6144a          0.               0.           
+       29:m2                  0.               0.              56.2496a         56.2496a          0.               0.           
+       30:m1                  0.               0.             335.6144a        335.6144a          0.               0.           
+       30:m2                  0.               0.              56.2496a         56.2496a          0.               0.           
+       31:m1                  0.               0.             348.1984a        348.1984a          0.               0.           
+       31:m2                  0.               0.             698.0336a        698.0336a          0.               0.           
+       32:m1                  0.               0.             348.1984a        348.1984a          0.               0.           
+       32:m2                  0.               0.             698.0336a        698.0336a          0.               0.           
+       33:m2                  0.               0.              63.0432a         63.0432a          0.               0.           
+       33:m0                  0.               0.              63.0432a         63.0432a          0.               0.           
+       33:m3                  0.               0.             183.8496a        183.8496a          0.               0.           
+       33:m1                  0.               0.             183.8496a        183.8496a          0.               0.           
+       34:m2                  0.               0.              63.0432a         63.0432a          0.               0.           
+       34:m0                  0.               0.              63.0432a         63.0432a          0.               0.           
+       34:m3                  0.               0.             183.8496a        183.8496a          0.               0.           
+       34:m1                  0.               0.             183.8496a        183.8496a          0.               0.           
+       35:m1                  0.               0.               1.0446f          1.0446f          0.               0.           
+       35:m2                  0.               0.               2.0941f          2.0941f          0.               0.           
+       36:m1                  0.               0.               1.0446f          1.0446f          0.               0.           
+       36:m2                  0.               0.               2.0941f          2.0941f          0.               0.           
+       37:m1                  0.               0.               1.0068f          1.0068f          0.               0.           
+       37:m2                  0.               0.             168.7488a        168.7488a          0.               0.           
+       38:m1                  0.               0.               1.0068f          1.0068f          0.               0.           
+       38:m2                  0.               0.             168.7488a        168.7488a          0.               0.           
+       39:m1                  0.               0.               5.5706f          5.5706f          0.               0.           
+       39:m2                  0.               0.             929.5792a        929.5792a          0.               0.           
+       40:m1                  0.               0.               5.5706f          5.5706f          0.               0.           
+       40:m2                  0.               0.             929.5792a        929.5792a          0.               0.           
+       41:m1                  0.               0.              16.7117f         16.7117f          0.               0.           
+       41:m2                  0.               0.               2.7887f          2.7887f          0.               0.           
+       42:m1                  0.               0.              16.7117f         16.7117f          0.               0.           
+       42:m2                  0.               0.               2.7887f          2.7887f          0.               0.           
+       46:m_0                 0.               0.              21.0144a         21.0144a          0.               0.           
+       46:m_1                 0.               0.              61.2832a         61.2832a          0.               0.           
+       47:m_0                 0.               0.              84.0576a         84.0576a          0.               0.           
+       47:m_1                 0.               0.             245.1328a        245.1328a          0.               0.           
+       48:m_0                 0.               0.             336.2304a        336.2304a          0.               0.           
+       48:m_1                 0.               0.             980.5312a        980.5312a          0.               0.           
+       49:m_0                 0.               0.               1.3449f          1.3449f          0.               0.           
+       49:m_1                 0.               0.               3.9221f          3.9221f          0.               0.           
+       50:m_0                 0.               0.              21.0144a         21.0144a          0.               0.           
+       50:m_1                 0.               0.              61.2832a         61.2832a          0.               0.           
+       51:m_0                 0.               0.              84.0576a         84.0576a          0.               0.           
+       51:m_1                 0.               0.             245.1328a        245.1328a          0.               0.           
+       52:m_0                 0.               0.             336.2304a        336.2304a          0.               0.           
+       52:m_1                 0.               0.             980.5312a        980.5312a          0.               0.           
+       53:m_0                 0.               0.               1.3449f          1.3449f          0.               0.           
+       53:m_1                 0.               0.               3.9221f          3.9221f          0.               0.           
+       54:m_0                 0.               0.              21.0144a         21.0144a          0.               0.           
+       54:m_1                 0.               0.              61.2832a         61.2832a          0.               0.           
+       55:m_0                 0.               0.              84.0576a         84.0576a          0.               0.           
+       55:m_1                 0.               0.             245.1328a        245.1328a          0.               0.           
+       56:m_0                 0.               0.             336.2304a        336.2304a          0.               0.           
+       56:m_1                 0.               0.             980.5312a        980.5312a          0.               0.           
+       57:m_0                 0.               0.               1.3449f          1.3449f          0.               0.           
+       57:m_1                 0.               0.               3.9221f          3.9221f          0.               0.           
+ **info** dc convergence successful
+ you can increase the efficiency of the
+ operating point calculation by setting dcon= 1
+ in the .option statement
+1****** HSPICE -- F-2011.09-SP2 32-BIT (Feb 27 2012) linux ******               
+ ******  
+ * file: task1.sp
+
+  ******  operating point information tnom=  25.000 temp=  27.000 *****
+ ***** operating point status is all       simulation time is     0.     
+     node    =voltage       node    =voltage       node    =voltage
+
+ + 0:a0      =  18.9202u  0:a255    =  18.9202u  0:ck      =  18.9202u
+ + 0:vdd     =   1.0000   0:vdd!    =   1.0000   0:wl0     =  41.1572u
+ + 0:wl255   =  41.1572u  1:net1    =  39.8819u  1:net14   =  40.9192u
+ + 1:net17   =  40.9192u  1:net2    =  39.8819u  2:src     =   0.     
+ + 3:src     =   0.       4:src     =   0.       5:nand1   = 999.9881m
+ + 5:nand1_1 = 999.9881m  5:net10   =  40.4567u  5:net14   = 999.9898m
+ + 5:net22   = 999.9898m  5:net6    =  40.4567u  6:net11   = 999.9030m
+ + 6:net14   = 999.9812m  6:net17   = 999.9030m  6:net22   =  41.0783u
+ + 6:net26   =  41.0783u  6:net8    = 999.9812m  7:net024  =  41.0903u
+ + 7:net028  =  41.0903u  7:net032  =  34.1677u  7:net036  =  34.1677u
+ + 7:net043  = 999.8982m  7:net046  = 999.8982m  7:net049  = 999.8982m
+ + 7:net052  = 999.8982m  7:net057  = 999.8937m  7:net55   = 999.9790m
+ + 7:net63   = 999.9790m  7:net69   =  34.0809u  7:net73   =  34.0809u
+ + 7:net77   = 999.8937m  8:net_2   =  18.9202u  8:net_3   =  18.9202u
+ + 8:net_4   =   1.0000   9:net_2   =  18.9202u  9:net_3   =  18.9202u
+ + 9:net_4   =   1.0000  10:net_2   =  18.9202u 10:net_3   =  18.9202u
+ +10:net_4   =   1.0000  11:net5    = 105.7492m 11:net9    = 105.7481m
+ +12:net5    =  72.4923m 12:net9    =  18.0041m 13:net5    = 105.7492m
+ +13:net9    = 105.7481m 14:net5    =  72.4923m 14:net9    =  18.0041m
+ +21:mid_a   =  55.3410m 22:mid_a   =  55.3410m 23:mid_a   = 776.1445m
+ +24:mid_a   = 776.1445m 27:mid_a   = 776.1423m 28:mid_a   = 776.1423m
+ +33:mid_a   =  55.3422m 34:mid_a   =  55.3422m 43:net_1   = 999.9744m
+ +43:net_3   = 999.9744m 43:net_4   =  21.2646u 44:net_1   = 999.9744m
+ +44:net_3   = 999.9744m 44:net_4   =  21.2646u 45:net_1   = 999.9744m
+ +45:net_3   = 999.9744m 45:net_4   =  21.2646u 46:vdd_stim=   1.0000 
+ +47:vdd_stim=   1.0000  48:vdd_stim=   1.0000  49:vdd_stim=   1.0000 
+ +50:vdd_stim=   1.0000  51:vdd_stim=   1.0000  52:vdd_stim=   1.0000 
+ +53:vdd_stim=   1.0000  54:vdd_stim=   1.0000  55:vdd_stim=   1.0000 
+ +56:vdd_stim=   1.0000  57:vdd_stim=   1.0000 
+
+
+ **** voltage sources
+
+ subckt                            xclk_gen    xa0_gen     xa255_gen 
+ element   0:v_supply  0:v_supply  2:vsrc      3:vsrc      4:vsrc    
+  volts       1.0000      1.0000      0.          0.          0.     
+  current    -1.0000u   -48.4983u  -424.9138p  -424.9138p  -424.9138p
+  power       1.0000u    48.4983u     0.          0.          0.     
+
+ subckt    xclk_gen.x  xclk_gen.x  xa0_gen.xg  xa0_gen.xg  xa255_gen.
+ element   8:v_monito  8:v_sense   9:v_monito  9:v_sense  10:v_monito
+  volts       1.0000      0.          1.0000      0.          1.0000 
+  current     5.3921a     1.8319n     2.5275a     5.1397p     2.5428a
+  power      -5.3921a     0.         -2.5275a     0.         -2.5428a
+
+ subckt    xa255_gen.  xclk_gen.x  xclk_gen.x  xclk_gen.x  xclk_gen.x
+ element  10:v_sense  46:vstimulu 47:vstimulu 48:vstimulu 49:vstimulu
+  volts       0.          1.0000      1.0000      1.0000      1.0000 
+  current     5.1397p   -16.0503n   -57.2587n  -256.8644n  -916.1336n
+  power       0.         16.0503n    57.2587n   256.8644n   916.1336n
+
+ subckt    xa0_gen.xg  xa0_gen.xg  xa0_gen.xg  xa0_gen.xg  xa255_gen.
+ element  50:vstimulu 51:vstimulu 52:vstimulu 53:vstimulu 54:vstimulu
+  volts       1.0000      1.0000      1.0000      1.0000      1.0000 
+  current   -16.0503n   -57.2587n  -256.8644n  -916.1336n   -16.0503n
+  power      16.0503n    57.2587n   256.8644n   916.1336n    16.0503n
+
+ subckt    xa255_gen.  xa255_gen.  xa255_gen.
+ element  55:vstimulu 56:vstimulu 57:vstimulu
+  volts       1.0000      1.0000      1.0000 
+  current   -57.2587n  -256.8644n  -916.1336n
+  power      57.2587n   256.8644n   916.1336n
+
+     total voltage source power dissipation=   53.2373u       watts
+
+
+
+ **** voltage-controlled voltage sources
+
+
+ subckt      xclk_gen    xa0_gen.    xa255_ge
+ element   8:e_0       9:e_0      10:e_0     
+  volts      18.9202u    18.9202u    18.9202u
+  current    -1.8319n    -5.1397p    -5.1397p
+
+
+
+
+ **** current-controlled current sources
+
+
+   subckt    xclk_gen    xclk_gen    xa0_gen.    xa0_gen.    xa255_ge
+ element   8:f_0       8:f_1       9:f_0       9:f_1      10:f_0     
+  current   915.9438p  -915.9438p     2.5698p    -2.5698p     2.5698p
+
+
+
+   subckt    xa255_ge
+ element  10:f_1     
+  current    -2.5698p
+
+
+
+
+
+ **** mosfets
+
+
+ subckt    xi17.xi5.x  xi17.xi5.x  xi17.xi5.x  xi17.xi5.x  xi17.xi5.x
+ element  11:m10      11:m9       11:m1       11:m7       11:m6      
+ model     0:nmos      0:nmos      0:nmos      0:pmos      0:pmos    
+ region        Cutoff      Linear      Cutoff      Linear      Cutoff
+  id          1.5071n   859.1038p   211.0793p  -832.0146p   -51.3396f
+  ibs       9.925e-26  -105.7712f  -105.7724f  -2.270e-25     0.     
+  ibd      -105.7712f  -105.7724f    -1.0000p    11.9501a    11.9501a
+  vgs        18.9202u   894.2519m  -105.7303m  -999.9811m     0.     
+  vds       105.7481m     1.1341u   894.2388m   -11.9462u   -11.9462u
+  vbs         0.       -105.7481m  -105.7492m     0.          0.     
+  vth       363.3811m   395.4725m   334.4702m  -310.7624m  -310.7624m
+  vdsat      40.2152m   282.8695m    40.0682m  -502.7548m   -46.2157m
+  vod      -363.3622m   498.7794m  -440.2005m  -689.2187m   310.7624m
+  beta        5.3226m     4.2203m     5.5176m   123.5005u   142.9074u
+  gam eff   441.0000m   441.0000m   441.0000m   394.0000m   394.0000m
+  gm         38.5226n   529.5564p     5.5413n   717.7130p     1.3483p
+  gds         3.8131n   757.5506u   413.4743p    69.6462u     4.2971n
+  gmb        11.3621n   224.2575p     1.5926n   289.0488p   323.5554f
+  cdtot     305.3573a   464.7150a   243.9445a   180.1866a   133.7907a
+  cgtot     174.6925a   319.4586a   147.8112a    99.6044a    53.6075a
+  cstot     281.9815a   310.6350a   267.0493a   132.2266a   120.5913a
+  cbtot     477.3577a   469.0667a   427.8940a   218.5057a   218.6328a
+  cgs        75.2269a   174.9807a    67.1119a    55.6319a    22.3398a
+  cgd        67.1108a   145.9547a    48.3441a    43.7741a    22.3388a
+
+
+
+ subckt    xi17.xi5.x  xi17.xi5.x  xi17.xi5.x  xi17.xi5.x  xi17.xi5.x
+ element  11:m0       12:m10      12:m9       12:m1       12:m7      
+ model     0:pmos      0:nmos      0:nmos      0:nmos      0:pmos    
+ region        Linear      Cutoff      Cutoff      Cutoff      Linear
+  id       -832.0146p   689.3600p   689.3864p   689.3645p  -713.6921p
+  ibs      -2.270e-25   1.691e-26   -18.0159f   -72.5144f  -2.270e-25
+  ibd        11.9501a   -18.0159f   -72.5144f    -1.0000p    10.2506a
+  vgs      -999.9811m    18.9202u   -18.0041m   -72.4733m  -999.9811m
+  vds       -11.9462u    18.0041m    54.4882m   927.4975m   -10.2473u
+  vbs         0.          0.        -18.0041m   -72.4923m     0.     
+  vth      -310.7624m   369.3673m   371.2109m   324.5214m  -310.7625m
+  vdsat    -502.7548m    40.2543m    40.2759m    39.9889m  -502.7547m
+  vod      -689.2187m  -369.3484m  -389.2149m  -396.9947m  -689.2186m
+  beta      123.5005u     5.2828m     5.2706m     5.5856m   123.5005u
+  gam eff   394.0000m   441.0000m   441.0000m   441.0000m   394.0000m
+  gm        717.7130p    17.6353n    17.7452n    17.9318n   615.6442p
+  gds        69.6462u    28.3771n     4.1615n     1.3382n    69.6465u
+  gmb       289.0488p     5.2423n     5.2553n     5.1370n   247.9425p
+  cdtot     180.1866a   318.7350a   310.2762a   243.9445a   180.1868a
+  cgtot      99.6044a   181.4201a   175.7889a   150.2971a    99.6044a
+  cstot     132.2266a   281.9813a   279.3663a   271.5820a   132.2265a
+  cbtot     218.5057a   484.0077a   478.5657a   429.9408a   218.5058a
+  cgs        55.6319a    75.2267a    73.8386a    69.5979a    55.6318a
+  cgd        43.7741a    73.8384a    69.5950a    48.3441a    43.7742a
+
+
+
+ subckt    xi17.xi5.x  xi17.xi5.x  xi17.xi5.x  xi17.xi5.x  xi17.xi5.x
+ element  12:m6       12:m0       13:m10      13:m9       13:m1      
+ model     0:pmos      0:pmos      0:nmos      0:nmos      0:nmos    
+ region        Linear      Linear      Cutoff      Linear      Cutoff
+  id       -713.7037p  -713.6921p     1.5071n   859.1038p   211.0793p
+  ibs      -2.266e-25  -2.270e-25   9.925e-26  -105.7712f  -105.7724f
+  ibd        10.2506a    10.2506a  -105.7712f  -105.7724f    -1.0000p
+  vgs        -1.0000   -999.9811m    18.9202u   894.2519m  -105.7303m
+  vds       -10.2473u   -10.2473u   105.7481m     1.1341u   894.2388m
+  vbs         0.          0.          0.       -105.7481m  -105.7492m
+  vth      -310.7625m  -310.7625m   363.3811m   395.4725m   334.4702m
+  vdsat    -502.7657m  -502.7547m    40.2152m   282.8695m    40.0682m
+  vod      -689.2375m  -689.2186m  -363.3622m   498.7794m  -440.2005m
+  beta      123.4994u   123.5005u     5.3226m     4.2203m     5.5176m
+  gam eff   394.0000m   394.0000m   441.0000m   441.0000m   441.0000m
+  gm        615.6280p   615.6442p    38.5226n   529.5564p     5.5413n
+  gds        69.6476u    69.6465u     3.8131n   757.5506u   413.4743p
+  gmb       247.9401p   247.9425p    11.3621n   224.2575p     1.5926n
+  cdtot     180.1870a   180.1868a   305.3573a   464.7150a   243.9445a
+  cgtot      99.6045a    99.6044a   174.6925a   319.4586a   147.8112a
+  cstot     132.2265a   132.2265a   281.9815a   310.6350a   267.0493a
+  cbtot     218.5058a   218.5058a   477.3577a   469.0667a   427.8940a
+  cgs        55.6319a    55.6318a    75.2269a   174.9807a    67.1119a
+  cgd        43.7743a    43.7742a    67.1108a   145.9547a    48.3441a
+
+
+
+ subckt    xi17.xi5.x  xi17.xi5.x  xi17.xi5.x  xi17.xi5.x  xi17.xi5.x
+ element  13:m7       13:m6       13:m0       14:m10      14:m9      
+ model     0:pmos      0:pmos      0:pmos      0:nmos      0:nmos    
+ region        Linear      Cutoff      Linear      Cutoff      Cutoff
+  id       -832.0145p   -51.3396f  -832.0145p   689.3600p   689.3864p
+  ibs      -2.270e-25     0.       -2.270e-25   1.691e-26   -18.0159f
+  ibd        11.9501a    11.9501a    11.9501a   -18.0159f   -72.5144f
+  vgs      -999.9811m     0.       -999.9811m    18.9202u   -18.0041m
+  vds       -11.9462u   -11.9462u   -11.9462u    18.0041m    54.4882m
+  vbs         0.          0.          0.          0.        -18.0041m
+  vth      -310.7624m  -310.7624m  -310.7624m   369.3673m   371.2109m
+  vdsat    -502.7548m   -46.2157m  -502.7548m    40.2543m    40.2759m
+  vod      -689.2187m   310.7624m  -689.2187m  -369.3484m  -389.2149m
+  beta      123.5005u   142.9074u   123.5005u     5.2828m     5.2706m
+  gam eff   394.0000m   394.0000m   394.0000m   441.0000m   441.0000m
+  gm        717.7130p     1.3483p   717.7130p    17.6353n    17.7452n
+  gds        69.6462u     4.2971n    69.6462u    28.3771n     4.1615n
+  gmb       289.0488p   323.5553f   289.0488p     5.2423n     5.2553n
+  cdtot     180.1866a   133.7907a   180.1866a   318.7350a   310.2762a
+  cgtot      99.6044a    53.6075a    99.6044a   181.4201a   175.7889a
+  cstot     132.2266a   120.5913a   132.2266a   281.9813a   279.3663a
+  cbtot     218.5057a   218.6328a   218.5057a   484.0077a   478.5657a
+  cgs        55.6319a    22.3398a    55.6319a    75.2267a    73.8386a
+  cgd        43.7741a    22.3388a    43.7741a    73.8384a    69.5950a
+
+
+
+ subckt    xi17.xi5.x  xi17.xi5.x  xi17.xi5.x  xi17.xi5.x  xi17.xi5.x
+ element  14:m1       14:m7       14:m6       14:m0       15:m1      
+ model     0:nmos      0:pmos      0:pmos      0:pmos      0:pmos    
+ region        Cutoff      Linear      Linear      Linear      Cutoff
+  id        689.3645p  -713.6921p  -713.7037p  -713.6921p   -24.6387n
+  ibs       -72.5144f  -2.270e-25  -2.266e-25  -2.270e-25  -9.438e-25
+  ibd        -1.0000p    10.2506a    10.2506a    10.2506a     1.0001p
+  vgs       -72.4733m  -999.9811m    -1.0000   -999.9811m   -10.2473u
+  vds       927.4975m   -10.2473u   -10.2473u   -10.2473u  -999.9595m
+  vbs       -72.4923m     0.          0.          0.          0.     
+  vth       324.5214m  -310.7625m  -310.7625m  -310.7625m  -225.7004m
+  vdsat      39.9889m  -502.7547m  -502.7657m  -502.7547m   -46.2017m
+  vod      -396.9947m  -689.2186m  -689.2375m  -689.2186m   225.6902m
+  beta        5.5856m   123.5005u   123.4994u   123.5005u     2.5928m
+  gam eff   441.0000m   394.0000m   394.0000m   394.0000m   394.0000m
+  gm         17.9318n   615.6442p   615.6280p   615.6442p   624.8944n
+  gds         1.3382n    69.6465u    69.6476u    69.6465u    59.9286n
+  gmb         5.1370n   247.9425p   247.9401p   247.9425p   140.3584n
+  cdtot     243.9445a   180.1868a   180.1870a   180.1868a   994.9023a
+  cgtot     150.2971a    99.6044a    99.6045a    99.6044a   715.4015a
+  cstot     271.5820a   132.2265a   132.2265a   132.2265a     1.1414f
+  cbtot     429.9408a   218.5058a   218.5058a   218.5058a     1.6832f
+  cgs        69.5979a    55.6318a    55.6319a    55.6318a   356.0055a
+  cgd        48.3441a    43.7742a    43.7743a    43.7742a   228.2821a
+
+
+
+ subckt    xi17.xi5.x  xi17.xi5.x  xi17.xi5.x  xi17.xi5.x  xi17.xi5.x
+ element  15:m2       16:m1       16:m2       17:m1       17:m2      
+ model     0:nmos      0:pmos      0:nmos      0:pmos      0:nmos    
+ region        Linear      Cutoff      Linear      Cutoff      Linear
+  id         25.5842n   -24.6398n    25.2207n   -24.6387n    25.5842n
+  ibs       8.834e-25  -9.438e-25   8.833e-25  -9.438e-25   8.834e-25
+  ibd       -40.4856a     1.0001p   -39.9104a     1.0001p   -40.4856a
+  vgs       999.9898m   -11.9462u   999.9881m   -10.2473u   999.9898m
+  vds        40.4567u  -999.9601m    39.8819u  -999.9595m    40.4567u
+  vbs         0.          0.          0.          0.          0.     
+  vth       370.5929m  -225.7004m   370.5930m  -225.7004m   370.5929m
+  vdsat     336.4748m   -46.2017m   336.4741m   -46.2017m   336.4748m
+  vod       629.3968m   225.6884m   629.3951m   225.6902m   629.3968m
+  beta        3.1249m     2.5928m     3.1249m     2.5928m     3.1249m
+  gam eff   441.0000m   394.0000m   441.0000m   394.0000m   441.0000m
+  gm          9.9896n   624.9215n     9.8477n   624.8944n     9.9896n
+  gds       632.3542u    59.9312n   632.3546u    59.9286n   632.3542u
+  gmb         5.2625n   140.3643n     5.1877n   140.3584n     5.2625n
+  cdtot     380.0750a   994.9023a   380.0751a   994.9023a   380.0750a
+  cgtot     246.6549a   715.4020a   246.6549a   715.4015a   246.6549a
+  cstot     254.7950a     1.1414f   254.7949a     1.1414f   254.7950a
+  cbtot     397.0909a     1.6832f   397.0910a     1.6832f   397.0909a
+  cgs       134.4114a   356.0061a   134.4113a   356.0055a   134.4114a
+  cgd       113.9825a   228.2821a   113.9825a   228.2821a   113.9825a
+
+
+
+ subckt    xi17.xi5.x  xi17.xi5.x  xi17.xi1.x  xi17.xi1.x  xi17.xi1.x
+ element  18:m1       18:m2       19:m1       19:m2       20:m1      
+ model     0:pmos      0:nmos      0:pmos      0:nmos      0:pmos    
+ region        Cutoff      Linear      Cutoff      Linear      Cutoff
+  id        -24.6398n    25.2207n  -947.4210n   984.7325n  -947.4210n
+  ibs      -9.440e-25   8.833e-25  -1.194e-24   3.569e-23  -1.194e-24
+  ibd         1.0001p   -39.9104a     1.0039p   -42.1950a     1.0039p
+  vgs       -11.9462u   999.9881m   -96.9955u   999.9030m   -96.9955u
+  vds      -999.9601m    39.8819u  -999.9588m    41.1572u  -999.9588m
+  vbs         0.          0.          0.          0.          0.     
+  vth      -225.7004m   370.5930m  -225.7005m   370.5929m  -225.7005m
+  vdsat     -46.2017m   336.4741m   -46.2025m   341.1590m   -46.2025m
+  vod       225.6884m   629.3951m   225.6035m   629.3101m   225.6035m
+  beta        2.5928m     3.1249m    99.4732m   123.4408m    99.4732m
+  gam eff   394.0000m   441.0000m   394.0000m   441.0000m   394.0000m
+  gm        624.9215n     9.8477n    24.0275u   369.5264n    24.0275u
+  gds        59.9312n   632.3546u     2.3043u    23.9250m     2.3043u
+  gmb       140.3643n     5.1877n     5.3965u   194.3241n     5.3965u
+  cdtot     994.9023a   380.0751a    36.5590f    12.9254f    36.5590f
+  cgtot     715.4020a   246.6549a    27.4200f     9.7143f    27.4200f
+  cstot       1.1414f   254.7949a    41.8402f     8.0540f    41.8402f
+  cbtot       1.6832f   397.0910a    60.9869f    11.5586f    60.9869f
+  cgs       356.0061a   134.4113a    13.6595f     5.3093f    13.6595f
+  cgd       228.2821a   113.9825a     8.7582f     4.5023f     8.7582f
+
+
+
+ subckt    xi17.xi1.x  xi17.xi1.x  xi17.xi1.x  xi17.xi1.x  xi17.xi1.x
+ element  20:m2       21:m2       21:m0       21:m3       21:m1      
+ model     0:nmos      0:pmos      0:pmos      0:nmos      0:nmos    
+ region        Linear      Linear      Linear      Cutoff      Cutoff
+  id        984.7325n  -774.5661n  -774.5926n   655.0817n   655.0356n
+  ibs       3.569e-23  -1.397e-22  -1.398e-22   8.103e-25  -839.9857f
+  ibd       -42.1950a   284.1639a   284.1639a  -839.9857f   -15.0109p
+  vgs       999.9030m  -999.9591m    -1.0000     40.9192u   -55.3410m
+  vds        41.1572u   -18.7539u   -18.7539u    55.3410m   944.6403m
+  vbs         0.          0.          0.          0.        -55.3410m
+  vth       370.5929m  -310.7618m  -310.7618m   366.8201m   319.3411m
+  vdsat     341.1590m  -504.7677m  -504.7916m    40.2665m    39.9799m
+  vod       629.3101m  -689.1973m  -689.2382m  -366.7791m  -374.6821m
+  beta      123.4408m    75.3581m    75.3567m     2.7494      2.9161 
+  gam eff   441.0000m   394.0000m   394.0000m   441.0000m   441.0000m
+  gm        369.5264n   649.8668n   649.8284n    16.7530u    16.9406u
+  gds        23.9250m    41.3009m    41.3023m     3.8292u     1.2645u
+  gmb       194.3241n   261.5846n   261.5787n     4.9551u     4.8435u
+  cdtot      12.9254f    77.6749f    77.6752f   135.4932f   104.8326f
+  cgtot       9.7143f    60.3345f    60.3346f    92.2314f    78.2842f
+  cstot       8.0540f    49.6019f    49.6019f   119.9790f   116.3000f
+  cbtot      11.5586f    69.5348f    69.5348f   196.0632f   175.6716f
+  cgs         5.3093f    33.9455f    33.9456f    39.0268f    36.7932f
+  cgd         4.5023f    26.7097f    26.7099f    36.7939f    25.0798f
+
+
+
+ subckt    xi17.xi1.x  xi17.xi1.x  xi17.xi1.x  xi17.xi1.x  xi17.xi1.x
+ element  22:m2       22:m0       22:m3       22:m1       23:m2      
+ model     0:pmos      0:pmos      0:nmos      0:nmos      0:pmos    
+ region        Linear      Linear      Cutoff      Cutoff      Linear
+  id       -774.5661n  -774.5926n   655.0817n   655.0356n  -267.0518n
+  ibs      -1.397e-22  -1.398e-22   8.103e-25  -839.9857f  -9.316e-24
+  ibd       284.1639a   284.1639a  -839.9857f   -15.0109p    97.9785a
+  vgs      -999.9591m    -1.0000     40.9192u   -55.3410m  -999.9591m
+  vds       -18.7539u   -18.7539u    55.3410m   944.6403m   -96.9955u
+  vbs         0.          0.          0.        -55.3410m     0.     
+  vth      -310.7618m  -310.7618m   366.8201m   319.3411m  -310.7551m
+  vdsat    -504.7677m  -504.7916m    40.2665m    39.9799m  -504.7707m
+  vod      -689.1973m  -689.2382m  -366.7791m  -374.6821m  -689.2039m
+  beta       75.3581m    75.3567m     2.7494      2.9161      5.0239m
+  gam eff   394.0000m   394.0000m   441.0000m   441.0000m   394.0000m
+  gm        649.8668n   649.8284n    16.7530u    16.9406u   224.0809n
+  gds        41.3009m    41.3023m     3.8292u     1.2645u     2.7530m
+  gmb       261.5846n   261.5787n     4.9551u     4.8435u    90.1900n
+  cdtot      77.6749f    77.6752f   135.4932f   104.8326f     5.1780f
+  cgtot      60.3345f    60.3346f    92.2314f    78.2842f     4.0223f
+  cstot      49.6019f    49.6019f   119.9790f   116.3000f     3.3070f
+  cbtot      69.5348f    69.5348f   196.0632f   175.6716f     4.6356f
+  cgs        33.9455f    33.9456f    39.0268f    36.7932f     2.2632f
+  cgd        26.7097f    26.7099f    36.7939f    25.0798f     1.7805f
+
+
+
+ subckt    xi17.xi1.x  xi17.xi1.x  xi17.xi1.x  xi17.xi1.x  xi17.xi1.x
+ element  23:m0       23:m3       23:m1       24:m2       24:m0      
+ model     0:pmos      0:nmos      0:nmos      0:pmos      0:pmos    
+ region        Cutoff      Cutoff      Cutoff      Linear      Cutoff
+  id        -16.9426p   195.8496n   191.6937n  -267.0518n   -16.9426p
+  ibs         0.        7.506e-25  -776.8904f  -9.316e-24     0.     
+  ibd        97.9785a  -776.8904f    -1.0006p    97.9785a    97.9785a
+  vgs         0.         40.9192u   223.8555m  -999.9591m     0.     
+  vds       -96.9955u   776.1445m   223.7585m   -96.9955u   -96.9955u
+  vbs         0.          0.       -776.1445m     0.          0.     
+  vth      -310.7551m   317.6469m   514.7391m  -310.7551m  -310.7551m
+  vdsat     -46.2185m    39.9576m    41.1577m  -504.7707m   -46.2185m
+  vod       310.7551m  -317.6060m  -290.8837m  -689.2039m   310.7551m
+  beta        5.8133m   194.8061m   151.5869m     5.0239m     5.8133m
+  gam eff   394.0000m   441.0000m   441.0000m   394.0000m   394.0000m
+  gm        444.9640p     4.9555u     5.2741u   224.0809n   444.9640p
+  gds       174.5067n   371.4919n   413.9665n     2.7530m   174.5067n
+  gmb       106.7740p     1.4197u     1.0543u    90.1900n   106.7740p
+  cdtot       3.2909f     7.2411f     7.9188f     5.1780f     3.2909f
+  cgtot       2.1511f     5.4057f     6.3621f     4.0223f     2.1511f
+  cstot       2.8335f     7.9987f     7.4683f     3.3070f     2.8335f
+  cbtot       4.6408f    12.0223f    10.5166f     4.6356f     4.6408f
+  cgs       908.7519a     2.6019f     3.0145f     2.2632f   908.7519a
+  cgd       908.6306a     1.7097f     2.6019f     1.7805f   908.6306a
+
+
+
+ subckt    xi17.xi1.x  xi17.xi1.x  xi17.xi1.x  xi17.xi1.x  xi17.xi1.x
+ element  24:m3       24:m1       25:m1       25:m2       26:m1      
+ model     0:nmos      0:nmos      0:pmos      0:nmos      0:pmos    
+ region        Cutoff      Cutoff      Cutoff      Linear      Cutoff
+  id        195.8496n   191.6937n   -14.1831u    14.7431u   -14.1831u
+  ibs       7.506e-25  -776.8904f  -1.791e-23   5.361e-22  -1.791e-23
+  ibd      -776.8904f    -1.0006p    15.0581p  -631.7113a    15.0581p
+  vgs        40.9192u   223.8555m   -18.7539u   999.9812m   -18.7539u
+  vds       776.1445m   223.7585m  -999.9589m    41.0783u  -999.9589m
+  vbs         0.       -776.1445m     0.          0.          0.     
+  vth       317.6469m   514.7391m  -225.7005m   370.5929m  -225.7005m
+  vdsat      39.9576m    41.1577m   -46.2020m   341.1929m   -46.2020m
+  vod      -317.6060m  -290.8837m   225.6817m   629.3884m   225.6817m
+  beta      194.8061m   151.5869m     1.4921      1.8515      1.4921 
+  gam eff   441.0000m   441.0000m   394.0000m   441.0000m   394.0000m
+  gm          4.9555u     5.2741u   359.7154u     5.5311u   359.7154u
+  gds       371.4919n   413.9665n    34.4974u   358.8856m    34.4974u
+  gmb         1.4197u     1.0543u    80.7958u     2.9089u    80.7958u
+  cdtot       7.2411f     7.9188f   548.3835f   193.8824f   548.3835f
+  cgtot       5.4057f     6.3621f   411.2861f   145.7142f   411.2861f
+  cstot       7.9987f     7.4683f   627.5867f   120.8091f   627.5867f
+  cbtot      12.0223f    10.5166f   914.8075f   173.3789f   914.8075f
+  cgs         2.6019f     3.0145f   204.8766f    79.6388f   204.8766f
+  cgd         1.7097f     2.6019f   131.3724f    67.5345f   131.3724f
+
+
+
+ subckt    xi17.xi1.x  xi17.xi4.x  xi17.xi4.x  xi17.xi4.x  xi17.xi4.x
+ element  26:m2       27:m2       27:m0       27:m3       27:m1      
+ model     0:nmos      0:pmos      0:pmos      0:nmos      0:nmos    
+ region        Linear      Linear      Cutoff      Cutoff      Cutoff
+  id         14.7431u   -21.5507n    -1.3534p    15.6008n    15.2711n
+  ibs       5.361e-22  -6.725e-25     0.        7.295e-25  -776.2036f
+  ibd      -631.7113a   106.4255a   106.4255a  -776.2036f  -999.9549f
+  vgs       999.9812m  -999.9601m     0.         39.8819u   223.8577m
+  vds        41.0783u  -106.3393u  -106.3393u   776.1423m   223.7513m
+  vbs         0.          0.          0.          0.       -776.1423m
+  vth       370.5929m  -310.7543m  -310.7543m   317.6470m   514.7392m
+  vdsat     341.1929m  -504.0557m   -46.2175m    39.9463m    41.1502m
+  vod       629.3884m  -689.2058m   310.7543m  -317.6071m  -290.8816m
+  beta        1.8515    366.0960u   423.6234u    15.5198m    12.0766m
+  gam eff   441.0000m   394.0000m   394.0000m   441.0000m   441.0000m
+  gm          5.5311u    18.2616n    35.5451p   394.7419n   420.1570n
+  gds       358.8856m   202.6396u    12.7141n    29.5919n    32.9792n
+  gmb         2.9089u     7.3514n     8.5294p   113.0905n    83.9914n
+  cdtot     193.8824f   427.5868a   290.0773a   618.1535a   670.5549a
+  cgtot     145.7142f   293.7957a   157.4434a   431.3406a   507.5366a
+  cstot     120.8091f   289.4011a   254.8920a   685.2967a   634.7289a
+  cbtot     173.3789f   437.1676a   437.5466a     1.0478f   917.9399a
+  cgs        79.6388f   164.9213a    66.2216a   207.2872a   240.1586a
+  cgd        67.5345f   129.7442a    66.2121a   136.2114a   207.2857a
+
+
+
+ subckt    xi17.xi4.x  xi17.xi4.x  xi17.xi4.x  xi17.xi4.x  xi17.xi4.x
+ element  28:m2       28:m0       28:m3       28:m1       29:m1      
+ model     0:pmos      0:pmos      0:nmos      0:nmos      0:pmos    
+ region        Linear      Cutoff      Cutoff      Cutoff      Cutoff
+  id        -21.5507n    -1.3534p    15.6008n    15.2711n   -80.7473n
+  ibs      -6.725e-25     0.        7.295e-25  -776.2036f  -9.582e-25
+  ibd       106.4255a   106.4255a  -776.2036f  -999.9549f     1.0003p
+  vgs      -999.9601m     0.         39.8819u   223.8577m  -106.3393u
+  vds      -106.3393u  -106.3393u   776.1423m   223.7513m  -999.9658m
+  vbs         0.          0.          0.       -776.1423m     0.     
+  vth      -310.7543m  -310.7543m   317.6470m   514.7392m  -225.6999m
+  vdsat    -504.0557m   -46.2175m    39.9463m    41.1502m   -46.2025m
+  vod      -689.2058m   310.7543m  -317.6071m  -290.8816m   225.5935m
+  beta      366.0960u   423.6234u    15.5198m    12.0766m     8.4760m
+  gam eff   394.0000m   394.0000m   441.0000m   441.0000m   394.0000m
+  gm         18.2616n    35.5451p   394.7419n   420.1570n     2.0478u
+  gds       202.6396u    12.7141n    29.5919n    32.9792n   196.3909n
+  gmb         7.3514n     8.5294p   113.0905n    83.9914n   459.9339n
+  cdtot     427.5868a   290.0773a   618.1535a   670.5549a     3.1546f
+  cgtot     293.7957a   157.4434a   431.3406a   507.5366a     2.3371f
+  cstot     289.4011a   254.8920a   685.2967a   634.7289a     3.6129f
+  cbtot     437.1676a   437.5466a     1.0478f   917.9399a     5.2845f
+  cgs       164.9213a    66.2216a   207.2872a   240.1586a     1.1639f
+  cgd       129.7442a    66.2121a   136.2114a   207.2857a   746.2727a
+
+
+
+ subckt    xi17.xi4.x  xi17.xi4.x  xi17.xi4.x  xi17.xi4.x  xi17.xi4.x
+ element  29:m2       30:m1       30:m2       31:m1       31:m2      
+ model     0:nmos      0:pmos      0:nmos      0:pmos      0:nmos    
+ region        Linear      Cutoff      Linear      Linear      Cutoff
+  id         68.9950n   -80.7473n    68.9950n  -372.3290n   279.6099n
+  ibs       2.907e-24  -9.582e-25   2.907e-24  -1.242e-23   9.993e-25
+  ibd       -34.2419a     1.0003p   -34.2419a   103.1936a    -1.0006p
+  vgs       999.8937m  -106.3393u   999.8937m  -999.9658m    34.1677u
+  vds        34.1677u  -999.9658m    34.1677u  -101.8255u   999.8982m
+  vbs         0.          0.          0.          0.          0.     
+  vth       370.5933m  -225.6999m   370.5933m  -310.7547m   302.3836m
+  vdsat     339.7644m   -46.2025m   339.7644m  -504.7894m    39.8690m
+  vod       629.3003m   225.5935m   629.3003m  -689.2111m  -302.3495m
+  beta       10.2868m     8.4760m    10.2868m     6.6735m   185.6946m
+  gam eff   441.0000m   394.0000m   441.0000m   394.0000m   441.0000m
+  gm         26.1972n     2.0478u    26.1972n   312.3526n     7.0412u
+  gds         2.0192m   196.3909n     2.0192m     3.6562m   526.2994n
+  gmb        13.7833n   459.9339n    13.7833n   125.7180n     1.9977u
+  cdtot       1.1268f     3.1546f     1.1268f     6.8604f     6.5424f
+  cgtot     810.2019a     2.3371f   810.2019a     5.3428f     5.0229f
+  cstot     719.0278a     3.6129f   719.0278a     4.3758f     7.4879f
+  cbtot       1.0615f     5.2845f     1.0615f     6.1225f    11.0549f
+  cgs       442.4348a     1.1639f   442.4348a     3.0063f     2.4347f
+  cgd       375.1912a   746.2727a   375.1912a     2.3651f     1.5645f
+
+
+
+ subckt    xi17.xi4.x  xi17.xi4.x  xi17.xi4.x  xi17.xi4.x  xi17.xi4.x
+ element  32:m1       32:m2       33:m2       33:m0       33:m3      
+ model     0:pmos      0:nmos      0:pmos      0:pmos      0:nmos    
+ region        Linear      Cutoff      Linear      Linear      Cutoff
+  id       -372.3290n   279.6099n   -12.7560n   -12.7564n    10.4360n
+  ibs      -1.242e-23   9.993e-25  -2.017e-24  -2.019e-24   1.562e-25
+  ibd       103.1936a    -1.0006p    62.9888a    62.9888a  -166.1887f
+  vgs      -999.9658m    34.1677u  -999.9601m    -1.0000     39.8819u
+  vds      -101.8255u   999.8982m   -20.9792u   -20.9792u    55.3422m
+  vbs         0.          0.          0.          0.          0.     
+  vth      -310.7547m   302.3836m  -310.7616m  -310.7616m   366.8200m
+  vdsat    -504.7894m    39.8690m  -504.0525m  -504.0757m    40.2563m
+  vod      -689.2111m  -302.3495m  -689.1985m  -689.2384m  -366.7801m
+  beta        6.6735m   185.6946m     1.0983m     1.0983m    43.8071m
+  gam eff   394.0000m   441.0000m   394.0000m   394.0000m   441.0000m
+  gm        312.3526n     7.0412u    10.8080n    10.8074n   266.8902n
+  gds         3.6562m   526.2994n   608.0158u   608.0363u    61.0011n
+  gmb       125.7180n     1.9977u     4.3512n     4.3511n    78.9388n
+  cdtot       6.8604f     6.5424f     1.2829f     1.2829f     2.3059f
+  cgtot       5.3428f     5.0229f   881.3907a   881.3933a     1.4716f
+  cstot       4.3758f     7.4879f   868.1529a   868.1525a     2.0559f
+  cbtot       6.1225f    11.0549f     1.3115f     1.3115f     3.4173f
+  cgs         3.0063f     2.4347f   494.7293a   494.7307a   621.8347a
+  cgd         2.3651f     1.5645f   389.2717a   389.2735a   586.2567a
+
+
+
+ subckt    xi17.xi4.x  xi17.xi4.x  xi17.xi4.x  xi17.xi4.x  xi17.xi4.x
+ element  33:m1       34:m2       34:m0       34:m3       34:m1      
+ model     0:nmos      0:pmos      0:pmos      0:nmos      0:nmos    
+ region        Cutoff      Linear      Linear      Cutoff      Cutoff
+  id         10.4356n   -12.7560n   -12.7564n    10.4360n    10.4356n
+  ibs      -166.1887f  -2.017e-24  -2.019e-24   1.562e-25  -166.1887f
+  ibd        -3.0001p    62.9888a    62.9888a  -166.1887f    -3.0001p
+  vgs       -55.3422m  -999.9601m    -1.0000     39.8819u   -55.3422m
+  vds       944.6369m   -20.9792u   -20.9792u    55.3422m   944.6369m
+  vbs       -55.3422m     0.          0.          0.        -55.3422m
+  vth       319.3416m  -310.7616m  -310.7616m   366.8200m   319.3416m
+  vdsat      39.9687m  -504.0525m  -504.0757m    40.2563m    39.9687m
+  vod      -374.6837m  -689.1985m  -689.2384m  -366.7801m  -374.6837m
+  beta       46.4639m     1.0983m     1.0983m    43.8071m    46.4639m
+  gam eff   441.0000m   394.0000m   394.0000m   441.0000m   441.0000m
+  gm        269.8855n    10.8080n    10.8074n   266.8902n   269.8855n
+  gds        20.1443n   608.0158u   608.0363u    61.0011n    20.1443n
+  gmb        77.1634n     4.3512n     4.3511n    78.9388n    77.1634n
+  cdtot       1.7894f     1.2829f     1.2829f     2.3059f     1.7894f
+  cgtot       1.2494f   881.3907a   881.3933a     1.4716f     1.2494f
+  cstot       1.9947f   868.1529a   868.1525a     2.0559f     1.9947f
+  cbtot       3.0618f     1.3115f     1.3115f     3.4173f     3.0618f
+  cgs       586.2463a   494.7293a   494.7307a   621.8347a   586.2463a
+  cgd       399.6100a   389.2717a   389.2735a   586.2567a   399.6100a
+
+
+
+ subckt    xi17.xi4.x  xi17.xi4.x  xi17.xi4.x  xi17.xi4.x  xi17.xi4.x
+ element  35:m1       35:m2       36:m1       36:m2       37:m1      
+ model     0:pmos      0:nmos      0:pmos      0:nmos      0:pmos    
+ region        Linear      Cutoff      Linear      Cutoff      Cutoff
+  id         -1.1170u   838.8279n    -1.1170u   838.8279n  -241.7180n
+  ibs      -3.725e-23   2.998e-24  -3.725e-23   2.998e-24  -2.874e-24
+  ibd       309.5804a    -3.0018p   309.5804a    -3.0018p     3.0009p
+  vgs      -999.9659m    34.0809u  -999.9659m    34.0809u   -20.9792u
+  vds      -101.8253u   999.8982m  -101.8253u   999.8982m  -999.9659m
+  vbs         0.          0.          0.          0.          0.     
+  vth      -310.7547m   302.3836m  -310.7547m   302.3836m  -225.6999m
+  vdsat    -504.7895m    39.8690m  -504.7895m    39.8690m   -46.2019m
+  vod      -689.2112m  -302.3495m  -689.2112m  -302.3495m   225.6789m
+  beta       20.0205m   557.0838m    20.0205m   557.0838m    25.4279m
+  gam eff   394.0000m   441.0000m   394.0000m   441.0000m   394.0000m
+  gm        937.0563n    21.1236u   937.0563n    21.1236u     6.1305u
+  gds        10.9686m     1.5789u    10.9686m     1.5789u   587.9263n
+  gmb       377.1534n     5.9932u   377.1534n     5.9932u     1.3770u
+  cdtot      20.5811f    19.6272f    20.5811f    19.6272f     9.4637f
+  cgtot      16.0284f    15.0687f    16.0284f    15.0687f     7.0110f
+  cstot      13.1273f    22.4636f    13.1273f    22.4636f    10.8384f
+  cbtot      18.3675f    33.1648f    18.3675f    33.1648f    15.8535f
+  cgs         9.0190f     7.3041f     9.0190f     7.3041f     3.4914f
+  cgd         7.0953f     4.6935f     7.0953f     4.6935f     2.2388f
+
+
+
+ subckt    xi17.xi4.x  xi17.xi4.x  xi17.xi4.x  xi17.xi4.x  xi17.xi4.x
+ element  37:m2       38:m1       38:m2       39:m1       39:m2      
+ model     0:nmos      0:pmos      0:nmos      0:pmos      0:nmos    
+ region        Linear      Cutoff      Linear      Cutoff      Linear
+  id        206.4658n  -241.7180n   206.4658n    -1.3477u     1.3951u
+  ibs       8.734e-24  -2.874e-24   8.734e-24  -1.312e-24   5.140e-23
+  ibd      -102.4648a     3.0009p  -102.4648a     1.0055p   -42.3887a
+  vgs       999.9790m   -20.9792u   999.9790m  -101.8255u   999.8982m
+  vds        34.0809u  -999.9659m    34.0809u  -999.9591m    40.9192u
+  vbs         0.          0.          0.          0.          0.     
+  vth       370.5933m  -225.6999m   370.5933m  -225.7004m   370.5929m
+  vdsat     339.8012m   -46.2019m   339.8012m   -46.2026m   341.1940m
+  vod       629.3857m   225.6789m   629.3857m   225.5986m   629.3053m
+  beta       30.8590m    25.4279m    30.8590m   141.4868m   175.9603m
+  gam eff   441.0000m   394.0000m   441.0000m   394.0000m   441.0000m
+  gm         78.3736n     6.1305u    78.3736n    34.1797u   523.3561n
+  gds         6.0579m   587.9263n     6.0579m     3.2779u    34.0921m
+  gmb        41.2396n     1.3770u    41.2396n     7.6767u   275.2129n
+  cdtot       3.3805f     9.4637f     3.3805f    51.9818f    18.4015f
+  cgtot       2.4306f     7.0110f     2.4306f    39.0009f    13.8469f
+  cstot       2.1571f    10.8384f     2.1571f    59.4899f    11.4584f
+  cbtot       3.1844f    15.8535f     3.1844f    86.7048f    16.4307f
+  cgs         1.3273f     3.4914f     1.3273f    19.4289f     7.5681f
+  cgd         1.1256f     2.2388f     1.1256f    12.4573f     6.4178f
+
+
+
+ subckt    xi17.xi4.x  xi17.xi4.x  xi17.xi4.x  xi17.xi4.x  xi17.xi4.x
+ element  40:m1       40:m2       41:m1       41:m2       42:m1      
+ model     0:pmos      0:nmos      0:pmos      0:nmos      0:pmos    
+ region        Cutoff      Linear      Cutoff      Linear      Cutoff
+  id         -1.3477u     1.3951u    -4.0432u     4.2028u    -4.0432u
+  ibs      -1.312e-24   5.140e-23  -3.934e-24   1.542e-22  -3.934e-24
+  ibd         1.0055p   -42.3887a     3.0166p  -127.6978a     3.0166p
+  vgs      -101.8255u   999.8982m  -101.8253u   999.8982m  -101.8253u
+  vds      -999.9591m    40.9192u  -999.9589m    41.0903u  -999.9589m
+  vbs         0.          0.          0.          0.          0.     
+  vth      -225.7004m   370.5929m  -225.7005m   370.5929m  -225.7005m
+  vdsat     -46.2026m   341.1940m   -46.2026m   341.1940m   -46.2026m
+  vod       225.5986m   629.3053m   225.5986m   629.3053m   225.5986m
+  beta      141.4868m   175.9603m   424.4603m   527.8808m   424.4603m
+  gam eff   394.0000m   441.0000m   394.0000m   441.0000m   394.0000m
+  gm         34.1797u   523.3561n   102.5392u     1.5766u   102.5392u
+  gds         3.2779u    34.0921m     9.8338u   102.2763m     9.8338u
+  gmb         7.6767u   275.2129n    23.0301u   829.0914n    23.0301u
+  cdtot      51.9818f    18.4015f   155.9454f    55.2045f   155.9454f
+  cgtot      39.0009f    13.8469f   117.0026f    41.5408f   117.0026f
+  cstot      59.4899f    11.4584f   178.4696f    34.3751f   178.4696f
+  cbtot      86.7048f    16.4307f   260.1143f    49.2921f   260.1143f
+  cgs        19.4289f     7.5681f    58.2866f    22.7044f    58.2866f
+  cgd        12.4573f     6.4178f    37.3720f    19.2533f    37.3720f
+
+
+
+ subckt    xi17.xi4.x  xclk_gen.x  xclk_gen.x  xclk_gen.x  xclk_gen.x
+ element  42:m2       46:m_0      46:m_1      47:m_0      47:m_1     
+ model     0:nmos      0:nmos      0:pmos      0:nmos      0:pmos    
+ region        Linear      Cutoff      Linear      Linear      Cutoff
+  id          4.2028u     7.6210n   -16.0612n    54.8624n   -57.2547n
+  ibs       1.542e-22   9.392e-25  -2.103e-24   4.072e-24  -3.765e-24
+  ibd      -127.6978a  -999.9954f    25.6407a   -75.7425a     4.0002p
+  vgs       999.8982m     0.         -1.0000    999.9744m   -25.5802u
+  vds        41.0903u   999.9744m   -25.5802u    18.9202u  -999.9811m
+  vbs         0.          0.          0.          0.          0.     
+  vth       370.5929m   302.3784m  -310.7612m   370.5944m  -225.6986m
+  vdsat     341.1940m    39.8318m  -504.5937m   337.0862m   -46.2016m
+  vod       629.3053m  -302.3784m  -689.2388m   629.3800m   225.6730m
+  beta      527.8808m     5.0666m     1.1424m    14.4096m     6.0227m
+  gam eff   441.0000m   441.0000m   394.0000m   441.0000m   394.0000m
+  gm          1.5766u   191.9183n    13.5110n    21.3085n     1.4521u
+  gds       102.2763m    14.3449n   627.8611u     2.8996m   139.2593n
+  gmb       829.0914n    54.4515n     5.4389n    11.2233n   326.1537n
+  cdtot      55.2045f   220.4434a     1.2194f     1.7195f     2.3833f
+  cgtot      41.5408f   137.7687a   915.2162a     1.1369f     1.6630f
+  cstot      34.3751f   255.0966a   792.2893a     1.1430f     2.7389f
+  cbtot      49.2921f   395.0850a     1.1369f     1.7655f     4.0710f
+  cgs        22.7044f    66.4274a   514.6013a   619.7720a   826.9676a
+  cgd        19.2533f    42.6865a   404.9048a   525.6006a   530.2694a
+
+
+
+ subckt    xclk_gen.x  xclk_gen.x  xclk_gen.x  xclk_gen.x  xa0_gen.xg
+ element  48:m_0      48:m_1      49:m_0      49:m_1      50:m_0     
+ model     0:nmos      0:pmos      0:nmos      0:pmos      0:nmos    
+ region        Cutoff      Linear      Linear      Cutoff      Cutoff
+  id        121.9947n  -257.0380n   986.5605n  -916.0696n     7.6210n
+  ibs       1.503e-23  -3.364e-23   6.516e-23  -6.024e-23   9.392e-25
+  ibd       -15.9999p   410.3531a    -1.3620f    64.0026p  -999.9954f
+  vgs        18.9202u  -999.9811m   999.9744m   -25.5865u     0.     
+  vds       999.9744m   -25.5865u    21.2646u  -999.9787m   999.9744m
+  vbs         0.          0.          0.          0.          0.     
+  vth       302.3784m  -310.7612m   370.5942m  -225.6988m   302.3784m
+  vdsat      39.8318m  -504.5826m   337.0863m   -46.2016m    39.8318m
+  vod      -302.3595m  -689.2199m   629.3802m   225.6732m  -302.3784m
+  beta       81.0664m    18.2781m   230.5529m    96.3633m     5.0666m
+  gam eff   441.0000m   394.0000m   441.0000m   394.0000m   441.0000m
+  gm          3.0721u   216.2348n   383.1837n    23.2334u   191.9183n
+  gds       229.6257n    10.0456m    46.3934m     2.2281u    14.3449n
+  gmb       871.6237n    87.0444n   201.8231n     5.2184u    54.4515n
+  cdtot       3.5271f    19.5104f    27.5114f    38.1333f   220.4434a
+  cgtot       2.2043f    14.6434f    18.1904f    26.6086f   137.7687a
+  cstot       4.0816f    12.6766f    18.2873f    43.8225f   255.0966a
+  cbtot       6.3214f    18.1907f    28.2486f    65.1361f   395.0850a
+  cgs         1.0629f     8.2336f     9.9164f    13.2315f    66.4274a
+  cgd       682.9857a     6.4785f     8.4096f     8.4843f    42.6865a
+
+
+
+ subckt    xa0_gen.xg  xa0_gen.xg  xa0_gen.xg  xa0_gen.xg  xa0_gen.xg
+ element  50:m_1      51:m_0      51:m_1      52:m_0      52:m_1     
+ model     0:pmos      0:nmos      0:pmos      0:nmos      0:pmos    
+ region        Linear      Linear      Cutoff      Cutoff      Linear
+  id        -16.0612n    54.8624n   -57.2547n   121.9947n  -257.0380n
+  ibs      -2.103e-24   4.072e-24  -3.765e-24   1.503e-23  -3.364e-23
+  ibd        25.6407a   -75.7425a     4.0002p   -15.9999p   410.3531a
+  vgs        -1.0000    999.9744m   -25.5802u    18.9202u  -999.9811m
+  vds       -25.5802u    18.9202u  -999.9811m   999.9744m   -25.5865u
+  vbs         0.          0.          0.          0.          0.     
+  vth      -310.7612m   370.5944m  -225.6986m   302.3784m  -310.7612m
+  vdsat    -504.5937m   337.0862m   -46.2016m    39.8318m  -504.5826m
+  vod      -689.2388m   629.3800m   225.6730m  -302.3595m  -689.2199m
+  beta        1.1424m    14.4096m     6.0227m    81.0664m    18.2781m
+  gam eff   394.0000m   441.0000m   394.0000m   441.0000m   394.0000m
+  gm         13.5110n    21.3085n     1.4521u     3.0721u   216.2348n
+  gds       627.8611u     2.8996m   139.2593n   229.6257n    10.0456m
+  gmb         5.4389n    11.2233n   326.1537n   871.6237n    87.0444n
+  cdtot       1.2194f     1.7195f     2.3833f     3.5271f    19.5104f
+  cgtot     915.2162a     1.1369f     1.6630f     2.2043f    14.6434f
+  cstot     792.2893a     1.1430f     2.7389f     4.0816f    12.6766f
+  cbtot       1.1369f     1.7655f     4.0710f     6.3214f    18.1907f
+  cgs       514.6013a   619.7720a   826.9676a     1.0629f     8.2336f
+  cgd       404.9048a   525.6006a   530.2694a   682.9857a     6.4785f
+
+
+
+ subckt    xa0_gen.xg  xa0_gen.xg  xa255_gen.  xa255_gen.  xa255_gen.
+ element  53:m_0      53:m_1      54:m_0      54:m_1      55:m_0     
+ model     0:nmos      0:pmos      0:nmos      0:pmos      0:nmos    
+ region        Linear      Cutoff      Cutoff      Linear      Linear
+  id        986.5605n  -916.0696n     7.6210n   -16.0612n    54.8624n
+  ibs       6.516e-23  -6.024e-23   9.392e-25  -2.103e-24   4.072e-24
+  ibd        -1.3620f    64.0026p  -999.9954f    25.6407a   -75.7425a
+  vgs       999.9744m   -25.5865u     0.         -1.0000    999.9744m
+  vds        21.2646u  -999.9787m   999.9744m   -25.5802u    18.9202u
+  vbs         0.          0.          0.          0.          0.     
+  vth       370.5942m  -225.6988m   302.3784m  -310.7612m   370.5944m
+  vdsat     337.0863m   -46.2016m    39.8318m  -504.5937m   337.0862m
+  vod       629.3802m   225.6732m  -302.3784m  -689.2388m   629.3800m
+  beta      230.5529m    96.3633m     5.0666m     1.1424m    14.4096m
+  gam eff   441.0000m   394.0000m   441.0000m   394.0000m   441.0000m
+  gm        383.1837n    23.2334u   191.9183n    13.5110n    21.3085n
+  gds        46.3934m     2.2281u    14.3449n   627.8611u     2.8996m
+  gmb       201.8231n     5.2184u    54.4515n     5.4389n    11.2233n
+  cdtot      27.5114f    38.1333f   220.4434a     1.2194f     1.7195f
+  cgtot      18.1904f    26.6086f   137.7687a   915.2162a     1.1369f
+  cstot      18.2873f    43.8225f   255.0966a   792.2893a     1.1430f
+  cbtot      28.2486f    65.1361f   395.0850a     1.1369f     1.7655f
+  cgs         9.9164f    13.2315f    66.4274a   514.6013a   619.7720a
+  cgd         8.4096f     8.4843f    42.6865a   404.9048a   525.6006a
+
+
+
+ subckt    xa255_gen.  xa255_gen.  xa255_gen.  xa255_gen.  xa255_gen.
+ element  55:m_1      56:m_0      56:m_1      57:m_0      57:m_1     
+ model     0:pmos      0:nmos      0:pmos      0:nmos      0:pmos    
+ region        Cutoff      Cutoff      Linear      Linear      Cutoff
+  id        -57.2547n   121.9947n  -257.0380n   986.5605n  -916.0696n
+  ibs      -3.765e-24   1.503e-23  -3.364e-23   6.516e-23  -6.024e-23
+  ibd         4.0002p   -15.9999p   410.3531a    -1.3620f    64.0026p
+  vgs       -25.5802u    18.9202u  -999.9811m   999.9744m   -25.5865u
+  vds      -999.9811m   999.9744m   -25.5865u    21.2646u  -999.9787m
+  vbs         0.          0.          0.          0.          0.     
+  vth      -225.6986m   302.3784m  -310.7612m   370.5942m  -225.6988m
+  vdsat     -46.2016m    39.8318m  -504.5826m   337.0863m   -46.2016m
+  vod       225.6730m  -302.3595m  -689.2199m   629.3802m   225.6732m
+  beta        6.0227m    81.0664m    18.2781m   230.5529m    96.3633m
+  gam eff   394.0000m   441.0000m   394.0000m   441.0000m   394.0000m
+  gm          1.4521u     3.0721u   216.2348n   383.1837n    23.2334u
+  gds       139.2593n   229.6257n    10.0456m    46.3934m     2.2281u
+  gmb       326.1537n   871.6237n    87.0444n   201.8231n     5.2184u
+  cdtot       2.3833f     3.5271f    19.5104f    27.5114f    38.1333f
+  cgtot       1.6630f     2.2043f    14.6434f    18.1904f    26.6086f
+  cstot       2.7389f     4.0816f    12.6766f    18.2873f    43.8225f
+  cbtot       4.0710f     6.3214f    18.1907f    28.2486f    65.1361f
+  cgs       826.9676a     1.0629f     8.2336f     9.9164f    13.2315f
+  cgd       530.2694a   682.9857a     6.4785f     8.4096f     8.4843f
+
+
+
+ ******  
+ * file: task1.sp
+
+  ******  transient analysis tnom=  25.000 temp=  27.000 *****
+ tdr= 125.9691p  targ= 694.0572p   trig= 568.0882p
+ tdf= 443.5738p  targ=   1.5118n   trig=   1.0683n
+ supply_power=-979.9696u  from=   2.0000n     to=   3.0000n
+ ck_power=  -1.2551u  from=   2.0000n     to=   3.0000n
+
+          ***** job concluded
+1****** HSPICE -- F-2011.09-SP2 32-BIT (Feb 27 2012) linux ******               
+ ******  
+ * file: task1.sp
+
+  ******  job statistics summary tnom=  25.000 temp=  27.000 *****
+  
+  
+ ******  Machine Information  ******
+ CPU:
+ model name	: Quad-Core AMD Opteron(tm) Processor 2384
+ cpu MHz	: 2000.000
+  
+ OS:
+ Linux version 3.2.0-33-generic (buildd@batsu) (gcc version 4.6.3 (Ubuntu/Linaro
+  4.6.3-1ubuntu5) ) #52-Ubuntu SMP Thu Oct 18 16:29:15 UTC 2012
+
+
+  ******  HSPICE Threads Information  ******
+
+  Command Line Threads Count :     1
+  Available CPU Count        :     8
+  Actual Threads Count       :     1
+
+
+  ******  Circuit Statistics  ******
+  # nodes       =     567 # elements   =     157
+  # resistors   =       1 # capacitors =       4 # inductors   =       0
+  # mutual_inds =       0 # vccs       =       0 # vcvs        =       3
+  # cccs        =       6 # ccvs       =       0 # volt_srcs   =      23
+  # curr_srcs   =       0 # diodes     =       0 # bjts        =       0
+  # jfets       =       0 # mosfets    =     120 # U elements  =       0
+  # T elements  =       0 # W elements =       0 # B elements  =       0
+  # S elements  =       0 # P elements =       0 # va device   =       0
+  # vector_srcs =       0
+
+
+  ******  Runtime Statistics (seconds)  ******
+
+  analysis           time    # points   tot. iter  conv.iter
+  op point           0.16           1         235
+  transient          1.30         901        4782        1214 rev=       171
+  readin             0.02
+  errchk             0.02
+  setup              0.00
+  output             0.00
+
+
+           peak memory used         90.65 megabytes
+           total cpu time            1.50 seconds
+           total elapsed time        1.82 seconds
+           job started at     17:50:28 03/07/2013
+           job ended   at     17:50:29 03/07/2013
+
+
+ lic: Release hspice token(s) 

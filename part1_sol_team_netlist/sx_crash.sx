@@ -1,0 +1,25 @@
+### Custom WaveView session file (version F-2011.09-SP2 build 0205) ###
+### saved at 08:24:52 on Thu Mar  7 2013 ###
+wdf 0 "/afs/ir.stanford.edu/users/r/o/ronaldv/EE313/project/ee313_project/part1_sol/task1/task1.tr0" load=used 
+wdf 1 "/afs/ir.stanford.edu/users/r/o/ronaldv/EE313/project/ee313_project/part1_sol/task2/task2.tr0" load=used 
+wdf 2 "/afs/ir.stanford.edu/users/r/o/ronaldv/EE313/project/ee313_project/part1_sol/task3/task3.tr0" load=used 
+scalar list
+waveview_begin 1  stack  offset=0 name_b=81 mntr_b=81 dm=delay:290:317:1:1:0:5.0000e-01:5.0000e-01:0.0000e+00:0.0000e+00:0:0:7.53779e-10:5.00000e-01:5.68090e-10:5.00000e-01 geo=680:90:700:400 "name=waveview 1" 
+  panel_begin linear pidx=0 spath=true 
+    line src=wdf lidx=0 fidx=0 "delim=." sigtype=1 "name=v(wl0)" attr=0:0:1:0 autoset=true disp=show 
+    line src=wdf lidx=1 fidx=0 "delim=." sigtype=1 "name=v(ck)" attr=1:1:1:1 autoset=true disp=show 
+  panel_end
+waveview_end
+waveview_begin 2  stack  offset=0 name_b=81 mntr_b=81 dm=delay:333:401:1:1:0:5.0000e-01:5.0000e-01:0.0000e+00:0.0000e+00:0:0:5.68107e-10:5.00000e-01:6.22271e-10:5.00000e-01 geo=660:110:700:400 "name=waveview 2" 
+  panel_begin linear pidx=0 spath=true xmin=0.0000E+00   xmax=1.3873E-09   
+    line src=wdf lidx=0 fidx=1 "delim=." sigtype=1 "name=v(sae)" attr=0:0:1:0 autoset=true disp=show 
+    line src=wdf lidx=1 fidx=1 "delim=." sigtype=1 "name=v(out_b)" attr=1:1:1:1 autoset=true disp=show 
+  panel_end
+waveview_end
+waveview_begin 3  stack  offset=0 name_b=81 mntr_b=81 dm=delay:131:260:2:1:0:5.0000e-01:7.5000e-01:0.0000e+00:0.0000e+00:0:0:1.03370e-09:7.50000e-01:7.49749e-10:4.79207e-01 geo=640:130:700:400 "name=waveview 3" 
+  panel_begin linear pidx=0 spath=true xmin=5.9171E-10   xmax=1.7519E-09   
+    line src=wdf lidx=0 fidx=2 "delim=." sigtype=1 "name=v(bl_b0)" attr=0:0:1:0 autoset=true disp=show 
+    line src=wdf lidx=1 fidx=2 "delim=." sigtype=1 "name=v(wl0)" attr=1:1:1:1 autoset=true disp=show 
+    line src=wdf lidx=2 fidx=2 "delim=." sigtype=1 "name=v(bl0)" attr=2:1:1:2 autoset=true disp=show 
+  panel_end
+waveview_end
