@@ -21,8 +21,8 @@ def main():
   p.size()
   p.show()
   sizes = p.getSizes()
-  template = open('predecode_6s.ckt').read()
-  out = open('predecode416.ckt', 'w')
+  template = open('decode_6s.ckt.in').read()
+  out = open('decode.ckt', 'w')
   out.write(template.format(**sizes))
 
 if __name__ == '__main__':

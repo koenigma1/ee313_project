@@ -9,8 +9,8 @@
 .param vsense=150m
 .param td=180ps
 
+.include 'decode.ckt'
 .include 'schem.task1.ckt'
-.include 'sizes.inc'
 .include './project.task3.ckt'
 .include '/usr/class/ee313/project/stimulus.sp'
 

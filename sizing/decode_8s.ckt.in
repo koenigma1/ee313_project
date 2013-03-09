@@ -25,10 +25,10 @@ m2 y a 0 0 nmos L=2 W={s2_wn} M=1
 ** Cell name: predecode_24
 ** View name: schematic
 .subckt predecode_24 address0 address255 ck inv1 inv1_255
-xi36 ck vdd! address0 nand1 nand3 nl=2 nw=S1_WN nm=1 pl=2 pw=S1_WP pm=1
-xi37 ck 0 address0 net22 nand3 nl=2 nw=S1_WN nm=1 pl=2 pw=S1_WP pm=1
-xi38 ck vdd! address255 nand1_1 nand3 nl=2 nw=S1_WN nm=1 pl=2 pw=S1_WP pm=1
-xi39 ck 0 address255 net14 nand3 nl=2 nw=S1_WN nm=1 pl=2 pw=S1_WP pm=1
+xi36 ck vdd! address0 nand1 nand3 nl=2 nw={s1_wn} nm=1 pl=2 pw={s1_wp} pm=1
+xi37 ck 0 address0 net22 nand3 nl=2 nw={s1_wn} nm=1 pl=2 pw={s1_wp} pm=1
+xi38 ck vdd! address255 nand1_1 nand3 nl=2 nw={s1_wn} nm=1 pl=2 pw={s1_wp} pm=1
+xi39 ck 0 address255 net14 nand3 nl=2 nw={s1_wn} nm=1 pl=2 pw={s1_wp} pm=1
 xu3 net14 net6 inv_pcell_01
 xu2 nand1_1 inv1_255 inv_pcell_01
 xu1 net22 net10 inv_pcell_01

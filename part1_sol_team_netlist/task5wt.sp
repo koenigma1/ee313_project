@@ -10,8 +10,8 @@
 .param td = 180ps
 
 
+.include 'decode.ckt'
 .include 'schem.task1.ckt'
-.include 'sizes.inc'
 .include './project.task5.ckt'
 .include '/usr/class/ee313/project/stimulus.sp'
 

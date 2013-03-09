@@ -7,8 +7,8 @@
 .param tcyc = 1ns
 .param trf = 50ps
 
+.include 'decode.ckt'
 .include 'schem.task1.ckt'
-.include 'sizes.inc'
 xi17 wl0 wl255 a0 a255 ck decoder_schematic
 
 .include '/usr/class/ee313/project/stimulus.sp'

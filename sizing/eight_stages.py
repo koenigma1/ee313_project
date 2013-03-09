@@ -23,8 +23,8 @@ def main():
   p.size()
   p.show()
   sizes = p.getSizes()
-  template = open('predecode_8s.ckt').read()
-  out = open('predecode416_8s.ckt', 'w')
+  template = open('decode_8s.ckt.in').read()
+  out = open('decode_8s.ckt', 'w')
   out.write(template.format(**sizes))
 
 
