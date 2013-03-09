@@ -40,8 +40,8 @@ xu0 nand1 inv1 inv_pcell_01
 ** Cell name: inv
 ** View name: schematic
 .subckt inv_pcell_2 a y
-m1 y a vdd! vdd! pmos L=2 W=s8_wp M=1
-m2 y a 0 0 nmos L=2 W=s8_wn M=1
+m1 y a vdd! vdd! pmos L=2 W=s6_wp M=1
+m2 y a 0 0 nmos L=2 W=s6_wn M=1
 .ends inv_pcell_2
 ** End of subcircuit definition.
 
@@ -49,10 +49,10 @@ m2 y a 0 0 nmos L=2 W=s8_wn M=1
 ** Cell name: nand
 ** View name: schematic
 .subckt nand_pcell_3 a b y
-m2 y b vdd! vdd! pmos L=2 W=s7_wp M=15
-m0 y a vdd! vdd! pmos L=2 W=s7_wp M=15
-m3 mid_a b 0 0 nmos L=2 W=s7_wn M=15
-m1 y a mid_a 0 nmos L=2 W=s7_wn M=15
+m2 y b vdd! vdd! pmos L=2 W=s5_wp M=15
+m0 y a vdd! vdd! pmos L=2 W=s5_wp M=15
+m3 mid_a b 0 0 nmos L=2 W=s5_wn M=15
+m1 y a mid_a 0 nmos L=2 W=s5_wn M=15
 .ends nand_pcell_3
 ** End of subcircuit definition.
 
@@ -60,10 +60,10 @@ m1 y a mid_a 0 nmos L=2 W=s7_wn M=15
 ** Cell name: nand
 ** View name: schematic
 .subckt nand_pcell_4 a b y
-m2 y b vdd! vdd! pmos L=2 W=s7_wp M=1
-m0 y a vdd! vdd! pmos L=2 W=s7_wp M=1
-m3 mid_a b 0 0 nmos L=2 W=s7_wn M=1
-m1 y a mid_a 0 nmos L=2 W=s7_wn M=1
+m2 y b vdd! vdd! pmos L=2 W=s5_wp M=1
+m0 y a vdd! vdd! pmos L=2 W=s5_wp M=1
+m3 mid_a b 0 0 nmos L=2 W=s5_wn M=1
+m1 y a mid_a 0 nmos L=2 W=s5_wn M=1
 .ends nand_pcell_4
 ** End of subcircuit definition.
 
@@ -71,8 +71,8 @@ m1 y a mid_a 0 nmos L=2 W=s7_wn M=1
 ** Cell name: inv
 ** View name: schematic
 .subckt inv_pcell_5 a y
-m1 y a vdd! vdd! pmos L=2 W=s8_wp M=15
-m2 y a 0 0 nmos L=2 W=s8_wn M=15
+m1 y a vdd! vdd! pmos L=2 W=s6_wp M=15
+m2 y a 0 0 nmos L=2 W=s6_wn M=15
 .ends inv_pcell_5
 ** End of subcircuit definition.
 
@@ -173,20 +173,12 @@ m2 y a 0 0 nmos L=2 W=s6_wn M=3
 .subckt predecode_416 inv1 inv1_255 predec predec_255
 xi17 vdd! inv1_255 net057 nand_pcell_6
 xi15 vdd! inv1 net77 nand_pcell_6
-xu2 net057 net036 inv_pcell_78
-xu0 net77 net032 inv_pcell_78
-xu13 net036 net052 inv_pcell_910
-xu15 net032 net046 inv_pcell_910
+xu2 net057 predec_255 inv_pcell_78
+xu0 net77 predec inv_pcell_78
 xi16 0 inv1 net55 nand_pcell_11
 xi18 0 inv1_255 net63 nand_pcell_11
-xu14 net69 net049 inv_pcell_1213
-xu12 net73 net043 inv_pcell_1213
 xu1 net55 net69 inv_pcell_1415
 xu3 net63 net73 inv_pcell_1415
-xu10 net052 predec_255 inv_pcell_16
-xu8 net046 predec inv_pcell_16
-xu9 net049 net028 inv_pcell_17
-xu11 net043 net024 inv_pcell_17
 .ends predecode_416
 ** End of subcircuit definition.
 

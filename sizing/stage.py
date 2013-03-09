@@ -33,13 +33,19 @@ class Stage():
     self.se = se
     return self.Cin
 
+  def getSizeN(self):
+    return round(self.w_n*self.M)
+
+  def getSizeP(self):
+    return round(self.w_p*self.M)
+
   def show(self):
     out = [self.name,
-           "%i" % round(self.w_n*self.M),
-           "%i" % round(self.w_p*self.M),
+           "%i" % self.getSizeN(),
+           "%i" % self.getSizeP(),
            "%i" % round(self.Cin),
            "%i" % self.be,
-           "%0.02f" % self.le,
+           "%0.03f" % self.le,
            "%0.02f" % self.gamma,
            "%0.02f" % self.se,
            "%0.02f" % (self.le*self.gamma),

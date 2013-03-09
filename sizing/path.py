@@ -47,6 +47,10 @@ class Path():
       elif i not in self.sideloads or i != start:
         lastW = self.stages[i].size(se, lastW)
 
+  def writeSizes(self, out):
+    for i,stage in enumerate(self.stages):
+      out.write(".param S%i_WN=%i S%i_WP=%i\n" % (i+1, stage.getSizeN(), i+1, stage.getSizeP()))
+
   def show(self):
     out = ["Stage",
            "Gate",
