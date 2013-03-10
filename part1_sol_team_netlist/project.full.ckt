@@ -1,0 +1,103 @@
+** Library name: project_2012_part1_sol
+** Cell name: replica 
+** View name: schematic
+** Description: 27 replica bit cells
+.subckt replica bl bl_b wl blpc_b 
+xWrite bl bl_b blpc_b vdd! 0 inh_bulk_n inh_bulk_p write m=1
+xFirst_rbit bl bl_b wl vdd! gnd inh_bulk_n inh_bulk_p mc m=1
+xi13 bl bl_b gnd vdd! gnd inh_bulk_n inh_bulk_p mc m=77
+xLast_rbit bl bl_b gnd vdd! gnd inh_bulk_n inh_bulk_p mc m=1
+.ends replica 
+
+.subckt tunable_side in d1 d2 d3 d4 
+m1 in_sw1 d1 in vdd! pmos L=2 W=4 M=1
+m2 in_sw2 d2 in vdd! pmos L=2 W=4 M=1
+m3 in_sw3 d3 in vdd! pmos L=2 W=4 M=1
+m4 in_sw4 d4 in vdd! pmos L=2 W=4 M=1
+* Used NMOS current on my first estimation so C are doubled
+*Cd1 in_sw1 gnd 6.54e-15   
+*Cd2 in_sw2 gnd 6.54e-15   
+*Cd3 in_sw3 gnd 6.54e-15   
+*Cd4 in_sw4 gnd 6.54e-15   
+Cd1 in_sw1 gnd 3.27e-15   
+Cd2 in_sw2 gnd 3.27e-15   
+Cd3 in_sw3 gnd 3.27e-15   
+Cd4 in_sw4 gnd 3.27e-15   
+.ends tunable_side 
+
+.subckt inv in out 
+m1 out in vdd! vdd! pmos L=2 W=pm M=1
+m2 out in 0 0 nmos L=2 W=nm M=1
+.ends inv
+
+** Library name: ee313
+** Cell name: inv
+** View name: schematic
+.subckt inv_pcell_0 a y
+m1 y a vdd! vdd! pmos L=2 W=24
+m2 y a 0 0 nmos L=2 W=12
+.ends inv_pcell_0
+** End of subcircuit definition.
+
+** Library name: ee313
+** Cell name: inv
+** View name: schematic
+.subckt inv_pcell_1 a y
+m1 y a vdd! vdd! pmos L=2 W=100
+m2 y a 0 0 nmos L=2 W=50
+.ends inv_pcell_1
+** End of subcircuit definition.
+
+** Library name: schem
+** Cell name: sense
+** View name: schematic
+.subckt sense bl bl_b sel_b0 sae sapc_b out out_b  
+m4 sbl_b sbl vdd! vdd! pmos L=2 W=4
+m3 vdd! sbl_b sbl vdd! pmos L=2 W=4
+meq sbl sapc_b sbl_b vdd! pmos L=2 W=8
+mpc2 vdd! sapc_b sbl_b vdd! pmos L=2 W=8
+mpc sbl sapc_b vdd! vdd! pmos L=2 W=8
+miso_b sbl_b sae cmbl_b vdd! pmos L=2 W=12
+miso sbl sae cmbl vdd! pmos L=2 W=12
+mmx4_b cmbl_b vdd! vdd! vdd! pmos L=2 W=24
+mmx4 cmbl vdd! vdd! vdd! pmos L=2 W=24
+mmx3_b cmbl_b vdd! vdd! vdd! pmos L=2 W=24
+mmx3 cmbl vdd! vdd! vdd! pmos L=2 W=24
+mmx2_b cmbl_b vdd! vdd! vdd! pmos L=2 W=24
+mmx2 cmbl vdd! vdd! vdd! pmos L=2 W=24
+mmx_b cmbl_b sel_b0 bl_b0 vdd! pmos L=2 W=24
+mmx cmbl sel_b0 bl0 vdd! pmos L=2 W=24
+mtail tail sae 0 0 nmos L=2 W=8
+m1 tail sbl_b sbl 0 nmos L=2 W=6
+m2 sbl_b sbl tail 0 nmos L=2 W=6
+c1 sapc_b 0 560e-18
+c0 sae 0 560e-18
+xu1 sbl_b out inv_pcell_0
+xu0 sbl out_b inv_pcell_0
+xu3 out net70 inv_pcell_1
+xu2 out_b net71 inv_pcell_1
+.ends sense
+
+** Library name: project_2012_part1_sol
+** Cell name: task3
+** View name: schematic
+xcbl bl0 bl_b0 wl255 vdd gnd 0 vdd! mc m=1
+xi5 net57 net56 wl255 vdd gnd 0 vdd! mc m=254
+xcbr bl63 bl_b63 wl255 vdd gnd 0 vdd! mc m=1
+xi4 bl63 bl_b63 0 vdd gnd 0 vdd! mc m=254
+xi3 net57 net56 0 vdd gnd 0 vdd! mc m=64.516e3
+xi2 bl0 bl_b0 0 vdd gnd 0 vdd! mc m=254
+xctr bl63 bl_b63 wl0 vdd gnd 0 vdd! mc m=1
+xi1 net57 net56 wl0 vdd gnd 0 vdd! mc m=254
+xctl bl0 bl_b0 wl0 vdd gnd 0 vdd! mc m=1
+xwritel bl0 bl_b0 blpc_b vdd! 0 0 vdd! write m=1
+xwritem net57 net56 blpc_b vdd! 0 0 vdd! write m=254
+xwriter bl63 bl_b63 blpc_b vdd! 0 0 vdd! write m=1
+xDecoder wl0 wl255 a0 a255 ck decoder_schematic
+*xReplica rbl rbl_b wl0 ck replica
+xReplica rbl rbl_b ck ck replica
+xTunable_Load rbl D1en_b D2en_b D3en_b D4en_b tunable_side 
+xsense1 rbl s1 inv  nm=1  pm=3 
+xsense2 s1  s2 inv  nm=20  pm=10
+xsense3 s2  sae inv nm=78 pm=470  
+xSAmp bl0 bl_b0 gnd sae ck out out_b sense 
