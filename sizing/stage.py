@@ -18,7 +18,7 @@ class Stage():
   def __init__(self, be=1):
     self.gamma = self.c_para / self.c_gate
     self.be = be
-    self.le = (self.w_n + self.w_p) / (1 + P_TO_N)
+    self.le = float(self.w_n + self.w_p) / (1 + P_TO_N)
 
   def size_stack(self, n, vdd, vth, ecl):
     diff = vdd-vth
@@ -82,4 +82,13 @@ class inv(Stage):
       self.w_n = MIN_W
     self.c_para = (self.w_p + self.w_n) * C_JUNCTION
     self.c_gate = (self.w_p + self.w_n) * C_GATE
+    Stage.__init__(self, be)
+
+class pmos(Stage):
+  def __init__(self, be=1):
+    self.name = "pmos"
+    self.w_n = 0
+    self.w_p = P_TO_N
+    self.c_para = self.w_p * C_JUNCTION
+    self.c_gate = self.w_p * C_GATE
     Stage.__init__(self, be)
