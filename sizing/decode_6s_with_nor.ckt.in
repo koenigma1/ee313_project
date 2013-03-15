@@ -16,8 +16,8 @@ m0 y a vdd! vdd! pmos L=pl W=pw M=pm
 ** Cell name: inv
 ** View name: schematic
 .subckt inv_pcell_01 a y
-m1 y a vdd! vdd! pmos L=2 W=68 M=1
-m2 y a 0 0 nmos L=2 W=11 M=1
+m1 y a vdd! vdd! pmos L=2 W={s2_wp} M=1
+m2 y a 0 0 nmos L=2 W={s2_wn} M=1
 .ends inv_pcell_01
 ** End of subcircuit definition.
 
@@ -25,10 +25,10 @@ m2 y a 0 0 nmos L=2 W=11 M=1
 ** Cell name: predecode_24
 ** View name: schematic
 .subckt predecode_24 address0 address255 ck inv1 inv1_255
-xi36 ck vdd! address0 nand1 nand3 nl=2 nw=9 nm=1 pl=2 pw=3 pm=1
-xi37 ck 0 address0 net22 nand3 nl=2 nw=9 nm=1 pl=2 pw=3 pm=1
-xi38 ck vdd! address255 nand1_1 nand3 nl=2 nw=9 nm=1 pl=2 pw=3 pm=1
-xi39 ck 0 address255 net14 nand3 nl=2 nw=9 nm=1 pl=2 pw=3 pm=1
+xi36 ck vdd! address0 nand1 nand3 nl=2 nw={s1_wn} nm=1 pl=2 pw={s1_wp} pm=1
+xi37 ck 0 address0 net22 nand3 nl=2 nw={s1_wn} nm=1 pl=2 pw={s1_wp} pm=1
+xi38 ck vdd! address255 nand1_1 nand3 nl=2 nw={s1_wn} nm=1 pl=2 pw={s1_wp} pm=1
+xi39 ck 0 address255 net14 nand3 nl=2 nw={s1_wn} nm=1 pl=2 pw={s1_wp} pm=1
 xu3 net14 net6 inv_pcell_01
 xu2 nand1_1 inv1_255 inv_pcell_01
 xu1 net22 net10 inv_pcell_01
@@ -40,10 +40,10 @@ xu0 nand1 inv1 inv_pcell_01
 ** Cell name: nor
 ** View name: schematic
 .subckt nor_pcell_2 a b y
-m1 mid_a b vdd! vdd! pmos L=2 W=1176 M=1
-m2 y a mid_a vdd! pmos L=2 W=1176 M=1
-m3 y a 0 0 nmos L=2 W=30 M=1
-m4 y b 0 0 nmos L=2 W=400 M=1
+m1 mid_a b vdd! vdd! pmos L=2 W={s6_wp} M=1
+m2 y a mid_a vdd! pmos L=2 W={s6_wp} M=1
+m3 y a 0 0 nmos L=2 W={s6_wn} M=1
+m4 y b 0 0 nmos L=2 W={sae_wn} M=1
 .ends nor_pcell_2
 ** End of subcircuit definition.
 
@@ -51,10 +51,10 @@ m4 y b 0 0 nmos L=2 W=400 M=1
 ** Cell name: nand
 ** View name: schematic
 .subckt nand_pcell_3 a b y
-m2 y b vdd! vdd! pmos L=2 W=45 M=15
-m0 y a vdd! vdd! pmos L=2 W=45 M=15
-m3 mid_a b 0 0 nmos L=2 W=126 M=15
-m1 y a mid_a 0 nmos L=2 W=126 M=15
+m2 y b vdd! vdd! pmos L=2 W={s5_wp} M=15
+m0 y a vdd! vdd! pmos L=2 W={s5_wp} M=15
+m3 mid_a b 0 0 nmos L=2 W={s5_wn} M=15
+m1 y a mid_a 0 nmos L=2 W={s5_wn} M=15
 .ends nand_pcell_3
 ** End of subcircuit definition.
 
@@ -62,10 +62,10 @@ m1 y a mid_a 0 nmos L=2 W=126 M=15
 ** Cell name: nand
 ** View name: schematic
 .subckt nand_pcell_4 a b y
-m2 y b vdd! vdd! pmos L=2 W=45 M=1
-m0 y a vdd! vdd! pmos L=2 W=45 M=1
-m3 mid_a b 0 0 nmos L=2 W=126 M=1
-m1 y a mid_a 0 nmos L=2 W=126 M=1
+m2 y b vdd! vdd! pmos L=2 W={s5_wp} M=1
+m0 y a vdd! vdd! pmos L=2 W={s5_wp} M=1
+m3 mid_a b 0 0 nmos L=2 W={s5_wn} M=1
+m1 y a mid_a 0 nmos L=2 W={s5_wn} M=1
 .ends nand_pcell_4
 ** End of subcircuit definition.
 
@@ -73,10 +73,10 @@ m1 y a mid_a 0 nmos L=2 W=126 M=1
 ** Cell name: nor
 ** View name: schematic
 .subckt nor_pcell_5 a b y
-m1 mid_a b vdd! vdd! pmos L=2 W=1176 M=15
-m2 y a mid_a vdd! pmos L=2 W=1176 M=15
-m3 y a 0 0 nmos L=2 W=30 M=15
-m4 y b 0 0 nmos L=2 W=400 M=15
+m1 mid_a b vdd! vdd! pmos L=2 W={s6_wp} M=15
+m2 y a mid_a vdd! pmos L=2 W={s6_wp} M=15
+m3 y a 0 0 nmos L=2 W={s6_wn} M=15
+m4 y b 0 0 nmos L=2 W={sae_wn} M=15
 .ends nor_pcell_5
 ** End of subcircuit definition.
 
@@ -99,10 +99,10 @@ xu8 net8 sae net22 nor_pcell_5
 ** Cell name: nand
 ** View name: schematic
 .subckt nand_pcell_6 a b y
-m2 y b vdd! vdd! pmos L=2 W=23 M=1
-m0 y a vdd! vdd! pmos L=2 W=23 M=1
-m3 mid_a b 0 0 nmos L=2 W=65 M=1
-m1 y a mid_a 0 nmos L=2 W=65 M=1
+m2 y b vdd! vdd! pmos L=2 W={s3_wp} M=1
+m0 y a vdd! vdd! pmos L=2 W={s3_wp} M=1
+m3 mid_a b 0 0 nmos L=2 W={s3_wn} M=1
+m1 y a mid_a 0 nmos L=2 W={s3_wn} M=1
 .ends nand_pcell_6
 ** End of subcircuit definition.
 
@@ -110,8 +110,8 @@ m1 y a mid_a 0 nmos L=2 W=65 M=1
 ** Cell name: inv
 ** View name: schematic
 .subckt inv_pcell_78 a y
-m1 y a vdd! vdd! pmos L=2 W=605 M=1
-m2 y a 0 0 nmos L=2 W=101 M=1
+m1 y a vdd! vdd! pmos L=2 W={s4_wp} M=1
+m2 y a 0 0 nmos L=2 W={s4_wn} M=1
 .ends inv_pcell_78
 ** End of subcircuit definition.
 
@@ -119,8 +119,8 @@ m2 y a 0 0 nmos L=2 W=101 M=1
 ** Cell name: inv
 ** View name: schematic
 .subckt inv_pcell_910 a y
-m1 y a vdd! vdd! pmos L=2 W=45 M=1
-m2 y a 0 0 nmos L=2 W=126 M=1
+m1 y a vdd! vdd! pmos L=2 W={s5_wp} M=1
+m2 y a 0 0 nmos L=2 W={s5_wn} M=1
 .ends inv_pcell_910
 ** End of subcircuit definition.
 
@@ -128,10 +128,10 @@ m2 y a 0 0 nmos L=2 W=126 M=1
 ** Cell name: nand
 ** View name: schematic
 .subckt nand_pcell_11 a b y
-m2 y b vdd! vdd! pmos L=2 W=23 M=3
-m0 y a vdd! vdd! pmos L=2 W=23 M=3
-m3 mid_a b 0 0 nmos L=2 W=65 M=3
-m1 y a mid_a 0 nmos L=2 W=65 M=3
+m2 y b vdd! vdd! pmos L=2 W={s3_wp} M=3
+m0 y a vdd! vdd! pmos L=2 W={s3_wp} M=3
+m3 mid_a b 0 0 nmos L=2 W={s3_wn} M=3
+m1 y a mid_a 0 nmos L=2 W={s3_wn} M=3
 .ends nand_pcell_11
 ** End of subcircuit definition.
 
@@ -139,8 +139,8 @@ m1 y a mid_a 0 nmos L=2 W=65 M=3
 ** Cell name: inv
 ** View name: schematic
 .subckt inv_pcell_1213 a y
-m1 y a vdd! vdd! pmos L=2 W=45 M=3
-m2 y a 0 0 nmos L=2 W=126 M=3
+m1 y a vdd! vdd! pmos L=2 W={s5_wp} M=3
+m2 y a 0 0 nmos L=2 W={s5_wn} M=3
 .ends inv_pcell_1213
 ** End of subcircuit definition.
 
@@ -148,8 +148,8 @@ m2 y a 0 0 nmos L=2 W=126 M=3
 ** Cell name: inv
 ** View name: schematic
 .subckt inv_pcell_1415 a y
-m1 y a vdd! vdd! pmos L=2 W=605 M=3
-m2 y a 0 0 nmos L=2 W=101 M=3
+m1 y a vdd! vdd! pmos L=2 W={s4_wp} M=3
+m2 y a 0 0 nmos L=2 W={s4_wn} M=3
 .ends inv_pcell_1415
 ** End of subcircuit definition.
 
@@ -157,8 +157,8 @@ m2 y a 0 0 nmos L=2 W=101 M=3
 ** Cell name: inv
 ** View name: schematic
 .subckt inv_pcell_16 a y
-m1 y a vdd! vdd! pmos L=2 W=1176 M=1
-m2 y a 0 0 nmos L=2 W=30 M=1
+m1 y a vdd! vdd! pmos L=2 W={s6_wp} M=1
+m2 y a 0 0 nmos L=2 W={s6_wn} M=1
 .ends inv_pcell_16
 ** End of subcircuit definition.
 
@@ -166,8 +166,8 @@ m2 y a 0 0 nmos L=2 W=30 M=1
 ** Cell name: inv
 ** View name: schematic
 .subckt inv_pcell_17 a y
-m1 y a vdd! vdd! pmos L=2 W=1176 M=3
-m2 y a 0 0 nmos L=2 W=30 M=3
+m1 y a vdd! vdd! pmos L=2 W={s6_wp} M=3
+m2 y a 0 0 nmos L=2 W={s6_wn} M=3
 .ends inv_pcell_17
 ** End of subcircuit definition.
 

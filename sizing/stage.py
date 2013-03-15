@@ -19,6 +19,11 @@ class Stage():
     self.gamma = self.c_para / self.c_gate
     self.be = be
     self.le = float(self.w_n + self.w_p) / (1 + P_TO_N)
+    self.slow_le = self.le
+    if hasattr(self, 'w_p_fast'):
+      self.slow_le *= float(self.w_p_fast) / self.w_p
+    if hasattr(self, 'w_n_fast'):
+      self.slow_le *= float(self.w_n_fast) / self.w_n
     self.reduction = reduction
 
   def size_stack(self, n, vdd, vth, ecl):
@@ -44,18 +49,27 @@ class Stage():
     return round(self.w_p*self.M)
 
   def show(self):
+    se = self.se * self.slow_le / float(self.le)
     out = [self.name,
            "%i" % self.getSizeN(),
            "%i" % self.getSizeP(),
            "%i" % round(self.Cin),
            "%i" % self.be,
-           "%0.03f" % self.le,
+           "%0.03f" % self.slow_le,
            "%0.02f" % self.gamma,
            "%0.02f" % self.se,
            "%0.02f" % (self.le*self.gamma),
-           "%0.02f" % (self.se+self.le*self.gamma),
-           "%0.02f" % (0.2*(self.se+self.le*self.gamma))]
+           "%0.02f" % (se+self.le*self.gamma),
+           "%0.02f" % (0.2*(se+self.le*self.gamma)),
+           "%0.02f" % se,
+           "%0.02f" % (self.slow_le*self.gamma),
+           "%0.02f" % (se+self.slow_le*self.gamma),
+           "%0.02f" % (0.2*(se+self.slow_le*self.gamma))]
     print "\t".join(out)
+
+  def slow_delay(self):
+    se = self.se * self.slow_le / float(self.le)
+    return (se, self.slow_le*self.gamma)
 
   def delay(self):
     return (self.se, self.le*self.gamma)
@@ -66,10 +80,29 @@ class nand(Stage):
     self.w_n = self.size_stack(n, VDD, VTH, ECL_NMOS)
     self.w_p = P_TO_N
     if fast_fall:
+      self.w_p_fast = self.w_p
       self.w_p = MIN_W
     if fast_rise:
+      self.w_n_fast = self.w_n
       self.w_n = MIN_W
     self.c_para = (n*self.w_p + self.w_n) * C_JUNCTION
+    self.c_gate = (self.w_p + self.w_n) * C_GATE
+    # LE = RCgate / RCgate,inv
+    # we sized for equal drive strength to inv, so take Cgate / Cgate,inv
+    Stage.__init__(self, be, reduction)
+
+class nor(Stage):
+  def __init__(self, n, be=1, fast_rise=False, fast_fall=False, reduction=False):
+    self.name = "nor%i" % n 
+    self.w_n = 1
+    self.w_p = P_TO_N*self.size_stack(n, VDD, VTH, ECL_PMOS)
+    if fast_fall:
+      self.w_p_fast = self.w_p
+      self.w_p = MIN_W
+    if fast_rise:
+      self.w_n_fast = self.w_n
+      self.w_n = MIN_W/4
+    self.c_para = (self.w_p + n*self.w_n) * C_JUNCTION
     self.c_gate = (self.w_p + self.w_n) * C_GATE
     # LE = RCgate / RCgate,inv
     # we sized for equal drive strength to inv, so take Cgate / Cgate,inv
@@ -81,8 +114,10 @@ class inv(Stage):
     self.w_n = 1
     self.w_p = P_TO_N
     if fast_fall:
+      self.w_p_fast = self.w_p
       self.w_p = MIN_W
     if fast_rise:
+      self.w_n_fast = self.w_n
       self.w_n = MIN_W
     self.c_para = (self.w_p + self.w_n) * C_JUNCTION
     self.c_gate = (self.w_p + self.w_n) * C_GATE

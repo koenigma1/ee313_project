@@ -72,7 +72,7 @@ xitop_left bl0 bl_b0 wl0 vdd! gnd inh_bulk_n inh_bulk_p mc m=1
 ** View name: schematic
 .subckt decoder_schematic wl0 wl255 a0 a255 ck
 xi5 a0 a255 ck net2 net1 predecode_24
-xi1 wl0 wl255 net14 net17 decode_stage
+xi1 wl0 wl255 net14 net17 0 decode_stage
 c_sideload2 net17 0 22.53e-15
 c_sideload net14 0 22.53e-15
 xi4 net2 net1 net14 net17 predecode_416
