@@ -95,4 +95,9 @@ class Path():
     print "%0.02f\t" % ((effort + para) / 5)
       
 
-
+  def totalDelay(self):
+    delay = 0
+    for stage in self.stages:
+      (e, p) = stage.delay()
+      delay += e + p
+    return delay/5

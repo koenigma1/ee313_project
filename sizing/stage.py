@@ -15,10 +15,11 @@ C_JUNCTION = 1.2
 MIN_W = 0.5
 
 class Stage():
-  def __init__(self, be=1):
+  def __init__(self, be=1, reduction=False):
     self.gamma = self.c_para / self.c_gate
     self.be = be
     self.le = float(self.w_n + self.w_p) / (1 + P_TO_N)
+    self.reduction = reduction
 
   def size_stack(self, n, vdd, vth, ecl):
     diff = vdd-vth
@@ -29,8 +30,11 @@ class Stage():
     # in = (LE * BE * load) / SE
     self.Cin = (self.le * self.be * load) / se
     # split the input load between w_p and w_n
-    self.M = self.Cin / (self.w_p + self.w_n)
     self.se = se
+    if self.reduction:
+      self.Cin *= self.reduction
+      self.se = (self.le * self.be * load) / self.Cin
+    self.M = self.Cin / (self.w_p + self.w_n)
     return self.Cin
 
   def getSizeN(self):
@@ -57,7 +61,7 @@ class Stage():
     return (self.se, self.le*self.gamma)
 
 class nand(Stage):
-  def __init__(self, n, be=1, fast_rise=False, fast_fall=False):
+  def __init__(self, n, be=1, fast_rise=False, fast_fall=False, reduction=False):
     self.name = "nand%i" % n 
     self.w_n = self.size_stack(n, VDD, VTH, ECL_NMOS)
     self.w_p = P_TO_N
@@ -69,10 +73,10 @@ class nand(Stage):
     self.c_gate = (self.w_p + self.w_n) * C_GATE
     # LE = RCgate / RCgate,inv
     # we sized for equal drive strength to inv, so take Cgate / Cgate,inv
-    Stage.__init__(self, be)
+    Stage.__init__(self, be, reduction)
 
 class inv(Stage):
-  def __init__(self, be=1, fast_rise=False, fast_fall=False):
+  def __init__(self, be=1, fast_rise=False, fast_fall=False, reduction=False):
     self.name = "inv"
     self.w_n = 1
     self.w_p = P_TO_N
@@ -82,13 +86,13 @@ class inv(Stage):
       self.w_n = MIN_W
     self.c_para = (self.w_p + self.w_n) * C_JUNCTION
     self.c_gate = (self.w_p + self.w_n) * C_GATE
-    Stage.__init__(self, be)
+    Stage.__init__(self, be, reduction)
 
 class pmos(Stage):
-  def __init__(self, be=1):
+  def __init__(self, be=1, reduction=False):
     self.name = "pmos"
     self.w_n = 0
     self.w_p = P_TO_N
     self.c_para = self.w_p * C_JUNCTION
     self.c_gate = self.w_p * C_GATE
-    Stage.__init__(self, be)
+    Stage.__init__(self, be, reduction)
