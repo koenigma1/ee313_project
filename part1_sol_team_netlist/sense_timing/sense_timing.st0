@@ -1,0 +1,141 @@
+***** HSPICE -- F-2011.09-SP2 32-BIT (Feb 27 2012) linux ******
+ Input File: sense_timing.sp
+ lic:
+ lic: FLEXlm: v10.8
+ lic: USER:   ronaldv              HOSTNAME: myth1
+ lic: HOSTID: 001d09346c5f         PID:      4359
+ lic: Using FLEXlm license file:
+ lic: 27000@cadlic0.stanford.edu
+ lic: Checkout 1 hspice
+ lic: License/Maintenance for hspice will expire on 16-nov-2013/2012.06
+ lic: 1(in_use)/100(total) FLOATING license(s) on SERVER cadlic0.stanford.edu
+ lic:
+ init: begin read circuit files,  cpu clock=  4.00E-02
+       option search   = /afs/ir.stanford.edu/class/ee/synopsys/hspice/F-
+                         2011.09-SP2/hspice/parts/ad
+       option search   = /afs/ir.stanford.edu/class/ee/synopsys/hspice/F-
+                         2011.09-SP2/hspice/parts/ad
+       option search   = /afs/ir.stanford.edu/class/ee/synopsys/hspice/F-
+                         2011.09-SP2/hspice/parts/behave
+       option search   = /afs/ir.stanford.edu/class/ee/synopsys/hspice/F-
+                         2011.09-SP2/hspice/parts/bjt
+       option search   = /afs/ir.stanford.edu/class/ee/synopsys/hspice/F-
+                         2011.09-SP2/hspice/parts/burr_brn
+       option search   = /afs/ir.stanford.edu/class/ee/synopsys/hspice/F-
+                         2011.09-SP2/hspice/parts/comlinear
+       option search   = /afs/ir.stanford.edu/class/ee/synopsys/hspice/F-
+                         2011.09-SP2/hspice/parts/dio
+       option search   = /afs/ir.stanford.edu/class/ee/synopsys/hspice/F-
+                         2011.09-SP2/hspice/parts/fet
+       option search   = /afs/ir.stanford.edu/class/ee/synopsys/hspice/F-
+                         2011.09-SP2/hspice/parts/lin_tech
+       option search   = /afs/ir.stanford.edu/class/ee/synopsys/hspice/F-
+                         2011.09-SP2/hspice/parts/pci
+       option search   = /afs/ir.stanford.edu/class/ee/synopsys/hspice/F-
+                         2011.09-SP2/hspice/parts/signet
+       option search   = /afs/ir.stanford.edu/class/ee/synopsys/hspice/F-
+                         2011.09-SP2/hspice/parts/ti
+       option search   = /afs/ir.stanford.edu/class/ee/synopsys/hspice/F-
+                         2011.09-SP2/hspice/parts/tline
+       option search   = /afs/ir.stanford.edu/class/ee/synopsys/hspice/F-
+                         2011.09-SP2/hspice/parts/xilinx
+       option runlvl
+       option scale    =    2.200E-08
+       option accura
+       option post
+       option dcic     =     0.00
+       option parhie   = local
+       option list
+ init: end read circuit files,  cpu clock=  4.00E-02 memory=    307 kb
+ init: begin check errors,  cpu clock=  4.00E-02
+ init: end check errors,  cpu clock=  8.00E-02 memory=   1274 kb
+ init: begin setup matrix, pivot=     0 cpu clock=  8.00E-02
+       establish matrix -- done,  cpu clock=  8.00E-02 memory=   1302 kb
+       re-order matrix -- done,  cpu clock=  1.00E-01 memory=   1302 kb
+ init: end setup matrix,  cpu clock=  1.00E-01 memory=   1614 kb
+ dcop: begin dcop,  cpu clock=  1.00E-01
+ dcop: end dcop,  cpu clock=  2.00E-01 memory=   1614 kb  tot_iter=      71
+ sweep: data            data1            begin, #sweeps =   5
+ data: data=tune_delay      dc1             =    1.00E+00
+ dcop: begin dcop,  cpu clock=  2.00E-01
+ dcop: end dcop,  cpu clock=  3.40E-01 memory=   1614 kb  tot_iter=     158
+ output: sense_timing.mt0
+ sweep: tran tran1    begin, stop_t=  1.05E-08 #sweeps=**** cpu clock=  3.40E-01
+ tran: time= 1.0500E-09 tot_iter=    1521 conv_iter=     236 cpu clock= 9.20E-01
+ tran: time= 2.1038E-09 tot_iter=    4973 conv_iter=     630 cpu clock= 2.18E+00
+ tran: time= 3.1549E-09 tot_iter=    8533 conv_iter=    1024 cpu clock= 3.46E+00
+ tran: time= 4.2007E-09 tot_iter=   11961 conv_iter=    1405 cpu clock= 4.68E+00
+ tran: time= 5.2550E-09 tot_iter=   15574 conv_iter=    1805 cpu clock= 5.98E+00
+ tran: time= 6.3028E-09 tot_iter=   19000 conv_iter=    2184 cpu clock= 7.22E+00
+ tran: time= 7.3539E-09 tot_iter=   22589 conv_iter=    2580 cpu clock= 8.52E+00
+ tran: time= 8.4024E-09 tot_iter=   25964 conv_iter=    2954 cpu clock= 9.74E+00
+ tran: time= 9.4515E-09 tot_iter=   29510 conv_iter=    3341 cpu clock= 1.10E+01
+ tran: time= 1.0500E-08 tot_iter=   33101 conv_iter=    3739 cpu clock= 1.23E+01
+ sweep: tran tran1    end,  cpu clock=  1.23E+01 memory=   1625 kb
+ data: data=tune_delay      dc1             =    0.00E+00
+ dcop: begin dcop,  cpu clock=  1.23E+01
+ dcop: end dcop,  cpu clock=  1.25E+01 memory=   1623 kb  tot_iter=     245
+ output: sense_timing.mt0
+ sweep: tran tran2    begin, stop_t=  1.05E-08 #sweeps=**** cpu clock=  1.25E+01
+ tran: time= 1.0500E-09 tot_iter=    1537 conv_iter=     238 cpu clock= 1.30E+01
+ tran: time= 2.1013E-09 tot_iter=    5159 conv_iter=     638 cpu clock= 1.43E+01
+ tran: time= 3.1555E-09 tot_iter=    8609 conv_iter=    1029 cpu clock= 1.56E+01
+ tran: time= 4.2015E-09 tot_iter=   12040 conv_iter=    1412 cpu clock= 1.68E+01
+ tran: time= 5.2543E-09 tot_iter=   15599 conv_iter=    1805 cpu clock= 1.81E+01
+ tran: time= 6.3036E-09 tot_iter=   19074 conv_iter=    2190 cpu clock= 1.94E+01
+ tran: time= 7.3541E-09 tot_iter=   22755 conv_iter=    2596 cpu clock= 2.07E+01
+ tran: time= 8.4032E-09 tot_iter=   26236 conv_iter=    2981 cpu clock= 2.19E+01
+ tran: time= 9.4516E-09 tot_iter=   29747 conv_iter=    3372 cpu clock= 2.32E+01
+ tran: time= 1.0500E-08 tot_iter=   33331 conv_iter=    3767 cpu clock= 2.45E+01
+ sweep: tran tran2    end,  cpu clock=  2.45E+01 memory=   1625 kb
+ data: data=tune_delay      dc1             =    0.00E+00
+ dcop: begin dcop,  cpu clock=  2.45E+01
+ dcop: end dcop,  cpu clock=  2.47E+01 memory=   1623 kb  tot_iter=     345
+ output: sense_timing.mt0
+ sweep: tran tran3    begin, stop_t=  1.05E-08 #sweeps=**** cpu clock=  2.47E+01
+ tran: time= 1.0500E-09 tot_iter=    1580 conv_iter=     246 cpu clock= 2.53E+01
+ tran: time= 2.1038E-09 tot_iter=    5085 conv_iter=     651 cpu clock= 2.65E+01
+ tran: time= 3.1554E-09 tot_iter=    8816 conv_iter=    1074 cpu clock= 2.79E+01
+ tran: time= 4.2021E-09 tot_iter=   12423 conv_iter=    1478 cpu clock= 2.92E+01
+ tran: time= 5.2516E-09 tot_iter=   16067 conv_iter=    1892 cpu clock= 3.05E+01
+ tran: time= 6.3034E-09 tot_iter=   19539 conv_iter=    2279 cpu clock= 3.18E+01
+ tran: time= 7.3512E-09 tot_iter=   23154 conv_iter=    2691 cpu clock= 3.31E+01
+ tran: time= 8.4027E-09 tot_iter=   26683 conv_iter=    3085 cpu clock= 3.43E+01
+ tran: time= 9.4516E-09 tot_iter=   30329 conv_iter=    3498 cpu clock= 3.57E+01
+ tran: time= 1.0500E-08 tot_iter=   34039 conv_iter=    3920 cpu clock= 3.70E+01
+ sweep: tran tran3    end,  cpu clock=  3.70E+01 memory=   1625 kb
+ data: data=tune_delay      dc1             =    0.00E+00
+ dcop: begin dcop,  cpu clock=  3.70E+01
+ dcop: end dcop,  cpu clock=  3.71E+01 memory=   1623 kb  tot_iter=     429
+ output: sense_timing.mt0
+ sweep: tran tran4    begin, stop_t=  1.05E-08 #sweeps=**** cpu clock=  3.71E+01
+ tran: time= 1.0500E-09 tot_iter=    1586 conv_iter=     246 cpu clock= 3.78E+01
+ tran: time= 2.1038E-09 tot_iter=    5013 conv_iter=     629 cpu clock= 3.90E+01
+ tran: time= 3.1550E-09 tot_iter=    8441 conv_iter=    1026 cpu clock= 4.02E+01
+ tran: time= 4.2013E-09 tot_iter=   12037 conv_iter=    1435 cpu clock= 4.15E+01
+ tran: time= 5.2512E-09 tot_iter=   15502 conv_iter=    1821 cpu clock= 4.28E+01
+ tran: time= 6.3012E-09 tot_iter=   19034 conv_iter=    2214 cpu clock= 4.41E+01
+ tran: time= 7.3509E-09 tot_iter=   22744 conv_iter=    2631 cpu clock= 4.54E+01
+ tran: time= 8.4002E-09 tot_iter=   26321 conv_iter=    3037 cpu clock= 4.67E+01
+ tran: time= 9.4502E-09 tot_iter=   29746 conv_iter=    3429 cpu clock= 4.79E+01
+ tran: time= 1.0500E-08 tot_iter=   33376 conv_iter=    3839 cpu clock= 4.93E+01
+ sweep: tran tran4    end,  cpu clock=  4.93E+01 memory=   1625 kb
+ data: data=tune_delay      dc1             =    0.00E+00
+ dcop: begin dcop,  cpu clock=  4.93E+01
+ dcop: end dcop,  cpu clock=  4.94E+01 memory=   1623 kb  tot_iter=     503
+ output: sense_timing.mt0
+ sweep: tran tran5    begin, stop_t=  1.05E-08 #sweeps=**** cpu clock=  4.94E+01
+ tran: time= 1.0500E-09 tot_iter=    1513 conv_iter=     236 cpu clock= 5.00E+01
+ tran: time= 2.1009E-09 tot_iter=    4959 conv_iter=     616 cpu clock= 5.12E+01
+ tran: time= 3.1549E-09 tot_iter=    8489 conv_iter=    1013 cpu clock= 5.25E+01
+ tran: time= 4.2016E-09 tot_iter=   11988 conv_iter=    1397 cpu clock= 5.37E+01
+ tran: time= 5.2503E-09 tot_iter=   15293 conv_iter=    1772 cpu clock= 5.49E+01
+ tran: time= 6.3041E-09 tot_iter=   18750 conv_iter=    2154 cpu clock= 5.62E+01
+ tran: time= 7.3535E-09 tot_iter=   22612 conv_iter=    2584 cpu clock= 5.76E+01
+ tran: time= 8.4003E-09 tot_iter=   25920 conv_iter=    2957 cpu clock= 5.87E+01
+ tran: time= 9.4501E-09 tot_iter=   29511 conv_iter=    3345 cpu clock= 6.00E+01
+ tran: time= 1.0500E-08 tot_iter=   32901 conv_iter=    3724 cpu clock= 6.12E+01
+ sweep: tran tran5    end,  cpu clock=  6.12E+01 memory=   1625 kb
+ sweep: data            data            1 end
+>info:         ***** hspice job concluded
+ lic: Release hspice token(s)

@@ -44,6 +44,24 @@ run_task5wt:
 	mv task5wt.* task5wt/
 	cp task5wt/task5wt.sp .
 
+run_sense_timing:
+	-hspice -i sense_timing.sp -o sense_timing.lis
+	egrep -i 'warn|err' sense_timing.lis
+	cat sense_timing.mt0
+	rm -rf sense_timing/
+	mkdir sense_timing
+	mv sense_timing.* sense_timing/
+	cp sense_timing/sense_timing.sp .
+
+run_full:
+	-hspice -i full.sp -o full.lis
+	egrep -i 'warn|err' full.lis
+	cat full.mt0
+	rm -rf full/
+	mkdir full
+	mv full.* full/
+	cp full/full.sp .
+
 all: run_task1 run_task2 run_task3 run_task5rd run_task5wt
 	echo "DONE"
 	grep .TITLE */*.mt* -A4

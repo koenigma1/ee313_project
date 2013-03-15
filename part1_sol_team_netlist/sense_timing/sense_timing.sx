@@ -1,0 +1,66 @@
+### Custom WaveView session file (version F-2011.09-SP2 build 0205) ###
+### saved at 15:27:20 on Sun Mar 10 2013 ###
+wdf 0 "/afs/ir.stanford.edu/users/r/o/ronaldv/EE313/project/ee313_project/part1_sol_team_netlist/sense_timing/sense_timing.tr0" load=used 
+wdf 1 "/afs/ir.stanford.edu/users/r/o/ronaldv/EE313/project/ee313_project/part1_sol_team_netlist/sense_timing/sense_timing.tr0" load=used 
+scalar list
+waveview_begin 1  stack  offset=0 name_b=146 mntr_b=206 xcur=8.6886e-10   mcur=1.0276e-09   vc=cur-pnl geo=680:90:700:400 "name=waveview 1" 
+  panel_begin linear pidx=0 spath=true xmin=0.0000E+00   xmax=1.5205E-09   
+    line src=wdf lidx=0 fidx=0 "delim=." sigtype=1 "name=v(bl_b0)" swidx=0 attr=2:1:1:0 autoset=true disp=show swphead=true swpline=true 
+    line src=wdf lidx=1 fidx=0 "delim=." sigtype=1 "name=v(bl_b0)" swidx=1 attr=3:1:1:1 autoset=true disp=show swpline=true 
+    line src=wdf lidx=2 fidx=0 "delim=." sigtype=1 "name=v(bl_b0)" swidx=2 attr=4:1:1:2 autoset=true disp=show swpline=true 
+    line src=wdf lidx=3 fidx=0 "delim=." sigtype=1 "name=v(bl_b0)" swidx=3 attr=5:1:1:3 autoset=true disp=show swpline=true 
+    line src=wdf lidx=4 fidx=0 "delim=." sigtype=1 "name=v(bl_b0)" swidx=4 attr=6:1:1:4 autoset=true disp=show swpline=true 
+  panel_end
+  panel_begin linear pidx=1 spath=true xmin=0.0000E+00   xmax=1.5205E-09   
+    line src=wdf lidx=0 fidx=0 "delim=." sigtype=1 "name=v(sae)" swidx=0 attr=0:0:1:0 autoset=true disp=show swphead=true swpline=true 
+    line src=wdf lidx=2 fidx=0 "delim=." sigtype=1 "name=v(sae)" swidx=1 attr=1:1:1:2 autoset=true disp=show swpline=true 
+    line src=wdf lidx=3 fidx=0 "delim=." sigtype=1 "name=v(sae)" swidx=2 attr=2:1:1:3 autoset=true disp=show swpline=true 
+    line src=wdf lidx=4 fidx=0 "delim=." sigtype=1 "name=v(sae)" swidx=3 attr=3:1:1:4 autoset=true disp=show swpline=true 
+    line src=wdf lidx=5 fidx=0 "delim=." sigtype=1 "name=v(sae)" swidx=4 attr=4:1:1:5 autoset=true disp=show swpline=true 
+    line src=wdf lidx=5 fidx=0 "delim=." sigtype=1 "name=v(ck)" swidx=0 attr=5:1:1:5 autoset=true disp=show swphead=true swpline=true 
+    line src=wdf lidx=6 fidx=0 "delim=." sigtype=1 "name=v(ck)" swidx=1 attr=6:1:1:6 autoset=true disp=show swpline=true 
+    line src=wdf lidx=7 fidx=0 "delim=." sigtype=1 "name=v(ck)" swidx=2 attr=7:1:1:7 autoset=true disp=show swpline=true 
+    line src=wdf lidx=8 fidx=0 "delim=." sigtype=1 "name=v(ck)" swidx=3 attr=0:1:1:8 autoset=true disp=show swpline=true 
+    line src=wdf lidx=9 fidx=0 "delim=." sigtype=1 "name=v(ck)" swidx=4 attr=1:1:1:0 autoset=true disp=show swpline=true 
+  panel_end
+waveview_end
+waveview_begin 2  stack  offset=0 name_b=81 mntr_b=141 mcur=8.7065e-10   vc=cur-pnl geo=0:0:700:800 "name=waveview 2" 
+  panel_begin linear pidx=0 spath=true xmin=3.8198E-10   xmax=1.2900E-09   
+    line src=wdf lidx=0 fidx=0 "delim=." sigtype=1 "name=v(rbl)" swidx=0 attr=1:1:1:0 autoset=true disp=show swphead=true swpline=true 
+    line src=wdf lidx=2 fidx=0 "delim=." sigtype=1 "name=v(rbl)" swidx=1 attr=2:1:1:2 autoset=true disp=show swpline=true 
+    line src=wdf lidx=3 fidx=0 "delim=." sigtype=1 "name=v(rbl)" swidx=2 attr=3:1:1:3 autoset=true disp=show swpline=true 
+    line src=wdf lidx=4 fidx=0 "delim=." sigtype=1 "name=v(rbl)" swidx=3 attr=4:1:1:4 autoset=true disp=show swpline=true 
+    line src=wdf lidx=5 fidx=0 "delim=." sigtype=1 "name=v(rbl)" swidx=4 attr=5:1:1:5 autoset=true disp=show swpline=true 
+    line src=wdf lidx=1 fidx=0 "delim=." sigtype=1 "name=v(wl0)" swidx=0 attr=6:1:1:1 autoset=true disp=show swphead=true swpline=true 
+    line src=wdf lidx=6 fidx=0 "delim=." sigtype=1 "name=v(wl0)" swidx=1 attr=7:1:1:6 autoset=true disp=show swpline=true 
+    line src=wdf lidx=7 fidx=0 "delim=." sigtype=1 "name=v(wl0)" swidx=2 attr=0:1:1:7 autoset=true disp=show swpline=true 
+    line src=wdf lidx=8 fidx=0 "delim=." sigtype=1 "name=v(wl0)" swidx=3 attr=1:1:1:8 autoset=true disp=show swpline=true 
+    line src=wdf lidx=9 fidx=0 "delim=." sigtype=1 "name=v(wl0)" swidx=4 attr=2:1:1:0 autoset=true disp=show swpline=true 
+  panel_end
+  panel_begin linear pidx=1 spath=true xmin=3.8198E-10   xmax=1.2900E-09   
+    line src=wdf lidx=0 fidx=0 "delim=." sigtype=1 "name=v(bl_b0)" swidx=0 attr=3:3:1:0 autoset=true disp=show swphead=true swpline=true 
+    line src=wdf lidx=1 fidx=0 "delim=." sigtype=1 "name=v(bl_b0)" swidx=1 attr=4:1:1:1 autoset=true disp=show swpline=true 
+    line src=wdf lidx=2 fidx=0 "delim=." sigtype=1 "name=v(bl_b0)" swidx=2 attr=5:1:1:2 autoset=true disp=show swpline=true 
+    line src=wdf lidx=3 fidx=0 "delim=." sigtype=1 "name=v(bl_b0)" swidx=3 attr=6:1:1:3 autoset=true disp=show swpline=true 
+    line src=wdf lidx=4 fidx=0 "delim=." sigtype=1 "name=v(bl_b0)" swidx=4 attr=7:1:1:4 autoset=true disp=show swpline=true 
+  panel_end
+waveview_end
+waveview_begin 3  stack  offset=0 name_b=76 mntr_b=185 mcur=8.7051e-10   xcur=9.8651e-10   vc=cur-pnl dm=delay:432:189:2:1:0:5.0000e-01:7.5000e-01:0.0000e+00:0.0000e+00:0:0:8.69504e-10:8.50662e-01:5.67872e-10:4.93934e-01 dm=delay:506:375:2:1:0:5.0000e-01:5.0000e-01:0.0000e+00:0.0000e+00:0:0:9.76080e-10:4.98562e-01:5.67872e-10:4.93934e-01 geo=0:0:700:800 "name=waveview 3" 
+  panel_begin linear pidx=0 spath=true xmin=4.1706E-10   xmax=1.2757E-09   
+    line src=wdf lidx=0 fidx=1 "delim=." sigtype=1 "name=v(sae)" swidx=0 attr=0:0:1:0 autoset=true disp=show swphead=true swpline=true 
+    line src=wdf lidx=1 fidx=1 "delim=." sigtype=1 "name=v(sae)" swidx=1 attr=1:1:1:1 autoset=true disp=show swpline=true 
+    line src=wdf lidx=2 fidx=1 "delim=." sigtype=1 "name=v(sae)" swidx=2 attr=2:1:1:2 autoset=true disp=show swpline=true 
+    line src=wdf lidx=3 fidx=1 "delim=." sigtype=1 "name=v(sae)" swidx=3 attr=3:1:1:3 autoset=true disp=show swpline=true 
+    line src=wdf lidx=4 fidx=1 "delim=." sigtype=1 "name=v(sae)" swidx=4 attr=4:1:1:4 autoset=true disp=show swpline=true 
+    line src=wdf lidx=5 fidx=1 "delim=." sigtype=1 "name=v(ck)" swidx=0 attr=5:1:1:5 autoset=true disp=show swphead=true swpline=true 
+    line src=wdf lidx=6 fidx=1 "delim=." sigtype=1 "name=v(ck)" swidx=1 attr=6:1:1:6 autoset=true disp=show swpline=true 
+    line src=wdf lidx=7 fidx=1 "delim=." sigtype=1 "name=v(ck)" swidx=2 attr=7:1:1:7 autoset=true disp=show swpline=true 
+    line src=wdf lidx=8 fidx=1 "delim=." sigtype=1 "name=v(ck)" swidx=3 attr=0:1:1:8 autoset=true disp=show swpline=true 
+    line src=wdf lidx=9 fidx=1 "delim=." sigtype=1 "name=v(ck)" swidx=4 attr=1:1:1:0 autoset=true disp=show swpline=true 
+    line src=wdf lidx=10 fidx=1 "delim=." sigtype=1 "name=v(bl_b0)" swidx=0 attr=2:1:1:1 autoset=true disp=show swphead=true swpline=true 
+    line src=wdf lidx=11 fidx=1 "delim=." sigtype=1 "name=v(bl_b0)" swidx=1 attr=3:1:1:2 autoset=true disp=show swpline=true 
+    line src=wdf lidx=12 fidx=1 "delim=." sigtype=1 "name=v(bl_b0)" swidx=2 attr=4:1:1:3 autoset=true disp=show swpline=true 
+    line src=wdf lidx=13 fidx=1 "delim=." sigtype=1 "name=v(bl_b0)" swidx=3 attr=5:1:1:4 autoset=true disp=show swpline=true 
+    line src=wdf lidx=14 fidx=1 "delim=." sigtype=1 "name=v(bl_b0)" swidx=4 attr=6:1:1:5 autoset=true disp=show swpline=true 
+  panel_end
+waveview_end
