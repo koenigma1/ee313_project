@@ -180,13 +180,13 @@ m2 y a 0 0 nmos L=2 W=29 M=3
 ** Library name: schem
 ** Cell name: predecode_416
 ** View name: schematic
-.subckt predecode_416 inv1 inv1_255 sae_b0 sae_b255 predec predec_255
-xi17 vdd! inv1_255 net057 sae_b255 nand_pcell_6
-xi15 vdd! inv1 net77 sae_b0 nand_pcell_6
+.subckt predecode_416 inv1 inv1_255 predec predec_255 sae_b0 sae_b255 
+xi17 vdd! inv1_255 sae_b255 net057 nand_pcell_6
+xi15 vdd! inv1 sae_b0 net77 nand_pcell_6
 xu2 net057 predec_255 inv_pcell_78
 xu0 net77 predec inv_pcell_78
-xi16 0 inv1 net55 sae_b0 nand_pcell_11
-xi18 0 inv1_255 net63 sae_b255 nand_pcell_11
+xi16 0 inv1 sae_b0 net55 nand_pcell_11
+xi18 0 inv1_255 sae_b255 net63 nand_pcell_11
 xu1 net55 net69 inv_pcell_1415
 xu3 net63 net73 inv_pcell_1415
 .ends predecode_416
