@@ -1,0 +1,53 @@
+
+** Library name: schem
+** Cell name: write
+** View name: schematic
+.subckt write bl0 bl_b0 blpc_b wrdata wren0 vcell vcc_hi vcc_lo inh_bulk_n inh_bulk_p
+m5 bl0 blpc_b vdd! inh_bulk_p pmos L=2 W=80
+m1 bl0 blpc_b bl_b0 inh_bulk_p pmos L=2 W=80
+m0 bl_b0 blpc_b vdd! inh_bulk_p pmos L=2 W=80
+m4 net23 wr2 bl_b0 inh_bulk_n nmos L=2 W=90
+m3 net26 wr2 bl0 inh_bulk_n nmos L=2 W=90
+xu0 wrdata net18 inv_pcell_13
+xu2 wrdata net23 inv_pcell_14
+xu1 net18 net26 inv_pcell_14
+xu3 wren0 wr1 inv_1237
+xu4 wr1 wr2 inv_1238
+xu5 wr2 wr3 inv_1239
+m6 vcell wr2 vcc_hi vcc_hi pmos L=2 W=425
+m7 vcell wr3 vcc_lo vcc_hi pmos L=2 W=555
+.ends write
+** End of subcircuit definition.
+
+** Library name: ee313
+** Cell name: inv
+** View name: schematic
+.subckt inv_pcell_13 a y
+m1 y a vdd! vdd! pmos L=2 W=8
+m2 y a 0 0 nmos L=2 W=4
+.ends inv_pcell_13
+** End of subcircuit definition.
+
+** Library name: ee313
+** Cell name: inv
+** View name: schematic
+.subckt inv_pcell_14 a y
+m1 y a vdd! vdd! pmos L=2 W=12
+m2 y a 0 0 nmos L=2 W=24
+.ends inv_pcell_14
+** End of subcircuit definition.
+
+.subckt inv_1237 a y
+m1 y a vdd! vdd! pmos L=2 W=135 M=1
+m2 y a 0 0 nmos L=2 W=45 M=1
+.ends inv_1237
+
+.subckt inv_1238 a y
+m1 y a vdd! vdd! pmos L=2 W=262 M=1
+m2 y a 0 0 nmos L=2 W=87 M=1
+.ends inv_1238
+
+.subckt inv_1239 a y
+m1 y a vdd! vdd! pmos L=2 W=165 M=1
+m2 y a 0 0 nmos L=2 W=55 M=1
+.ends inv_1239
