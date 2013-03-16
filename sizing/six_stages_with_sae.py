@@ -25,11 +25,11 @@ def sae_chain():
   #out = open('sae_chain.ckt', 'w')
   #out.write(template.format(**sizes))
   out = '''
-.subckt sae_inv_chain sae wl wl_pulldown
+.subckt sae_inv_chain sae wl wl_pulldown sae_b
 x123 sae wl net_sae_1 {nand_pcell}
 x124 net_sae_1 net_sae_2 {inv_pcell1}
-x125 net_sae_2 net_sae_3 {inv_pcell2}
-x126 net_sae_3 wl_pulldown {inv_pcell3}
+x125 net_sae_2 sae_b {inv_pcell2}
+x126 sae_b wl_pulldown {inv_pcell3}
 .ends sae_inv_chain
 '''
   names = {'nand_pcell': p.stages[0].getName(),
@@ -48,7 +48,7 @@ def main():
   p = Path(12, 3218)
   p.stages = [nand(3, fast_fall=True),
               inv(be=4, fast_rise=True),
-              nand(2, fast_fall=True),
+              nand(3, fast_fall=True),
               inv(be=16, fast_rise=True),
               nand(2, fast_fall=True),
               nor(2, fast_rise=True)]

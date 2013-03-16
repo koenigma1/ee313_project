@@ -83,7 +83,7 @@ m4 y b 0 0 nmos L=2 W={sae_wn} M=15
 ** Library name: schem
 ** Cell name: decode_stage
 ** View name: schematic
-.subckt decode_stage wl0 wl255 predec predec_255 sae
+.subckt decode_stage wl0 wl255 predec predec_255 sae sae_b0 sae_b255
 xu7 net11 wl_pulldown255 wl255 nor_pcell_2
 xu5 net17 wl_pulldown0 wl0 nor_pcell_2
 xu1 0 predec net14 nand_pcell_3
@@ -92,19 +92,21 @@ xu2 vdd! predec_255 net11 nand_pcell_4
 xu0 vdd! predec net17 nand_pcell_4
 xu6 net14 0 net26 nor_pcell_5
 xu8 net8 0 net22 nor_pcell_5
-xu9 sae wl0 wl_pulldown0 sae_inv_chain
-xu10 sae wl255 wl_pulldown255 sae_inv_chain
+xu9 sae wl0 wl_pulldown0 sae_b0 sae_inv_chain
+xu10 sae wl255 wl_pulldown255 sae_b255 sae_inv_chain
 .ends decode_stage
 ** End of subcircuit definition.
 
 ** Library name: ee313
 ** Cell name: nand
 ** View name: schematic
-.subckt nand_pcell_6 a b y
+.subckt nand_pcell_6 a b c y
 m2 y b vdd! vdd! pmos L=2 W={s3_wp} M=1
 m0 y a vdd! vdd! pmos L=2 W={s3_wp} M=1
+m6 y c vdd! vdd! pmos L=2 W={s3_wp} M=1
 m3 mid_a b 0 0 nmos L=2 W={s3_wn} M=1
-m1 y a mid_a 0 nmos L=2 W={s3_wn} M=1
+m4 mid_b a mid_a 0 nmos L=2 W={s3_wn} M=1
+m5 y c mid_b 0 nmos L=2 W={s3_wn} M=1
 .ends nand_pcell_6
 ** End of subcircuit definition.
 
@@ -129,11 +131,13 @@ m2 y a 0 0 nmos L=2 W={s5_wn} M=1
 ** Library name: ee313
 ** Cell name: nand
 ** View name: schematic
-.subckt nand_pcell_11 a b y
+.subckt nand_pcell_11 a b c y
 m2 y b vdd! vdd! pmos L=2 W={s3_wp} M=3
 m0 y a vdd! vdd! pmos L=2 W={s3_wp} M=3
+m4 y c vdd! vdd! pmos L=2 W={s3_wp} M=3
 m3 mid_a b 0 0 nmos L=2 W={s3_wn} M=3
-m1 y a mid_a 0 nmos L=2 W={s3_wn} M=3
+m1 mid_b a mid_a 0 nmos L=2 W={s3_wn} M=3
+m5 y c mid_b 0 nmos L=2 W={s3_wn} M=3
 .ends nand_pcell_11
 ** End of subcircuit definition.
 
@@ -176,13 +180,13 @@ m2 y a 0 0 nmos L=2 W={s6_wn} M=3
 ** Library name: schem
 ** Cell name: predecode_416
 ** View name: schematic
-.subckt predecode_416 inv1 inv1_255 predec predec_255
-xi17 vdd! inv1_255 net057 nand_pcell_6
-xi15 vdd! inv1 net77 nand_pcell_6
+.subckt predecode_416 inv1 inv1_255 sae_b0 sae_b255 predec predec_255
+xi17 vdd! inv1_255 net057 sae_b255 nand_pcell_6
+xi15 vdd! inv1 net77 sae_b0 nand_pcell_6
 xu2 net057 predec_255 inv_pcell_78
 xu0 net77 predec inv_pcell_78
-xi16 0 inv1 net55 nand_pcell_11
-xi18 0 inv1_255 net63 nand_pcell_11
+xi16 0 inv1 net55 sae_b0 nand_pcell_11
+xi18 0 inv1_255 net63 sae_b255 nand_pcell_11
 xu1 net55 net69 inv_pcell_1415
 xu3 net63 net73 inv_pcell_1415
 .ends predecode_416

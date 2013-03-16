@@ -1,35 +1,5 @@
-** Library name: ee313
-** Cell name: inv
-** View name: schematic
-.subckt inv_pcell_13 a y
-m1 y a vdd! vdd! pmos L=2 W=8
-m2 y a 0 0 nmos L=2 W=4
-.ends inv_pcell_13
-** End of subcircuit definition.
 
-** Library name: ee313
-** Cell name: inv
-** View name: schematic
-.subckt inv_pcell_14 a y
-m1 y a vdd! vdd! pmos L=2 W=12
-m2 y a 0 0 nmos L=2 W=24
-.ends inv_pcell_14
-** End of subcircuit definition.
-
-** Library name: schem
-** Cell name: write
-** View name: schematic
-.subckt write bl0 bl_b0 blpc_b wrdata wren0 inh_bulk_n inh_bulk_p
-m5 bl0 blpc_b vdd! inh_bulk_p pmos L=2 W=80
-m1 bl0 blpc_b bl_b0 inh_bulk_p pmos L=2 W=80
-m0 bl_b0 blpc_b vdd! inh_bulk_p pmos L=2 W=80
-m4 net23 wren0 bl_b0 inh_bulk_n nmos L=2 W=90
-m3 net26 wren0 bl0 inh_bulk_n nmos L=2 W=90
-xu0 wrdata net18 inv_pcell_13
-xu2 wrdata net23 inv_pcell_14
-xu1 net18 net26 inv_pcell_14
-.ends write
-** End of subcircuit definition.
+.include 'write.ckt'
 
 ** Library name: schem
 ** Cell name: mc
@@ -44,7 +14,7 @@ m3 bit bit_b vdd inh_bulk_p pmos L=2 W=4
 c2 bl 0 88e-18
 c1 bl_b 0 88e-18
 c0 wl 0 140e-18
-c3 vss 0 88e-18
+c3 vdd 0 88e-18
 .ends mc
 ** End of subcircuit definition.
 
@@ -52,12 +22,12 @@ c3 vss 0 88e-18
 ** Cell name: SRAM
 ** View name: schematic
 .subckt SRAM bl0 bl63 bl_b0 bl_b63 blpc_b wl0 wl255 inh_bulk_n inh_bulk_p
-xi16 bl63 bl_b63 blpc_b vdd! 0 inh_bulk_n inh_bulk_p write m=1
-xi17 net9 net8 blpc_b vdd! 0 inh_bulk_n inh_bulk_p write m=254
-xi14 bl0 bl_b0 blpc_b vdd! 0 inh_bulk_n inh_bulk_p write m=1
-xibottom_right bl63 bl_b63 wl255 vdd! gnd inh_bulk_n inh_bulk_p mc m=1
-xi13 net9 net8 wl255 vdd! gnd inh_bulk_n inh_bulk_p mc m=254
-xibottom_left bl0 bl_b0 wl255 vdd! gnd inh_bulk_n inh_bulk_p mc m=1
+xi16 bl63 bl_b63 blpc_b vdd! 0 vcell inh_bulk_n inh_bulk_p write m=1
+xi17 net9 net8 blpc_b vdd! 0 vcell inh_bulk_n inh_bulk_p write m=254
+xi14 bl0 bl_b0 blpc_b vdd! 0 vcell inh_bulk_n inh_bulk_p write m=1
+xibottom_right bl63 bl_b63 wl255 vdd! vdd! inh_bulk_n inh_bulk_p mc m=1
+xi13 net9 net8 wl255 vdd! vdd! inh_bulk_n inh_bulk_p mc m=254
+xibottom_left bl0 bl_b0 wl255 vdd! vdd! inh_bulk_n inh_bulk_p mc m=1
 xi11 bl0 bl_b0 0 vdd! gnd inh_bulk_n inh_bulk_p mc m=254
 xi10 net9 net8 0 vdd! gnd inh_bulk_n inh_bulk_p mc m=64.52e3
 xi12 bl63 bl_b63 0 vdd! gnd inh_bulk_n inh_bulk_p mc m=254
@@ -72,9 +42,9 @@ xitop_left bl0 bl_b0 wl0 vdd! gnd inh_bulk_n inh_bulk_p mc m=1
 ** View name: schematic
 .subckt decoder_schematic wl0 wl255 a0 a255 ck sae
 xi5 a0 a255 ck net2 net1 predecode_24
-xi1 wl0 wl255 net14 net17 sae decode_stage
+xi1 wl0 wl255 net14 net17 sae sae_b0 sae_b255 decode_stage
 c_sideload2 net17 0 22.53e-15
 c_sideload net14 0 22.53e-15
-xi4 net2 net1 net14 net17 predecode_416
+xi4 net2 net1 net14 net17 sae_b0 sae_b255 predecode_416
 .ends 
 
