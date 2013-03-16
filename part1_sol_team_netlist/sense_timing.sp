@@ -12,10 +12,14 @@
 .param dc2='supply'
 .param dc3='supply'
 .param dc4='supply'
+.param supply_hi='1.0V'
+.param supply_lo='1.0V'
 Vdc1 D1en_b gnd dc='dc1' 
 Vdc2 D2en_b gnd dc='dc2'
 Vdc3 D3en_b gnd dc='dc3'
 Vdc4 D4en_b gnd dc='dc4'
+Vdc_hi vcc_hi gnd dc='supply_hi'
+Vdc_lo vcc_lo gnd dc='supply_lo'
 
 .include 'schem.task1.ckt'
 .include 'decode.ckt'
@@ -102,6 +106,7 @@ Xblpc_b_gen blpc_b blpc_b_gen
 + TRIG v(wl0) VAL='supply/2' rise=1
 + TARG v(wl0) VAL='supply/2' fall=1
 
+
 * power measurement
 .probe idrive = par('i(xctl.m4)')
 .meas TRAN idsat
@@ -113,6 +118,18 @@ Xblpc_b_gen blpc_b blpc_b_gen
 .meas TRAN blpc_b_power
 +	AVG i(Xblpc_b_gen.Xgen.V_monitor) FROM='2*tcyc' TO='3*tcyc'
 
+.meas TRAN vdc_hi_power
++       AVG i(Vdc_hi) FROM='2*tcyc' TO='3*tcyc'
+
+.meas TRAN vdc_lo_power
++       AVG i(Vdc_lo) FROM='2*tcyc' TO='3*tcyc'
+
+* vcell transition measurement
+*.meas TRAN vcell_rise
+*+ TRIG v(wren0) VAL='supply/2' rise=1
+*+ TARG v(vcell) VAL='supply' rise=1
+
+.print v(vcell)
 
 .END
 ***********************************************************************

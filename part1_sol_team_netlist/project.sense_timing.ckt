@@ -2,11 +2,11 @@
 ** Cell name: replica 
 ** View name: schematic
 ** Description: 27 replica bit cells
-.subckt replica bl bl_b wl blpc_b 
-xWrite bl bl_b blpc_b vdd! 0 inh_bulk_n inh_bulk_p write m=1
-xFirst_rbit bl bl_b wl vdd! gnd inh_bulk_n inh_bulk_p mc m=1
-xi13 bl bl_b gnd vdd! gnd inh_bulk_n inh_bulk_p mc m=77
-xLast_rbit bl bl_b gnd vdd! gnd inh_bulk_n inh_bulk_p mc m=1
+.subckt replica bl bl_b wl blpc_b vcc_hi vcc_lo 
+xWrite bl bl_b blpc_b vdd! 0 inh_bulk_n inh_bulk_p vcell vcc_hi vcc_lo write m=1
+xFirst_rbit bl bl_b wl vcell gnd inh_bulk_n inh_bulk_p mc m=1
+xi13 bl bl_b gnd vcell gnd inh_bulk_n inh_bulk_p mc m=77
+xLast_rbit bl bl_b gnd vcell gnd inh_bulk_n inh_bulk_p mc m=1
 .ends replica 
 
 .subckt tunable_side in d1 d2 d3 d4 
@@ -33,21 +33,21 @@ m2 out in 0 0 nmos L=2 W=nm M=1
 ** Library name: project_2012_part1_sol
 ** Cell name: task3
 ** View name: schematic
-xcbl bl0 bl_b0 wl255 vdd gnd 0 vdd mc m=1
-xi5 net57 net56 wl255 vdd gnd 0 vdd mc m=254
-xcbr bl63 bl_b63 wl255 vdd gnd 0 vdd mc m=1
-xi4 bl63 bl_b63 0 vdd gnd 0 vdd mc m=254
-xi3 net57 net56 0 vdd gnd 0 vdd mc m=64.516e3
-xi2 bl0 bl_b0 0 vdd gnd 0 vdd mc m=254
-xctr bl63 bl_b63 wl0 vdd gnd 0 vdd mc m=1
-xi1 net57 net56 wl0 vdd gnd 0 vdd mc m=254
-xctl bl0 bl_b0 wl0 vdd gnd 0 vdd mc m=1
-xwritel bl0 bl_b0 blpc_b vdd 0 0 vdd write m=1
-xwritem net57 net56 blpc_b vdd 0 0 vdd write m=254
-xwriter bl63 bl_b63 blpc_b vdd 0 0 vdd write m=1
+xcbl bl0 bl_b0 wl255 vcell0 gnd 0 vdd mc m=1
+xi5 net57 net56 wl255 vcell1 gnd 0 vdd mc m=254
+xcbr bl63 bl_b63 wl255 vcell2 gnd 0 vdd mc m=1
+xi4 bl63 bl_b63 0 vcell0 gnd 0 vdd mc m=254
+xi3 net57 net56 0 vcell1 gnd 0 vdd mc m=64.516e3
+xi2 bl0 bl_b0 0 vcell2 gnd 0 vdd mc m=254
+xctr bl63 bl_b63 wl0 vcell0 gnd 0 vdd mc m=1
+xi1 net57 net56 wl0 vcell1 gnd 0 vdd mc m=254
+xctl bl0 bl_b0 wl0 vcell2 gnd 0 vdd mc m=1
+xwritel bl0 bl_b0 blpc_b vdd 0 vcell0 vcc_hi vcc_lo 0 vdd write m=1
+xwritem net57 net56 blpc_b vdd 0 vcell1 vcc_hi vcc_lo 0 vdd write m=254
+xwriter bl63 bl_b63 blpc_b vdd 0 vcell2 vcc_hi vcc_lo 0 vdd write m=1
 xDecoder wl0 wl255 a0 a255 ck sae decoder_schematic
 *xReplica rbl rbl_b wl0 ck replica
-xReplica rbl rbl_b ck ck replica
+xReplica rbl rbl_b ck ck vcc_hi vcc_lo replica
 xTunable_Load rbl D1en_b D2en_b D3en_b D4en_b tunable_side 
 xsense1 rbl s1 inv  nm=SAE_S1_WN   pm=SAE_S1_WP 
 xsense2 s1  s2 inv  nm=SAE_S2_WN   pm=SAE_S2_WP 
