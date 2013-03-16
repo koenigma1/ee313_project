@@ -18,8 +18,10 @@ Vdc3 D3en_b gnd dc='dc3'
 Vdc4 D4en_b gnd dc='dc4'
 
 .include 'schem.task1.ckt'
+.include 'decode.ckt'
 .include 'sizes.inc'
 .include './project.sense_timing.ckt'
+.include './SAE_SIZE/5stg_sae_inv_chain_sizes.inc'
 .include '/usr/class/ee313/project/stimulus.sp'
 
 * initialize control cells
@@ -61,8 +63,8 @@ Xblpc_b_gen blpc_b blpc_b_gen
 	0	 0	  0	    0 
 .enddata
 
-*.tran 'trf/100' '10*tcyc+tcyc/2' 
-.tran 'trf/100' '10*tcyc+tcyc/2' SWEEP data=tune_delay
+.tran 'trf/100' '10*tcyc+tcyc/2' 
+*.tran 'trf/100' '10*tcyc+tcyc/2' SWEEP data=tune_delay
 
 ** SAE Generation
 .meas TRAN td_ck2sae

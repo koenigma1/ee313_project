@@ -45,11 +45,13 @@ xctl bl0 bl_b0 wl0 vdd gnd 0 vdd! mc m=1
 xwritel bl0 bl_b0 blpc_b vdd! 0 0 vdd! write m=1
 xwritem net57 net56 blpc_b vdd! 0 0 vdd! write m=254
 xwriter bl63 bl_b63 blpc_b vdd! 0 0 vdd! write m=1
-xi17 wl0 wl255 a0 a255 ck decoder_schematic
+xi17 wl0 wl255 a0 a255 ck sae decoder_schematic
 *xReplica rbl rbl_b wl0 ck replica
 xReplica rbl rbl_b ck ck replica
 xTunable_Load rbl D1en_b D2en_b D3en_b D4en_b tunable_side 
-xsense1 rbl s1 inv  nm=1  pm=3 
-xsense2 s1  s2 inv  nm=21 pm=10
-xsense3 s2  sae inv nm=82 pm=492  
-Csae sae gnd 68.7104e-15   
+xsense1 rbl s1 inv  nm=SAE_S1_WN   pm=SAE_S1_WP 
+xsense2 s1  s2 inv  nm=SAE_S2_WN   pm=SAE_S2_WP 
+xsense3 s2  s3 inv  nm=SAE_S3_WN   pm=SAE_S3_WP   
+xsense4 s3  s4 inv  nm=SAE_S4_WN   pm=SAE_S4_WP   
+xsense5 s4  sae inv  nm=SAE_S4_WN   pm=SAE_S4_WP   
+*Csae sae gnd 153.02e-15   
