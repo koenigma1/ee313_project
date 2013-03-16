@@ -13,14 +13,14 @@
 .param dc3='supply'
 .param dc4='supply'
 .param vsw=0.5102
+.param offset_wordline=0
+.param offset_bitline=0
 Vdc1 D1en_b gnd dc='dc1' 
 Vdc2 D2en_b gnd dc='dc2'
 Vdc3 D3en_b gnd dc='dc3'
 Vdc4 D4en_b gnd dc='dc4'
 
-.include 'schem.task1.ckt'
-.include 'sizes.inc'
-.include './project.full.ckt'
+.include 'full.ckt'
 .include '/usr/class/ee313/project/stimulus.sp'
 
 * initialize control cells

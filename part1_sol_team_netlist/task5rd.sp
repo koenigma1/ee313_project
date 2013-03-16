@@ -8,11 +8,10 @@
 .param trf = 50ps
 .param vsense = 150m
 .param td = 180ps
+.param offset_wordline=87e-3
+.param offset_bitline=106e-3
 
-
-.include 'decode.ckt'
-.include 'schem.task1.ckt'
-.include './project.task5.ckt'
+.include 'full_except_sa.ckt'
 .include '/usr/class/ee313/project/stimulus.sp'
 .param supply = 0.65
 

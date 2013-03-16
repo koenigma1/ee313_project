@@ -1,27 +1,27 @@
 
-.include 'write.ckt'
-
 ** Library name: schem
 ** Cell name: mc
 ** View name: schematic
 .subckt mc bl bl_b wl vdd vss inh_bulk_n inh_bulk_p
-m5 bit bit_b vss inh_bulk_n nmos L=2 W=6
-m4 bit_b bit vss inh_bulk_n nmos L=2 W=6
-m1 bl_b wl bit_b inh_bulk_n nmos L=2 W=4
 m0 bl wl bit inh_bulk_n nmos L=2 W=4
-m2 bit_b bit vdd inh_bulk_p pmos L=2 W=4
-m3 bit bit_b vdd inh_bulk_p pmos L=2 W=4
+m4 bit_b net30 vss inh_bulk_n nmos L=2 W=6
+m5 bit net029 vss inh_bulk_n nmos L=2 W=6
+m1 bl_b net056 bit_b inh_bulk_n nmos L=2 W=4
+m2 bit_b net30 vdd inh_bulk_p pmos L=2 W=4
+m3 bit net029 vdd inh_bulk_p pmos L=2 W=4
 c2 bl 0 88e-18
 c1 bl_b 0 88e-18
 c0 wl 0 140e-18
-c3 vdd 0 88e-18
+v8 net029 bit_b DC='offset_bitline'
+v1 net056 wl DC='offset_wordline'
+v7 bit net30 DC='offset_bitline'
 .ends mc
 ** End of subcircuit definition.
 
 ** Library name: schem
-** Cell name: SRAM
+** Cell name: sram
 ** View name: schematic
-.subckt SRAM bl0 bl63 bl_b0 bl_b63 blpc_b wl0 wl255 inh_bulk_n inh_bulk_p
+.subckt sram bl0 bl63 bl_b0 bl_b63 blpc_b wl0 wl255 inh_bulk_n inh_bulk_p
 xi16 bl63 bl_b63 blpc_b vdd! 0 vcell inh_bulk_n inh_bulk_p write m=1
 xi17 net9 net8 blpc_b vdd! 0 vcell inh_bulk_n inh_bulk_p write m=254
 xi14 bl0 bl_b0 blpc_b vdd! 0 vcell inh_bulk_n inh_bulk_p write m=1
@@ -34,17 +34,6 @@ xi12 bl63 bl_b63 0 vdd! gnd inh_bulk_n inh_bulk_p mc m=254
 xitop_right bl63 bl_b63 wl0 vdd! gnd inh_bulk_n inh_bulk_p mc m=1
 xi9 net9 net8 wl0 vdd! gnd inh_bulk_n inh_bulk_p mc m=254
 xitop_left bl0 bl_b0 wl0 vdd! gnd inh_bulk_n inh_bulk_p mc m=1
-.ends SRAM
+.ends sram
 ** End of subcircuit definition.
-
-** Library name: schem
-** Cell name: task1
-** View name: schematic
-.subckt decoder_schematic wl0 wl255 a0 a255 ck sae
-xi5 a0 a255 ck net2 net1 predecode_24
-xi1 wl0 wl255 net14 net17 sae sae_b0 sae_b255 decode_stage
-c_sideload2 net17 0 22.53e-15
-c_sideload net14 0 22.53e-15
-xi4 net2 net1 net14 net17 sae_b0 sae_b255 predecode_416
-.ends 
 

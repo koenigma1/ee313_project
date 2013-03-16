@@ -14,6 +14,8 @@
 .param dc4='supply'
 .param supply_hi='1.0V'
 .param supply_lo='1.0V'
+.param offset_wordline=0
+.param offset_bitline=0
 Vdc1 D1en_b gnd dc='dc1' 
 Vdc2 D2en_b gnd dc='dc2'
 Vdc3 D3en_b gnd dc='dc3'
@@ -21,11 +23,7 @@ Vdc4 D4en_b gnd dc='dc4'
 Vdc_hi vcc_hi gnd dc='supply_hi'
 Vdc_lo vcc_lo gnd dc='supply_lo'
 
-.include 'schem.task1.ckt'
-.include 'decode.ckt'
-.include 'sizes.inc'
-.include './project.sense_timing.ckt'
-.include './SAE_SIZE/5stg_sae_inv_chain_sizes.inc'
+.include 'full_except_sa.ckt'
 .include '/usr/class/ee313/project/stimulus.sp'
 
 * initialize control cells
@@ -128,8 +126,6 @@ Xblpc_b_gen blpc_b blpc_b_gen
 *.meas TRAN vcell_rise
 *+ TRIG v(wren0) VAL='supply/2' rise=1
 *+ TARG v(vcell) VAL='supply' rise=1
-
-.print v(vcell)
 
 .END
 ***********************************************************************

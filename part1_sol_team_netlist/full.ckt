@@ -1,0 +1,4 @@
+
+.include 'full_except_sa.ckt'
+
+xSAmp bl0 bl_b0 gnd sae ck out out_b sense 

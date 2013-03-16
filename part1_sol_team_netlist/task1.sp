@@ -6,10 +6,10 @@
 *********************** end header ******************************
 .param tcyc = 1ns
 .param trf = 50ps
-
+.param offset_wordline=0
+.param offset_bitline=0
 .include 'decode.ckt'
-.include 'schem.task1.ckt'
-xi17 wl0 wl255 a0 a255 ck decoder_schematic
+xi17 wl0 wl255 a0 a255 ck 0 decoder_schematic
 
 .include '/usr/class/ee313/project/stimulus.sp'
 

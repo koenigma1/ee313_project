@@ -7,8 +7,9 @@
 .param tcyc = 1ns
 .param trf = 50ps
 .param vdiff = 50mV
-
-.include 'project.sense.ckt'
+.param offset_wordline=0
+.param offset_bitline=0
+.include 'full.ckt'
 .include '/usr/class/ee313/project/stimulus.sp'
 
 * generate sae

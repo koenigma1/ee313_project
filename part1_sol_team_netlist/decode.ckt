@@ -180,7 +180,7 @@ m2 y a 0 0 nmos L=2 W=29 M=3
 ** Library name: schem
 ** Cell name: predecode_416
 ** View name: schematic
-.subckt predecode_416 inv1 inv1_255 predec predec_255 sae_b0 sae_b255 
+.subckt predecode_416 inv1 inv1_255 predec predec_255 sae_b0 sae_b255
 xi17 vdd! inv1_255 sae_b255 net057 nand_pcell_6
 xi15 vdd! inv1 sae_b0 net77 nand_pcell_6
 xu2 net057 predec_255 inv_pcell_78
@@ -191,6 +191,19 @@ xu1 net55 net69 inv_pcell_1415
 xu3 net63 net73 inv_pcell_1415
 .ends predecode_416
 ** End of subcircuit definition.
+
+** Library name: schem
+** Cell name: task1
+** View name: schematic
+.subckt decoder_schematic wl0 wl255 a0 a255 ck sae
+xi5 a0 a255 ck net2 net1 predecode_24
+xi1 wl0 wl255 net14 net17 sae sae_b0 sae_b255 decode_stage
+c_sideload2 net17 0 22.53e-15
+c_sideload net14 0 22.53e-15
+xi4 net2 net1 net14 net17 sae_b0 sae_b255 predecode_416
+.ends
+
+
 
 
 .subckt sae_inv_chain sae wl wl_pulldown sae_b

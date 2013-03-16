@@ -8,10 +8,10 @@
 .param trf = 50ps
 .param vsense=150m
 .param td=180ps
+.param offset_wordline=0
+.param offset_bitline=0
 
-.include 'decode.ckt'
-.include 'schem.task1.ckt'
-.include './project.task3.ckt'
+.include 'full_except_sa.ckt'
 .include '/usr/class/ee313/project/stimulus.sp'
 
 * initialize control cells
