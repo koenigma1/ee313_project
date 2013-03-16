@@ -84,14 +84,16 @@ m4 y b 0 0 nmos L=2 W={sae_wn} M=15
 ** Cell name: decode_stage
 ** View name: schematic
 .subckt decode_stage wl0 wl255 predec predec_255 sae
-xu7 net11 sae wl255 nor_pcell_2
-xu5 net17 sae wl0 nor_pcell_2
+xu7 net11 wl_pulldown255 wl255 nor_pcell_2
+xu5 net17 wl_pulldown0 wl0 nor_pcell_2
 xu1 0 predec net14 nand_pcell_3
 xu3 0 predec_255 net8 nand_pcell_3
 xu2 vdd! predec_255 net11 nand_pcell_4
 xu0 vdd! predec net17 nand_pcell_4
-xu6 net14 sae net26 nor_pcell_5
-xu8 net8 sae net22 nor_pcell_5
+xu6 net14 0 net26 nor_pcell_5
+xu8 net8 0 net22 nor_pcell_5
+xu9 sae wl0 wl_pulldown0 sae_inv_chain
+xu10 sae wl255 wl_pulldown255 sae_inv_chain
 .ends decode_stage
 ** End of subcircuit definition.
 

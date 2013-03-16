@@ -84,14 +84,16 @@ m4 y b 0 0 nmos L=2 W=400 M=15
 ** Cell name: decode_stage
 ** View name: schematic
 .subckt decode_stage wl0 wl255 predec predec_255 sae
-xu7 net11 sae wl255 nor_pcell_2
-xu5 net17 sae wl0 nor_pcell_2
+xu7 net11 wl_pulldown255 wl255 nor_pcell_2
+xu5 net17 wl_pulldown0 wl0 nor_pcell_2
 xu1 0 predec net14 nand_pcell_3
 xu3 0 predec_255 net8 nand_pcell_3
 xu2 vdd! predec_255 net11 nand_pcell_4
 xu0 vdd! predec net17 nand_pcell_4
-xu6 net14 sae net26 nor_pcell_5
-xu8 net8 sae net22 nor_pcell_5
+xu6 net14 0 net26 nor_pcell_5
+xu8 net8 0 net22 nor_pcell_5
+xu9 sae wl0 wl_pulldown0 sae_inv_chain
+xu10 sae wl255 wl_pulldown255 sae_inv_chain
 .ends decode_stage
 ** End of subcircuit definition.
 
@@ -186,3 +188,32 @@ xu3 net63 net73 inv_pcell_1415
 .ends predecode_416
 ** End of subcircuit definition.
 
+
+.subckt sae_inv_chain sae wl wl_pulldown
+x123 sae wl net_sae_1 nand2_1240
+x124 net_sae_1 net_sae_2 inv_1241
+x125 net_sae_2 net_sae_3 inv_1242
+x126 net_sae_4 wl_pulldown inv_1243
+.ends sae_inv_chain
+
+.subckt nand2_1240 a b y
+m2 y b vdd! vdd! pmos L=2 W=1 M=1
+m0 y a vdd! vdd! pmos L=2 W=1 M=1
+m3 mid_a b 0 0 nmos L=2 W=3 M=1
+m1 y a mid_a 0 nmos L=2 W=3 M=1
+.ends nand2_1240
+
+.subckt inv_1241 a y
+m1 y a vdd! vdd! pmos L=2 W=19 M=1
+m2 y a 0 0 nmos L=2 W=3 M=1
+.ends inv_1241
+
+.subckt inv_1242 a y
+m1 y a vdd! vdd! pmos L=2 W=23 M=1
+m2 y a 0 0 nmos L=2 W=47 M=1
+.ends inv_1242
+
+.subckt inv_1243 a y
+m1 y a vdd! vdd! pmos L=2 W=436 M=1
+m2 y a 0 0 nmos L=2 W=73 M=1
+.ends inv_1243

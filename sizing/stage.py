@@ -14,6 +14,8 @@ C_JUNCTION = 1.2
 # constants for skew
 MIN_W = 0.5
 
+id = 1234
+
 class Stage():
   def __init__(self, be=1, reduction=False):
     self.gamma = self.c_para / self.c_gate
@@ -25,10 +27,24 @@ class Stage():
     if hasattr(self, 'w_n_fast'):
       self.slow_le *= float(self.w_n_fast) / self.w_n
     self.reduction = reduction
+    global id
+    self.id = id
+    id += 1
 
   def size_stack(self, n, vdd, vth, ecl):
     diff = vdd-vth
     return (diff + n*ecl)/(diff + ecl)
+
+  def getName(self):
+    return "%s_%i" % (self.name, self.id)
+
+  def instantiate(self):
+    sizes = {}
+    sizes['w_p'] = self.getSizeP()
+    sizes['w_n'] = self.getSizeN()
+    sizes['name'] = self.getName()
+    sizes['m'] = 1
+    return self.template.format(**sizes)
 
   def size(self, se, load):
     # SE = LE * BE * load/in
@@ -43,10 +59,10 @@ class Stage():
     return self.Cin
 
   def getSizeN(self):
-    return round(self.w_n*self.M)
+    return int(round(self.w_n*self.M))
 
   def getSizeP(self):
-    return round(self.w_p*self.M)
+    return int(round(self.w_p*self.M))
 
   def show(self):
     se = self.se * self.slow_le / float(self.le)
@@ -55,12 +71,12 @@ class Stage():
            "%i" % self.getSizeP(),
            "%i" % round(self.Cin),
            "%i" % self.be,
-           "%0.03f" % self.slow_le,
+           "%0.03f" % self.le,
            "%0.02f" % self.gamma,
            "%0.02f" % self.se,
            "%0.02f" % (self.le*self.gamma),
-           "%0.02f" % (se+self.le*self.gamma),
-           "%0.02f" % (0.2*(se+self.le*self.gamma)),
+           "%0.02f" % (self.se+self.le*self.gamma),
+           "%0.02f" % (0.2*(self.se+self.le*self.gamma)),
            "%0.02f" % se,
            "%0.02f" % (self.slow_le*self.gamma),
            "%0.02f" % (se+self.slow_le*self.gamma),
@@ -90,6 +106,14 @@ class nand(Stage):
     # LE = RCgate / RCgate,inv
     # we sized for equal drive strength to inv, so take Cgate / Cgate,inv
     Stage.__init__(self, be, reduction)
+    self.template='''
+.subckt {name} a b y
+m2 y b vdd! vdd! pmos L=2 W={w_p} M={m}
+m0 y a vdd! vdd! pmos L=2 W={w_p} M={m}
+m3 mid_a b 0 0 nmos L=2 W={w_n} M={m}
+m1 y a mid_a 0 nmos L=2 W={w_n} M={m}
+.ends {name}
+'''
 
 class nor(Stage):
   def __init__(self, n, be=1, fast_rise=False, fast_fall=False, reduction=False):
@@ -122,6 +146,14 @@ class inv(Stage):
     self.c_para = (self.w_p + self.w_n) * C_JUNCTION
     self.c_gate = (self.w_p + self.w_n) * C_GATE
     Stage.__init__(self, be, reduction)
+    self.template = '''
+.subckt {name} a y
+m1 y a vdd! vdd! pmos L=2 W={w_p} M={m}
+m2 y a 0 0 nmos L=2 W={w_n} M={m}
+.ends {name}
+'''
+
+
 
 class pmos(Stage):
   def __init__(self, be=1, reduction=False):
