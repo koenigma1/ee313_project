@@ -3,7 +3,7 @@
 ** View name: schematic
 ** Description: 27 replica bit cells
 .subckt replica bl bl_b wl blpc_b vcc_hi vcc_lo 
-xWrite bl bl_b blpc_b vdd! 0 inh_bulk_n inh_bulk_p vcell vcc_hi vcc_lo write m=1
+xWrite bl bl_b blpc_b vdd! 0 vcell vcc_hi vcc_lo inh_bulk_n inh_bulk_p write m=1
 xFirst_rbit bl bl_b wl vcell gnd inh_bulk_n inh_bulk_p mc m=1
 xi13 bl bl_b gnd vcell gnd inh_bulk_n inh_bulk_p mc m=77
 xLast_rbit bl bl_b gnd vcell gnd inh_bulk_n inh_bulk_p mc m=1
