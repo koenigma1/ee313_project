@@ -4,10 +4,8 @@
 ******************* default header for EE313 ******************
 .include '/usr/class/ee313/ee313_spice_header.h'
 *********************** end header ******************************
-.param tcyc = 1ns
-.param trf = 50ps
-.param vsense = 150m
-.param td = 180ps
+.include 'params.inc'
+
 .param offset_wordline=87e-3
 .param offset_bitline=106e-3
 

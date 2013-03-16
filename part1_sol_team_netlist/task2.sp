@@ -4,11 +4,7 @@
 ******************* default header for EE313 ******************
 .include '/usr/class/ee313/ee313_spice_header.h'
 *********************** end header ******************************
-.param tcyc = 1ns
-.param trf = 50ps
-.param vdiff = 50mV
-.param offset_wordline=0
-.param offset_bitline=0
+.include 'params.inc'
 .include 'full.ckt'
 .include '/usr/class/ee313/project/stimulus.sp'
 
