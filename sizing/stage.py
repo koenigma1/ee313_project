@@ -76,11 +76,11 @@ class Stage():
            "%0.02f" % self.se,
            "%0.02f" % (self.le*self.gamma),
            "%0.02f" % (self.se+self.le*self.gamma),
-           "%0.02f" % (0.2*(self.se+self.le*self.gamma)),
-           "%0.02f" % se,
-           "%0.02f" % (self.slow_le*self.gamma),
-           "%0.02f" % (se+self.slow_le*self.gamma),
-           "%0.02f" % (0.2*(se+self.slow_le*self.gamma))]
+           "%0.02f" % (0.2*(self.se+self.le*self.gamma))]
+           #"%0.02f" % se,
+           #"%0.02f" % (self.slow_le*self.gamma),
+           #"%0.02f" % (se+self.slow_le*self.gamma),
+           #"%0.02f" % (0.2*(se+self.slow_le*self.gamma))]
     print "\t".join(out)
 
   def slow_delay(self):
