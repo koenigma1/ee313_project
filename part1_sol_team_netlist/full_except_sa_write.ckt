@@ -19,9 +19,9 @@ xi2 bl0 bl_b0 0 vcell2 gnd 0 vdd mc m=254
 xctr bl63 bl_b63 wl0 vcell0 gnd 0 vdd mc m=1
 xi1 net57 net56 wl0 vcell1 gnd 0 vdd mc m=254
 xctl bl0 bl_b0 wl0 vcell2 gnd 0 vdd mc m=1
-xwritel bl0 bl_b0 blpc_b vdd 0 vcell0 vcc_hi vcc_lo 0 vdd write m=1
-xwritem net57 net56 blpc_b vdd 0 vcell1 vcc_hi vcc_lo 0 vdd write m=254
-xwriter bl63 bl_b63 blpc_b vdd 0 vcell2 vcc_hi vcc_lo 0 vdd write m=1
+xwritel bl0 bl_b0 blpc_b vdd wren vcell0 vcc_hi vcc_lo 0 vdd write m=1
+xwritem net57 net56 blpc_b vdd wren vcell1 vcc_hi vcc_lo 0 vdd write m=254
+xwriter bl63 bl_b63 blpc_b vdd wren vcell2 vcc_hi vcc_lo 0 vdd write m=1
 xDecoder wl0 wl255 a0 a255 ck sae decoder_schematic
 *xReplica rbl rbl_b wl0 ck replica
 xReplica rbl rbl_b ck ck vcc_hi vcc_lo replica
